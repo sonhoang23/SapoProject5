@@ -5,13 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SapoProject.Controllers.Interface;
 using SapoProject.Models.Data;
 using SapoProject.Models.Entities;
 using SapoProject.Repository.Repo;
 
 namespace SapoProject.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : Controller, IProductController
     {
         private readonly SapoProjectDbContext _context;
         ProductRepository productRepository;
@@ -22,20 +23,58 @@ namespace SapoProject.Controllers
         }
 
         // GET: Product/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
-        // GET: Product
-        public ActionResult Index()
-        {
-            return View(productRepository.GetProducts());
-        }
 
-        // GET: Product/Details/5
-        public ActionResult Details(int id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind(",productName,Price,OriginalPrice,shortDescription,entireDescription,ViewCount,DateCreated")] Product product)
+        {
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    productRepository.CreateProduct(product);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+
+                    return NotFound();
+
+                }
+                return RedirectToAction("Index");
+            }
+            return View(product);
+        }
+        public ActionResult SelfCreate()
         {
             return View();
+        }
+        [HttpGet]
+        public ActionResult GetListProductWithoutDetail()
+        {
+            return View(productRepository.GetListProductWithoutDetail());
+        }
+
+        // GET: Product
+        [HttpGet]
+        public ActionResult GetListProductWithDetail()
+        {
+            return View(productRepository.GetListProductWithDetail());
+        }
+
+        // GET: Product/ProductDetailDetails/5
+        public ActionResult ProductDetail(int id)
+        {
+            return View(productRepository.GetProductByID(id));
         }
         // GET: Product/Edit/5
         public ActionResult Edit(int id)
@@ -43,7 +82,7 @@ namespace SapoProject.Controllers
             return View(productRepository.Edit(id));
         }
 
-        // POST: 
+        //POST: 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,productName,Price,OriginalPrice,shortDescription,entireDescription,ViewCount,DateCreated")] Product product)
@@ -57,8 +96,7 @@ namespace SapoProject.Controllers
             {
                 try
                 {
-                    _context.Update(product);
-                    await _context.SaveChangesAsync();
+                    productRepository.UpdateProduct(product);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -75,25 +113,6 @@ namespace SapoProject.Controllers
         {
             return View();
         }
-
-
-        // POST: Product/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
 
         // POST: Product/Delete/5
         [HttpPost]

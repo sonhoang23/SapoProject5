@@ -19,20 +19,25 @@ namespace SapoProject.Repository.Repo
         //POST: create
         public void CreateProduct(Product product)
         {
-            throw new NotImplementedException();
+            _context.Add(product);
+            _context.SaveChangesAsync();
         }
-        public IEnumerable<Product> GetProducts()
+        public IEnumerable<Product> GetListProductWithDetail()
+        {
+            return _context.Product.ToList();
+        }
+        public IEnumerable<Product> GetListProductWithoutDetail()
         {
             return _context.Product.ToList();
         }
         public Product GetProductByID(int productID)
         {
-            throw new NotImplementedException();
+            return _context.Product.Find(productID);
         }
-        public async void UpdateProduct(Product product)
+        public  void UpdateProduct(Product product)
         {
-            _context.Update(product);
-            await _context.SaveChangesAsync();
+             _context.Update(product);
+             _context.SaveChangesAsync();
           
         }
         public void DeleteProduct(int product)
@@ -66,5 +71,7 @@ namespace SapoProject.Repository.Repo
             }
             return product;
         }
+
+      
     }
 }

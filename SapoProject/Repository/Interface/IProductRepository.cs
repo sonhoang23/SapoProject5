@@ -8,7 +8,8 @@ namespace SapoProject.Repository.Interface
 {
     public interface IProductRepository:IDisposable
     {
-        IEnumerable<Product> GetProducts();
+        IEnumerable<Product> GetListProductWithDetail();
+        IEnumerable<Product> GetListProductWithoutDetail();
         Product GetProductByID(int productID);
         void CreateProduct(Product product);
         void DeleteProduct(int product);

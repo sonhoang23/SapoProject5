@@ -8,10 +8,8 @@ namespace SapoProject.Repository.Interface
 {
    public interface IUserRepository:IDisposable
     {
-        IEnumerable<User> GetUsers();
-        User GetUserByID(int UserID);
-        void InsertUser(User User);
-        void DeleteUser(int User);
+        void CreateUser(User User);
+        void LoginUser(String userName, String passWord);
         void UpdateUser(User UserID);
         void Save();
     }
