@@ -1,0 +1,70 @@
+﻿@model SapoProject.Areas.Admin.Models.DTO.UserRegister
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+
+<h4>UserRegister</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="userName" class="control-label"></label>
+                <input asp-for="userName" class="form-control" />
+                <span asp-validation-for="userName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="phoneNumber" class="control-label"></label>
+                <input asp-for="phoneNumber" class="form-control" />
+                <span asp-validation-for="phoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="address" class="control-label"></label>
+                <input asp-for="address" class="form-control" />
+                <span asp-validation-for="address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="age" class="control-label"></label>
+                <input asp-for="age" class="form-control" />
+                <span asp-validation-for="age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label type="email" asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="emailReset" class="control-label"></label>
+                <input type="email" asp-for="emailReset" class="form-control" />
+                <span asp-validation-for="emailReset" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userAccount" class="control-label"></label>
+                <input asp-for="userAccount" class="form-control" />
+                <span asp-validation-for="userAccount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userPassWord" class="control-label"></label>
+                <input type="password" asp-for="userPassWord" class="form-control" />
+                <span asp-validation-for="userPassWord" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="userPassWordAgain" class="control-label"></label>
+                <input type="password" asp-for="userPassWordAgain" class="form-control" />
+                <span asp-validation-for="userPassWordAgain" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

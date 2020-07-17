@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SapoProject.Models.Data;
+using SapoProject.Areas.Admin.Models.Data;
 
 namespace SapoProject
 {
@@ -56,7 +56,7 @@ namespace SapoProject
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{area=admin}/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
