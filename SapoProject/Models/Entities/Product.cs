@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,6 +15,9 @@ namespace SapoProject.Models.Entities
         public String shortDescription { set; get; }
         public String entireDescription { set; get; }
         public int ViewCount { set; get; }
+
+        [Display(Name = "Release Date")]
+        [DataType(DataType.Date)]
         public DateTime DateCreated { set; get; }
     }
 }

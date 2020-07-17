@@ -10,8 +10,9 @@ namespace SapoProject.Repository.Interface
     {
         IEnumerable<Product> GetProducts();
         Product GetProductByID(int productID);
-        void InsertProduct(Product product);
+        void CreateProduct(Product product);
         void DeleteProduct(int product);
+        Product Edit(int productID);
         void UpdateProduct(Product productID);
         void Save();
     }

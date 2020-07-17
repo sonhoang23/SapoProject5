@@ -14,11 +14,11 @@ namespace SapoProject.Controllers
     public class HomeController : Controller
     {
         private readonly SapoProjectDbContext _context;
-        UserRepository userRepository;
+        ProductRepository userRepository;
         public HomeController(SapoProjectDbContext context)
         {
             this._context = context;
-            this.userRepository = new UserRepository(_context);
+            this.userRepository = new ProductRepository(_context);
         }
 
         public IActionResult Index()
