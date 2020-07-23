@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SapoProject.Areas.Admin.Controllers.Interface;
 using SapoProject.Areas.Admin.Models.Data;
 using SapoProject.Areas.Admin.Models.DTO;
@@ -24,13 +25,41 @@ namespace SapoProject.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            return View();
+            if (HttpContext.Session.GetString("username") != null)
+            {
+                return RedirectToAction(actionName: "GetListProductWithDetail", controllerName: "Product");
+            }
+            else
+            {
+                return View();
+            }
         }
         [HttpPost]
-        public ActionResult Login(User user)
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(UserLogin user)
         {
-            throw new NotImplementedException();
+
+            if (ModelState.IsValid)
+            {
+                if (userRepository.LoginUser(user) == 1)
+                {
+                    HttpContext.Session.SetString("username", user.userAccount);
+                    return RedirectToAction(actionName: "Index", controllerName: "Home");
+                }
+                if (userRepository.LoginUser(user) == 0)
+                {
+                    return RedirectToAction(actionName: "Login", controllerName: "User");
+                }
+
+            }
+            else
+            {
+                return View(user);
+            }
+            return RedirectToAction(actionName: "Index", controllerName: "Home");
         }
+        //return View();
+
         [HttpGet]
         public ActionResult Register()
         {
@@ -41,5 +70,10 @@ namespace SapoProject.Areas.Admin.Controllers
         {
             userRepository.CreateUser(user);
         }
+
+
+
+
+
     }
 }

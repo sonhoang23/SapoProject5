@@ -87,7 +87,7 @@ namespace SapoProject.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,productName,Price,OriginalPrice,shortDescription,entireDescription,ViewCount,DateCreated")] Product product)
         {
-            if (id != product.id)
+            if (id != product.Id)
             {
                 return NotFound();
             }

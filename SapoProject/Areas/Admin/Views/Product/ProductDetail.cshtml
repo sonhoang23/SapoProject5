@@ -1,7 +1,8 @@
 ﻿@model SapoProject.Areas.Admin.Models.Entities.Product
 
 @{
-    ViewData["Title"] = "ProductDetail";
+	ViewData["Title"] = "ProductDetail";
+	Layout = "_Layout";
 }
 
 <h1>ProductDetail</h1>
@@ -11,10 +12,10 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.productName)
+            @Html.DisplayNameFor(model => model.ProductName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.productName)
+            @Html.DisplayFor(model => model.ProductName)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Price)
@@ -29,16 +30,16 @@
             @Html.DisplayFor(model => model.OriginalPrice)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.shortDescription)
+            @Html.DisplayNameFor(model => model.ShortDescription)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.shortDescription)
+            @Html.DisplayFor(model => model.ShortDescription)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.entireDescription)
+            @Html.DisplayNameFor(model => model.EntireDescription)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.entireDescription)
+            @Html.DisplayFor(model => model.EntireDescription)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.ViewCount)
@@ -47,14 +48,14 @@
             @Html.DisplayFor(model => model.ViewCount)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateCreated)
+            @Html.DisplayNameFor(model => model.CreatedDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateCreated)
+            @Html.DisplayFor(model => model.CreatedDate)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

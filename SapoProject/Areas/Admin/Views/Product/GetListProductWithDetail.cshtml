@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<SapoProject.Areas.Admin.Models.Entities.Product>
 
 @{
-    ViewData["Title"] = "Index";
+	ViewData["Title"] = "Index";
+	Layout = "_Layout";
 }
 
 <h1>Index</h1>
@@ -11,61 +12,69 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.productName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OriginalPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.shortDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.entireDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ViewCount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateCreated)
-            </th>
-            <th></th>
-        </tr>
+		<tr>
+			<th>
+				<label class="control-label"> Product Name</label>
+				
+			</th>
+			<th>
+				<label class="control-label"> Price</label>
+			
+			</th>
+			<th>
+				<label class="control-label"> Original Price</label>
+			</th>
+			<th>
+				<label class="control-label"> Short Description</label>
+			</th>
+			<th>
+				<label class="control-label"> Long Description</label>
+			</th>
+			<th>
+				<label class="control-label"> View Count</label>
+			</th>
+			<th>
+				<label class="control-label"> Created Date</label>
+			</th>
+			<th>
+				<label class="control-label"> Fixed Date</label>
+			</th>
+			<th></th>
+		</tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.productName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OriginalPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.shortDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.entireDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ViewCount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCreated)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="ProductDetail" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-            </td>
-        </tr>
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.ProductName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Price)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.OriginalPrice)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ShortDescription)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.EntireDescription)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ViewCount)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.CreatedDate)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.FixedDate)
+			</td>
+			<td>
+				<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+				<a asp-action="ProductDetail" asp-route-id="@item.Id">Details</a> |
+				<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+			</td>
+		</tr>
 }
     </tbody>
 </table>

@@ -15,6 +15,6 @@ namespace SapoProject.Areas.Admin.Controllers.Interface
         [HttpGet]
         public ActionResult Login();
         [HttpPost]
-        public ActionResult Login(User user);
+        public ActionResult Login(UserLogin user);
     }
 }

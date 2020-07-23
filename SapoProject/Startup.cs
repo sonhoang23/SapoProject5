@@ -26,9 +26,15 @@ namespace SapoProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);//We set Time here 
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
             services.AddDbContext<SapoProjectDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("SapoProjectDbContext")));
+
 
         }
 
@@ -50,13 +56,13 @@ namespace SapoProject
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{area=admin}/{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{area=admin}/{controller=User}/{action=Login}/{id?}");
             });
         }
     }

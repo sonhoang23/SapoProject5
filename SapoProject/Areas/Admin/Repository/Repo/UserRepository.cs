@@ -1,4 +1,6 @@
-﻿using SapoProject.Areas.Admin.Models.Data;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SapoProject.Areas.Admin.Models.Data;
 using SapoProject.Areas.Admin.Models.DTO;
 using SapoProject.Areas.Admin.Models.Entities;
 using SapoProject.Areas.Admin.Repository.Interface;
@@ -18,23 +20,27 @@ namespace SapoProject.Areas.Admin.Repository.Repo
 
         }
 
-        public void CreateUser(UserRegister userRegister)
+        public int CreateUser(UserRegister userRegister)
         {
             User user = new User();
             if (userRegister.userPassWord == userRegister.userPassWordAgain && userRegister.userPassWord != null)
             {
-                if (!_context.User.Any(i => i.userAccount == userRegister.userAccount))
+                if (!_context.User.Any(i => i.UserAccount == userRegister.userAccount))
                 {
-                    user.userName = userRegister.userName;
-                    user.phoneNumber = userRegister.phoneNumber;
-                    user.address = userRegister.address;
-                    user.age = userRegister.age;
-                    user.email = userRegister.email;
-                    user.emailReset = userRegister.emailReset;
-                    user.userAccount = userRegister.userAccount;
-                    user.userPassWord = userRegister.userPassWord;
-                    user.status = 1;
+                    user.UserName = userRegister.userName;
+                    user.PhoneNumber = userRegister.phoneNumber;
+                    user.Address = userRegister.address;
+                    user.Age = userRegister.age;
+                    user.Email = userRegister.email;
+                    user.EmailReset = userRegister.emailReset;
+                    user.UserAccount = userRegister.userAccount;
+                    user.UserPassWord = userRegister.userPassWord;
+                    user.Status = 1;
+
+                    _context.User.Add(user);
+                    return 1;
                 }
+                return 2;
             }
             else
             {
@@ -67,9 +73,22 @@ namespace SapoProject.Areas.Admin.Repository.Repo
             throw new NotImplementedException();
         }
 
-        public void LoginUser(string userName, string passWord)
+        public int LoginUser(UserLogin userLogin)
         {
-            throw new NotImplementedException();
+            User user = new User();
+
+            var userCheck = _context.User.Where(n => n.UserAccount == userLogin.userAccount && n.UserPassWord == userLogin.userPassWord);
+            if (userCheck.Count() > 0)
+            {
+                /*Session["FullName"] = userCheck.FirstOrDefault().userName;
+                Session["Email"] = userCheck.FirstOrDefault().email;
+                Session["idUser"] = userCheck.FirstOrDefault().id;   */
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public void Save()

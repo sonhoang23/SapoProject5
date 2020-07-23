@@ -8,16 +8,16 @@ namespace SapoProject.Areas.Admin.Models.Entities
 {
     public class User
     {
-        public int id { set; get; }
-        public String userName { set; get; }
-        public String phoneNumber { set; get; }
-        public String address { set; get; }
+        public int Id { set; get; }
+        public String UserName { set; get; }
+        public String PhoneNumber { set; get; }
+        public String Address { set; get; }
         [Range(1, 100, ErrorMessage = "Price must be between 1 and 100")]
-        public int age { set; get; }
-        public String email { set; get; }
-        public String emailReset { set; get; }
-        public String userAccount { set; get; }
-        public String userPassWord { set; get; }
-        public int status { set; get; }
+        public int Age { set; get; }
+        public String Email { set; get; }
+        public String EmailReset { set; get; }
+        public String UserAccount { set; get; }
+        public String UserPassWord { set; get; }
+        public int Status { set; get; }
     }
 }
