@@ -19,8 +19,10 @@ namespace SapoProject.Areas.Admin.Repository.Repo
         //POST: create
         public void CreateProduct(Product product)
         {
+            product.CreatedDate = DateTime.Now;
+            product.FixedDate = DateTime.Now;
             _context.Add(product);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
         public IEnumerable<Product> GetListProductWithDetail()
         {
@@ -34,15 +36,26 @@ namespace SapoProject.Areas.Admin.Repository.Repo
         {
             return _context.Product.Find(productID);
         }
-        public  void UpdateProduct(Product product)
+        public void UpdateProduct(Product product)
         {
-             _context.Update(product);
-             _context.SaveChangesAsync();
-          
+            product.FixedDate = DateTime.Now;
+            _context.Update(product);
+            _context.SaveChanges();
+
         }
-        public void DeleteProduct(int product)
+        public void DeleteProduct(int productID)
         {
-            
+            if (productID == null)
+            {
+                throw new NotImplementedException();
+            }
+            else
+            {
+                Product productToDelete = new Product() { Id = productID };
+                _context.Entry(productToDelete).State = EntityState.Deleted;
+                _context.SaveChanges();
+               // _context.Product.Remove(GetProductByID(productID));
+            }
         }
 
         public void Dispose()
@@ -50,28 +63,11 @@ namespace SapoProject.Areas.Admin.Repository.Repo
             throw new NotImplementedException();
         }
 
-       
-
         public void Save()
         {
             throw new NotImplementedException();
         }
-
-        public Product Edit(int productID)
-        {
-            if (productID == null)
-            {
-                throw new NotImplementedException();
-            }
-
-            var product =  _context.Product.Find(productID);
-            if (product == null)
-            {
-                throw new NotImplementedException();
-            }
-            return product;
-        }
-
+        
       
     }
 }

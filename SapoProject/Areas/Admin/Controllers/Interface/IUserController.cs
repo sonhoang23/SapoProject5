@@ -10,7 +10,7 @@ namespace SapoProject.Areas.Admin.Controllers.Interface
         [HttpGet]
         public ActionResult Register();
         [HttpPost]
-        public void/*ActionResult*/ Register(UserRegister user);
+        public ActionResult Register(UserRegister user);
         //LOGIN
         [HttpGet]
         public ActionResult Login();

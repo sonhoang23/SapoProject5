@@ -1,11 +1,17 @@
 ﻿@model SapoProject.Areas.Admin.Models.Entities.Product
 
 @{
-	ViewData["Title"] = "Edit";
 	Layout = "_Layout";
 }
 
-<h1>Edit</h1>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
 
 <h4>Product</h4>
 <hr />
@@ -45,11 +51,6 @@
                 <span asp-validation-for="ViewCount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CreatedDate" class="control-label"></label>
-                <input asp-for="CreatedDate" class="form-control" />
-                <span asp-validation-for="CreatedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
@@ -57,7 +58,8 @@
 </div>
 
 <div>
-    <a asp-action="GetListProductWithDetail">Back to List</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
-
+</body>
+</html>

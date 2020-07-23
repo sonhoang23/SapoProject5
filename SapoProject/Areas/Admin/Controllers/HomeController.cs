@@ -26,13 +26,26 @@ namespace SapoProject.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-
-            return View();
+            if (HttpContext.Session.GetString("username") == null)
+            {
+                 return RedirectToAction(actionName: "Login", controllerName: "User");
+            }
+            else
+            {
+                return View();
+            }
 
         }
         public IActionResult Privacy()
         {
-            return View();
+            if (HttpContext.Session.GetString("username") == null)
+            {
+                return RedirectToAction(actionName: "Login", controllerName: "User");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

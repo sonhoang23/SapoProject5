@@ -26,16 +26,24 @@ namespace SapoProject.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            if (HttpContext.Session.GetString("username") == null)
+            {
+                return RedirectToAction(actionName: "Login", controllerName: "User");
+            }
+            else
+            {
+                return View();
+            }
+
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind(",productName,Price,OriginalPrice,shortDescription,entireDescription,ViewCount,DateCreated")] Product product)
+        public async Task<IActionResult> Create([Bind("ProductName,Price,OriginalPrice,ShortDescription,EntireDescription,ViewCount")] Product product)
         {
             if (product == null)
             {
-                return NotFound();
+                return RedirectToAction(actionName: "NoFound", controllerName: "Share");
             }
 
             if (ModelState.IsValid)
@@ -47,94 +55,156 @@ namespace SapoProject.Areas.Admin.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
 
-                    return NotFound();
+                    return RedirectToAction(actionName: "NoFound", controllerName: "Share");
 
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("GetListProductWithDetail");
             }
             return View(product);
         }
-        public ActionResult SelfCreate()
-        {
-            return View();
-        }
+
         [HttpGet]
         public ActionResult GetListProductWithoutDetail()
         {
-            return View(productRepository.GetListProductWithoutDetail());
+            if (HttpContext.Session.GetString("username") == null)
+            {
+                return RedirectToAction(actionName: "Login", controllerName: "User");
+            }
+            else
+            {
+                return View(productRepository.GetListProductWithoutDetail());
+            }
+
         }
 
         // GET: Product
         [HttpGet]
         public ActionResult GetListProductWithDetail()
         {
-            return View(productRepository.GetListProductWithDetail());
+            if (HttpContext.Session.GetString("username") == null)
+            {
+                return RedirectToAction(actionName: "Login", controllerName: "User");
+            }
+            else
+            {
+                return View(productRepository.GetListProductWithDetail());
+            }
+
         }
 
         // GET: Product/ProductDetailDetails/5
         public ActionResult ProductDetail(int id)
         {
-            return View(productRepository.GetProductByID(id));
+            if (HttpContext.Session.GetString("username") == null)
+            {
+                return RedirectToAction(actionName: "Login", controllerName: "User");
+            }
+            else
+            {
+                return View(productRepository.GetProductByID(id));
+            }
+
         }
         // GET: Product/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(productRepository.Edit(id));
+            if (HttpContext.Session.GetString("username") == null)
+            {
+                return RedirectToAction(actionName: "Login", controllerName: "User");
+            }
+            else
+            {
+                return View(productRepository.GetProductByID(id));
+            }
+
         }
 
         //POST: 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,productName,Price,OriginalPrice,shortDescription,entireDescription,ViewCount,DateCreated")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProductName,Price,OriginalPrice,ShortDescription,EntireDescription,ViewCount")] Product product)
         {
-            if (id != product.Id)
+
+            if (HttpContext.Session.GetString("username") == null)
             {
-                return NotFound();
+                return RedirectToAction(actionName: "Login", controllerName: "User");
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        productRepository.UpdateProduct(product);
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+
+                        return RedirectToAction(actionName: "NoFound", controllerName: "Share");
+
+                    }
+                    return RedirectToAction("GetListProductWithDetail");
+                }
+                else 
+                { 
+                    return RedirectToAction(actionName: "NoFound", controllerName: "Share"); 
+                }
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    productRepository.UpdateProduct(product);
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-
-                    return NotFound();
-
-                }
-                return RedirectToAction("Index");
-            }
-            return View(product);
         }
         // GET: Product/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            if (HttpContext.Session.GetString("username") == null)
+            {
+                return RedirectToAction(actionName: "Login", controllerName: "User");
+            }
+            else
+            {
+                if (productRepository.GetProductByID(id) != null)
+                {
+                    return View(productRepository.GetProductByID(id));
+                }
+                else
+                {
+                    return RedirectToAction(actionName: "NoFound", controllerName: "Share");
+                }
+
+            }
+
         }
 
         // POST: Product/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> Delete(int id, Product product)
         {
-            try
+            if (HttpContext.Session.GetString("username") == null)
             {
-                // TODO: Add delete logic here
+                return RedirectToAction(actionName: "Login", controllerName: "User");
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        productRepository.DeleteProduct(id);
+                        return RedirectToAction(actionName: "GetListProductWithDetail", controllerName: "Product");
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
 
-                return RedirectToAction(nameof(Index));
+                        return RedirectToAction(actionName: "NoFound", controllerName: "Share");
+
+                    }
+                }
+                else
+                {
+                    return RedirectToAction(actionName: "NoFound", controllerName: "Share");
+                }
             }
-            catch
-            {
-                return View();
-            }
-        }
-        
-        public ActionResult Deletetest()
-        {
-          
-                return View();
+
         }
     }
 }

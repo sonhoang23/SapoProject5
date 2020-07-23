@@ -25,13 +25,13 @@ namespace SapoProject.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            if (HttpContext.Session.GetString("username") != null)
+            if (HttpContext.Session.GetString("username") == null)
             {
-                return RedirectToAction(actionName: "GetListProductWithDetail", controllerName: "Product");
+                return View();
             }
             else
             {
-                return View();
+                return RedirectToAction(actionName: "Index", controllerName: "Home");
             }
         }
         [HttpPost]
@@ -58,6 +58,13 @@ namespace SapoProject.Areas.Admin.Controllers
             }
             return RedirectToAction(actionName: "Index", controllerName: "Home");
         }
+        [HttpGet]
+        public ActionResult LogOut()
+        {
+            HttpContext.Session.Remove("username");
+            return RedirectToAction(actionName: "Login", controllerName: "User");
+         
+        }
         //return View();
 
         [HttpGet]
@@ -66,14 +73,10 @@ namespace SapoProject.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public void Register(UserRegister user)
+        public ActionResult Register(UserRegister user)
         {
             userRepository.CreateUser(user);
+            return RedirectToAction(actionName: "Login", controllerName: "User");
         }
-
-
-
-
-
     }
 }

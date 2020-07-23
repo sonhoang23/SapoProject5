@@ -79,11 +79,9 @@ namespace SapoProject.Areas.Admin.Repository.Repo
 
             var userCheck = _context.User.Where(n => n.UserAccount == userLogin.userAccount && n.UserPassWord == userLogin.userPassWord);
             if (userCheck.Count() > 0)
-            {
-                /*Session["FullName"] = userCheck.FirstOrDefault().userName;
-                Session["Email"] = userCheck.FirstOrDefault().email;
-                Session["idUser"] = userCheck.FirstOrDefault().id;   */
-                return 1;
+            {    
+                    return 1;
+
             }
             else
             {

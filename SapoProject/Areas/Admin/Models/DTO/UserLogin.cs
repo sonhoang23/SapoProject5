@@ -13,5 +13,6 @@ namespace SapoProject.Areas.Admin.Models.DTO
         public String userAccount { set; get; }
         [Required]
         public String userPassWord { set; get; }
+
     }
 }
