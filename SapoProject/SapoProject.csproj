@@ -71,6 +71,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CKSource.CKFinder" Version="3.5.1.1" />
+    <PackageReference Include="CKSource.CKFinder.Connector.Config" Version="3.5.1.1" />
+    <PackageReference Include="CKSource.CKFinder.Connector.Core" Version="3.5.1.1" />
+    <PackageReference Include="CKSource.CKFinder.Connector.Host.Owin" Version="3.5.1.1" />
+    <PackageReference Include="CKSource.CKFinder.Connector.KeyValue.FileSystem" Version="3.5.1.1" />
+    <PackageReference Include="CKSource.CKFinder.Connector.Logs.NLog" Version="3.5.1.1" />
+    <PackageReference Include="CKSource.FileSystem.Local" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.5">
@@ -78,6 +86,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
+    <PackageReference Include="Microsoft.Web.Administration" Version="11.1.0" />
+    <PackageReference Include="WestWind.AspnetCore.LiveReload" Version="0.2.5" />
   </ItemGroup>
 
 

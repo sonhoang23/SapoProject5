@@ -13,10 +13,20 @@ namespace SapoProject.Areas.Admin.Models.DTO
         public String userName { set; get; }
         [Required]
         public String phoneNumber { set; get; }
+    
+        [Required]
+        public int age { set; get; }
+        [Required]
+        public String sex { set; get; }
         [Required]
         public String address { set; get; }
         [Required]
-        public int age { set; get; }
+        public String district { set; get; }
+        [Required]
+        public String city { set; get; }
+        [Required]
+        public String country { set; get; }
+
         [Required]
         public String email { set; get; }
         [Required]

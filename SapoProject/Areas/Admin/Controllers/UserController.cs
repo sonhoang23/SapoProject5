@@ -27,6 +27,7 @@ namespace SapoProject.Areas.Admin.Controllers
         {
             if (HttpContext.Session.GetString("username") == null)
             {
+                ViewBag.Title = "Login To Sapo";
                 return View();
             }
             else
@@ -44,13 +45,14 @@ namespace SapoProject.Areas.Admin.Controllers
                 if (userRepository.LoginUser(user) == 1)
                 {
                     HttpContext.Session.SetString("username", user.userAccount);
+                    HttpContext.Session.SetInt32("id", user.Id);
                     return RedirectToAction(actionName: "Index", controllerName: "Home");
                 }
                 if (userRepository.LoginUser(user) == 0)
                 {
+                    ViewBag.Title = "Login To Sapo";
                     return RedirectToAction(actionName: "Login", controllerName: "User");
                 }
-
             }
             else
             {
@@ -63,7 +65,7 @@ namespace SapoProject.Areas.Admin.Controllers
         {
             HttpContext.Session.Remove("username");
             return RedirectToAction(actionName: "Login", controllerName: "User");
-         
+
         }
         //return View();
 
@@ -75,8 +77,26 @@ namespace SapoProject.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Register(UserRegister user)
         {
-            userRepository.CreateUser(user);
-            return RedirectToAction(actionName: "Login", controllerName: "User");
+            if (userRepository.CreateUser(user) == 1)
+            {   //chấp nhận register
+                return RedirectToAction(actionName: "Login", controllerName: "User");
+            }
+            if (userRepository.CreateUser(user) == 2)
+            {   //trùng acc
+                return RedirectToAction(actionName: "Register", controllerName: "User");
+            }
+            if (userRepository.CreateUser(user) == 3)
+            {   //sai mk xác nhận
+                return RedirectToAction(actionName: "Register", controllerName: "User");
+            }
+            return RedirectToAction(actionName: "Register", controllerName: "User");
+        }
+        [HttpGet]
+        public ActionResult Index()
+        {
+            
+                return View();
+          
         }
     }
 }

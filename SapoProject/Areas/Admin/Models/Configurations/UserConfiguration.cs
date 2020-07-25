@@ -15,6 +15,8 @@ namespace SapoProject.Areas.Admin.Models.Configurations
             builder.ToTable("User");
             builder.Property(x => x.UserName).HasMaxLength(50).IsRequired();
             builder.Property(x => x.PhoneNumber).HasColumnType("varchar").HasMaxLength(20).IsRequired();
+            builder.Property(x => x.Age).HasMaxLength(3).IsRequired();
+            builder.Property(x => x.Sex).HasMaxLength(10).IsRequired();
             builder.Property(x => x.Address).HasMaxLength(50).IsRequired();
             builder.Property(x => x.Email).HasMaxLength(50).IsRequired();
             builder.Property(x => x.EmailReset).HasMaxLength(50).IsRequired();

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SapoProject.Migrations
 {
-    public partial class UpdateDB : Migration
+    public partial class initialDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,7 +20,8 @@ namespace SapoProject.Migrations
                     EntireDescription = table.Column<string>(nullable: false),
                     ViewCount = table.Column<int>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: false),
-                    FixedDate = table.Column<DateTime>(nullable: false)
+                    FixedDate = table.Column<DateTime>(nullable: false),
+                    Status = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,41 +47,6 @@ namespace SapoProject.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_User", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserLogin",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    userAccount = table.Column<string>(nullable: false),
-                    userPassWord = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserLogin", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserRegister",
-                columns: table => new
-                {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    userName = table.Column<string>(nullable: false),
-                    phoneNumber = table.Column<string>(nullable: false),
-                    address = table.Column<string>(nullable: false),
-                    age = table.Column<int>(nullable: false),
-                    email = table.Column<string>(nullable: false),
-                    emailReset = table.Column<string>(nullable: false),
-                    userAccount = table.Column<string>(nullable: false),
-                    userPassWord = table.Column<string>(nullable: false),
-                    userPassWordAgain = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserRegister", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -111,12 +77,6 @@ namespace SapoProject.Migrations
 
             migrationBuilder.DropTable(
                 name: "User");
-
-            migrationBuilder.DropTable(
-                name: "UserLogin");
-
-            migrationBuilder.DropTable(
-                name: "UserRegister");
 
             migrationBuilder.DropTable(
                 name: "WebInfor");

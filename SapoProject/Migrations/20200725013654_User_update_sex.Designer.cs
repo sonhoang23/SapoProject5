@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SapoProject.Areas.Admin.Models.Data;
 
 namespace SapoProject.Migrations
 {
     [DbContext(typeof(SapoProjectDbContext))]
-    partial class SapoProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200725013654_User_update_sex")]
+    partial class User_update_sex
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,9 +100,7 @@ namespace SapoProject.Migrations
                         .HasMaxLength(20);
 
                     b.Property<string>("Sex")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(10)")
-                        .HasMaxLength(10);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");

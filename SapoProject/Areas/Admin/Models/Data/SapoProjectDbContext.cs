@@ -24,8 +24,6 @@ namespace SapoProject.Areas.Admin.Models.Data
         public DbSet<User> User { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<WebInfor> WebInfor { get; set; }
-        public DbSet<SapoProject.Areas.Admin.Models.DTO.UserRegister> UserRegister { get; set; }
-        public DbSet<SapoProject.Areas.Admin.Models.DTO.UserLogin> UserLogin { get; set; }
     }
 
 }

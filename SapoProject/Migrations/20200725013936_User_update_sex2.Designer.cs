@@ -10,8 +10,8 @@ using SapoProject.Areas.Admin.Models.Data;
 namespace SapoProject.Migrations
 {
     [DbContext(typeof(SapoProjectDbContext))]
-    [Migration("20200722064707_UpdateDB")]
-    partial class UpdateDB
+    [Migration("20200725013936_User_update_sex2")]
+    partial class User_update_sex2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,73 +20,6 @@ namespace SapoProject.Migrations
                 .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("SapoProject.Areas.Admin.Models.DTO.UserLogin", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("userAccount")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("userPassWord")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserLogin");
-                });
-
-            modelBuilder.Entity("SapoProject.Areas.Admin.Models.DTO.UserRegister", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("emailReset")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("phoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("userAccount")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("userName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("userPassWord")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("userPassWordAgain")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("UserRegister");
-                });
 
             modelBuilder.Entity("SapoProject.Areas.Admin.Models.Entities.Product", b =>
                 {
@@ -124,6 +57,9 @@ namespace SapoProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<int>("ViewCount")
                         .HasColumnType("int");
 
@@ -145,7 +81,8 @@ namespace SapoProject.Migrations
                         .HasMaxLength(50);
 
                     b.Property<int>("Age")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasMaxLength(3);
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -161,6 +98,9 @@ namespace SapoProject.Migrations
                         .IsRequired()
                         .HasColumnType("varchar")
                         .HasMaxLength(20);
+
+                    b.Property<string>("Sex")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");

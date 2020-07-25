@@ -8,73 +8,85 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+	<a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-		<tr>
-			<th>
-				<label class="control-label"> Product Name</label>
-				
-			</th>
-			<th>
-				<label class="control-label"> Price</label>
-			
-			</th>
-			<th>
-				<label class="control-label"> Original Price</label>
-			</th>
-			<th>
-				<label class="control-label"> Short Description</label>
-			</th>
-			<th>
-				<label class="control-label"> Long Description</label>
-			</th>
-			<th>
-				<label class="control-label"> View Count</label>
-			</th>
-			<th>
-				<label class="control-label"> Created Date</label>
-			</th>
-			<th>
-				<label class="control-label"> Fixed Date</label>
-			</th>
-			<th></th>
-		</tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-		<tr>
-			<td>
-				@Html.DisplayFor(modelItem => item.ProductName)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Price)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.OriginalPrice)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.ShortDescription)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.EntireDescription)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.ViewCount)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.CreatedDate)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.FixedDate)
-			</td>
-			<td>
-				<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-				<a asp-action="ProductDetail" asp-route-id="@item.Id">Details</a> |
-				<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-			</td>
-		</tr>
-}
-    </tbody>
-</table>
+
+
+<div class="card mb-4">
+	<div class="card-header">
+		<i class="fas fa-table mr-1"></i>
+		@ViewData["Title"]
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"
+				   data-show-toggle="true"
+				   data-show-refresh="true"
+				   data-pagination-detail-h-align="right">
+				<thead>
+					<tr>
+						<th>Product Name</th>
+						<th>Price</th>
+						<th>Original Price</th>
+						<th>Short Description</th>
+						<th>Long Description</th>
+						<th>View Count</th>
+						<th>Created Date</th>
+						<th>Fixed Date</th>
+						<th>Option</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<th>Product Name</th>
+						<th>Price</th>
+						<th>Original Price</th>
+						<th>Short Description</th>
+						<th>Long Description</th>
+						<th>View Count</th>
+						<th>Created Date</th>
+						<th>Fixed Date</th>
+						<th>Option</th>
+					</tr>
+				</tfoot>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.ProductName)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Price)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.OriginalPrice)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.ShortDescription)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.EntireDescription)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.ViewCount)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.CreatedDate)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.FixedDate)
+							</td>
+							<td>
+								<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+								<a asp-action="ProductDetail" asp-route-id="@item.Id">Details</a> |
+								<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>	  

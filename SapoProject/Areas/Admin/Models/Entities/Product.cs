@@ -20,5 +20,6 @@ namespace SapoProject.Areas.Admin.Models.Entities
         [DataType(DataType.Date)]
         public DateTime CreatedDate { set; get; }
         public DateTime FixedDate { set; get; }
+        public int Status { set; get; }
     }
 }

@@ -27,24 +27,26 @@ namespace SapoProject.Areas.Admin.Repository.Repo
             {
                 if (!_context.User.Any(i => i.UserAccount == userRegister.userAccount))
                 {
+                   // user.Id = _context.User.Last().Id+1;
                     user.UserName = userRegister.userName;
                     user.PhoneNumber = userRegister.phoneNumber;
-                    user.Address = userRegister.address;
+                    user.Address = userRegister.address +"-"+userRegister.district+"-"+userRegister.city+"-"+userRegister.country;
                     user.Age = userRegister.age;
+                    user.Sex = userRegister.sex;
                     user.Email = userRegister.email;
                     user.EmailReset = userRegister.emailReset;
                     user.UserAccount = userRegister.userAccount;
                     user.UserPassWord = userRegister.userPassWord;
                     user.Status = 1;
-
                     _context.User.Add(user);
+                    _context.SaveChanges();
                     return 1;
                 }
                 return 2;
             }
             else
             {
-                throw new NotImplementedException();
+                return 3;
             }
         }
 

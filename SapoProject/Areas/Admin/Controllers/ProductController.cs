@@ -77,7 +77,7 @@ namespace SapoProject.Areas.Admin.Controllers
 
         }
 
-        // GET: Product
+        // GET: /admin/product/GetListProductWithDetail
         [HttpGet]
         public ActionResult GetListProductWithDetail()
         {
@@ -91,6 +91,20 @@ namespace SapoProject.Areas.Admin.Controllers
             }
 
         }
+        // GET:  /admin/product/GetListProductWithDetail/2
+      /*  [HttpGet]
+        public ActionResult GetListProductWithDetail(int page)
+        {
+            if (HttpContext.Session.GetString("username") == null)
+            {
+                return RedirectToAction(actionName: "Login", controllerName: "User");
+            }
+            else
+            {
+                return View(productRepository.GetListProductWithDetail());
+            }
+
+        }     */
 
         // GET: Product/ProductDetailDetails/5
         public ActionResult ProductDetail(int id)
