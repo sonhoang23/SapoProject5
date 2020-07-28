@@ -14,6 +14,7 @@ namespace SapoProject.Areas.Admin.Models.Entities
         public String OriginalPrice { set; get; }
         public String ShortDescription { set; get; }
         public String EntireDescription { set; get; }
+        public String FilePath { set; get; }
         public int ViewCount { set; get; }
 
         [Display(Name = "Release Date")]

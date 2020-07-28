@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SapoProject.Areas.Admin.Models.DTO;
 using SapoProject.Areas.Admin.Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,14 +12,14 @@ namespace SapoProject.Areas.Admin.Controllers.Interface
     {
         //CREATE
         public ActionResult Create();
-        public Task<IActionResult> Create(Product product);
+        public Task<IActionResult> Create(ProductCreate productCreate);
         //READ
         public ActionResult GetListProductWithoutDetail();
         public ActionResult GetListProductWithDetail();
         public ActionResult ProductDetail(int id);
         //UPDATE
         public ActionResult Edit(int id);
-        public Task<IActionResult> Edit(int id, [Bind("id,productName,Price,OriginalPrice,shortDescription,entireDescription,ViewCount,DateCreated")] Product product);
+        public Task<IActionResult> Edit(int id, ProductEdit product);
         //DELETE
     }
 }

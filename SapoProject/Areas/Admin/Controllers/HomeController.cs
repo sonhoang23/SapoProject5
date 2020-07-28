@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using SapoProject.Areas.Admin.Models;
-using SapoProject.Areas.Admin.Models;
 using SapoProject.Areas.Admin.Models.Data;
 using SapoProject.Areas.Admin.Repository.Repo;
 
@@ -21,7 +20,7 @@ namespace SapoProject.Areas.Admin.Controllers
         public HomeController(SapoProjectDbContext context)
         {
             this._context = context;
-            this.userRepository = new ProductRepository(_context);
+          // this.userRepository = new ProductRepository(_context);
         }
 
         public IActionResult Index()

@@ -18,7 +18,9 @@ namespace SapoProject.Areas.Admin.Models.Configurations
             builder.Property(x => x.OriginalPrice).HasColumnType("varchar").HasMaxLength(50).IsRequired();
             builder.Property(x => x.ShortDescription).IsRequired();
             builder.Property(x => x.EntireDescription).IsRequired();
+            builder.Property(x => x.FilePath).IsRequired();
             builder.Property(x => x.Status).IsRequired();
+            
 
 
         }

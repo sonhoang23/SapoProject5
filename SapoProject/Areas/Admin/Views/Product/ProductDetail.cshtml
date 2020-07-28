@@ -8,54 +8,49 @@
 <h1>ProductDetail</h1>
 
 <div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OriginalPrice)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OriginalPrice)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ShortDescription)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ShortDescription)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EntireDescription)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EntireDescription)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ViewCount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ViewCount)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-    </dl>
+	<h4>Product</h4>
+	<hr />
+	<div class="col-md-13">
+		<div class="col">
+			<div class="row">
+				<div class="col-md-6">
+					<img src="@Model.FilePath" />
+				</div>
+				<div class="col-md-6">
+					<div class="col">
+						<div class="row">
+							<h2>@Html.DisplayFor(model => model.ProductName)</h2>
+						</div>
+						<div class="row">
+							<h3 style="color:red">
+								@Model.Price
+							</h3>
+							<div class="font-italic">
+								<h5>
+									<del>
+										@Model.OriginalPrice
+
+									</del>
+								</h5>
+							</div>
+
+						</div>
+					</div>
+					<div style="overflow: scroll;width: 400px; height:400px">@Html.Raw(@Model.ShortDescription)</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="card" style="width: 60rem">
+				<div style="overflow: scroll;width:1000px; height:1500px">
+					@Html.Raw(@Model.EntireDescription)
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="GetListProductWithDetail">Back to List</a>
+	<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+	<a asp-action="GetListProductWithDetail">Back to List</a>
 </div>

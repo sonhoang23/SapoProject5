@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SapoProject.Areas.Admin.Controllers.Interface;
 using SapoProject.Areas.Admin.Models.Data;
+using SapoProject.Areas.Admin.Models.DTO;
 using SapoProject.Areas.Admin.Models.Entities;
 using SapoProject.Areas.Admin.Repository.Repo;
 
@@ -15,11 +17,14 @@ namespace SapoProject.Areas.Admin.Controllers
     public class ProductController : Controller, IProductController
     {
         private readonly SapoProjectDbContext _context;
+        private readonly IHostingEnvironment _hostingEnvironment;
         ProductRepository productRepository;
-        public ProductController(SapoProjectDbContext context)
+        public ProductController(SapoProjectDbContext context, IHostingEnvironment hostingEnvironment )
         {
             this._context = context;
-            this.productRepository = new ProductRepository(_context);
+            this._hostingEnvironment = hostingEnvironment;
+   
+            this.productRepository = new ProductRepository(_context, hostingEnvironment);
         }
 
         // GET: Product/Create
@@ -39,28 +44,40 @@ namespace SapoProject.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductName,Price,OriginalPrice,ShortDescription,EntireDescription,ViewCount")] Product product)
+        public async Task<IActionResult> Create(ProductCreate productCreate)
         {
-            if (product == null)
-            {
-                return RedirectToAction(actionName: "NoFound", controllerName: "Share");
-            }
 
             if (ModelState.IsValid)
             {
-                try
+                if (productCreate == null)
                 {
-                    productRepository.CreateProduct(product);
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-
                     return RedirectToAction(actionName: "NoFound", controllerName: "Share");
-
                 }
-                return RedirectToAction("GetListProductWithDetail");
+                else
+                {
+                    try
+                    {
+                        try
+                        {
+                            if (productCreate.Photo != null)
+                            {
+                                productRepository.CreateProduct(productCreate);
+                            }
+
+                        }
+                        catch { }
+
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+
+                        return RedirectToAction(actionName: "NoFound", controllerName: "Share");
+
+                    }
+                    return RedirectToAction("GetListProductWithDetail");
+                }
             }
-            return View(product);
+            return View(productCreate);
         }
 
         [HttpGet]
@@ -91,21 +108,6 @@ namespace SapoProject.Areas.Admin.Controllers
             }
 
         }
-        // GET:  /admin/product/GetListProductWithDetail/2
-      /*  [HttpGet]
-        public ActionResult GetListProductWithDetail(int page)
-        {
-            if (HttpContext.Session.GetString("username") == null)
-            {
-                return RedirectToAction(actionName: "Login", controllerName: "User");
-            }
-            else
-            {
-                return View(productRepository.GetListProductWithDetail());
-            }
-
-        }     */
-
         // GET: Product/ProductDetailDetails/5
         public ActionResult ProductDetail(int id)
         {
@@ -120,6 +122,7 @@ namespace SapoProject.Areas.Admin.Controllers
 
         }
         // GET: Product/Edit/5
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             if (HttpContext.Session.GetString("username") == null)
@@ -128,15 +131,14 @@ namespace SapoProject.Areas.Admin.Controllers
             }
             else
             {
-                return View(productRepository.GetProductByID(id));
+                return View(productRepository.GetProductEditByID(id));
             }
 
         }
-
         //POST: 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProductName,Price,OriginalPrice,ShortDescription,EntireDescription,ViewCount")] Product product)
+        public async Task<IActionResult> Edit(int id, ProductEdit productEdit)
         {
 
             if (HttpContext.Session.GetString("username") == null)
@@ -149,7 +151,8 @@ namespace SapoProject.Areas.Admin.Controllers
                 {
                     try
                     {
-                        productRepository.UpdateProduct(product);
+                        productRepository.UpdateProduct(productEdit);
+                        return RedirectToAction(actionName: "GetListProductWithDetail", controllerName: "Product");
                     }
                     catch (DbUpdateConcurrencyException)
                     {
@@ -159,9 +162,9 @@ namespace SapoProject.Areas.Admin.Controllers
                     }
                     return RedirectToAction("GetListProductWithDetail");
                 }
-                else 
-                { 
-                    return RedirectToAction(actionName: "NoFound", controllerName: "Share"); 
+                else
+                {
+                    return RedirectToAction(actionName: "NoFound", controllerName: "Share");
                 }
             }
 
@@ -208,9 +211,7 @@ namespace SapoProject.Areas.Admin.Controllers
                     }
                     catch (DbUpdateConcurrencyException)
                     {
-
                         return RedirectToAction(actionName: "NoFound", controllerName: "Share");
-
                     }
                 }
                 else
@@ -219,6 +220,22 @@ namespace SapoProject.Areas.Admin.Controllers
                 }
             }
 
+        }
+
+
+        public ActionResult testFinder()
+        {
+
+
+            return View();
+        }
+
+
+        public ActionResult CKFinder()
+        {
+            ViewBag.Message = "Welcome to CKFinder!";
+
+            return View();
         }
     }
 }

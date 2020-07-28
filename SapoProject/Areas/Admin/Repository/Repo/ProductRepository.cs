@@ -2,21 +2,26 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Web.Administration;
 using SapoProject.Areas.Admin.Models.Data;
+using SapoProject.Areas.Admin.Models.DTO;
 using SapoProject.Areas.Admin.Models.Entities;
 using SapoProject.Areas.Admin.Repository.Interface;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.Hosting;
 namespace SapoProject.Areas.Admin.Repository.Repo
 {
     public class ProductRepository : IProductRepository
     {
         private readonly SapoProjectDbContext _context;
-        public ProductRepository(SapoProjectDbContext context)
+        private readonly IHostingEnvironment _hostingEnvironment;
+
+        public ProductRepository(SapoProjectDbContext context, IHostingEnvironment hostingEnvironment)
         {
             this._context = context;
+            this._hostingEnvironment = hostingEnvironment;
         }
         private static void OpenSqlConnection()
         {
@@ -42,17 +47,35 @@ namespace SapoProject.Areas.Admin.Repository.Repo
 
 
         //POST: create
-        public void CreateProduct(Product product)
+        public void CreateProduct(ProductCreate productCreate)
         {
-            product.CreatedDate = DateTime.Now;
-            product.FixedDate = DateTime.Now;
-            product.Status = 1;
-            _context.Add(product);
+            string uniqueFileName = null;
+
+
+            String uploadFolder = Path.Combine(_hostingEnvironment.ContentRootPath, "wwwroot\\ProductImages");
+            uniqueFileName = Guid.NewGuid().ToString() + "_" + productCreate.Photo.FileName;
+            String Url = Path.Combine(uploadFolder, uniqueFileName);
+            productCreate.Photo.CopyTo(new FileStream(Url, FileMode.Create));
+            String filePath = "/ProductImages/" + uniqueFileName;
+            Product newProduct = new Product
+            {
+                ProductName = productCreate.ProductName,
+                Price = productCreate.Price,
+                OriginalPrice = productCreate.OriginalPrice,
+                ShortDescription = productCreate.ShortDescription,
+                EntireDescription = productCreate.EntireDescription,
+                FilePath = filePath,
+                CreatedDate = DateTime.Now,
+                FixedDate = DateTime.Now,
+                Status = 1
+            };
+
+            _context.Add(newProduct);
             _context.SaveChanges();
         }
         public IEnumerable<Product> GetListProductWithDetail()
         {
-            return _context.Product.ToList();
+            return _context.Product.Where(x=>x.Status==1).ToList();
         }
         public IEnumerable<Product> GetListProductWithoutDetail()
         {
@@ -65,7 +88,7 @@ namespace SapoProject.Areas.Admin.Repository.Repo
             using (SqlConnection connection = new SqlConnection(GetConnectionString()))
             {
                 SqlCommand command = new SqlCommand(sql, connection);
-                command.Parameters.AddWithValue("@start", (page-1)*10);
+                command.Parameters.AddWithValue("@start", (page - 1) * 10);
                 command.Parameters.AddWithValue("@limit", page);
                 command.ExecuteReader();
                 using (SqlDataReader reader = command.ExecuteReader())
@@ -85,19 +108,88 @@ namespace SapoProject.Areas.Admin.Repository.Repo
 
                     }
                 }
-            
+
             }
             return pageProduct;
         }
+
+        public ProductEdit GetProductEditByID(int productID)
+        {
+            Product product = GetProductByID(productID);
+            ProductEdit productEdit = new ProductEdit
+            {
+                ProductName = product.ProductName,
+                Price = product.Price,
+                OriginalPrice = product.OriginalPrice,
+                ShortDescription = product.ShortDescription,
+                EntireDescription = product.EntireDescription,
+                CreatedDate = product.CreatedDate,
+                FilePath = product.FilePath,
+                FixedDate = product.FixedDate,
+                Id = product.Id,
+                Status = product.Status,
+                ViewCount = product.ViewCount,
+
+            };
+            return productEdit;
+        }
+
         public Product GetProductByID(int productID)
         {
             return _context.Product.Find(productID);
         }
-        public void UpdateProduct(Product product)
+        public void UpdateProduct(ProductEdit productEdit)
         {
-            product.FixedDate = DateTime.Now;
-            _context.Update(product);
-            _context.SaveChanges();
+            if (productEdit.Photo != null)
+            {
+                String uniqueFileName = null;
+                String uploadFolder = Path.Combine(_hostingEnvironment.ContentRootPath, "wwwroot\\ProductImages");
+
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + productEdit.Photo.FileName;
+                String Url = Path.Combine(uploadFolder, uniqueFileName);
+                productEdit.Photo.CopyTo(new FileStream(Url, FileMode.Create));
+                String filePath = "/ProductImages/" + uniqueFileName;
+
+                Product product = new Product
+                {
+                    Id = productEdit.Id,
+                    ProductName = productEdit.ProductName,
+                    Price = productEdit.Price,
+                    OriginalPrice = productEdit.OriginalPrice,
+                    ShortDescription = productEdit.ShortDescription,
+                    EntireDescription = productEdit.EntireDescription,
+                    FilePath = filePath,
+                    CreatedDate = productEdit.CreatedDate,
+                    FixedDate = DateTime.Now,
+                    Status = 1,
+                    ViewCount = productEdit.ViewCount
+
+                }; 
+                _context.Update(product);
+                _context.SaveChanges();
+            }
+            else
+            {
+                Product product = new Product
+                {
+                    Id = productEdit.Id,
+                    ProductName = productEdit.ProductName,
+                    Price = productEdit.Price,
+                    OriginalPrice = productEdit.OriginalPrice,
+                    ShortDescription = productEdit.ShortDescription,
+                    EntireDescription = productEdit.EntireDescription,
+                    FilePath = productEdit.FilePath,
+                    CreatedDate = DateTime.Now,
+                    FixedDate = DateTime.Now,
+                    Status = 1,
+                    ViewCount = productEdit.ViewCount
+
+                }; 
+                _context.Update(product);
+                _context.SaveChanges();
+            }
+
+
 
         }
         public void DeleteProduct(int productID)

@@ -1,7 +1,6 @@
 ﻿@model SapoProject.Areas.Admin.Models.Entities.Product
 
 @{
-	Layout = null;
 	Layout = "_Layout";
 }
 
@@ -40,15 +39,15 @@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.ShortDescription)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ShortDescription)
-        </dd>
+		<dd class="col-sm-10">
+			@Html.Raw(@Model.ShortDescription)
+		</dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.EntireDescription)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EntireDescription)
-        </dd>
+		<dd class="col-sm-10">
+			@Html.Raw(@Model.EntireDescription)
+		</dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.ViewCount)
         </dt>

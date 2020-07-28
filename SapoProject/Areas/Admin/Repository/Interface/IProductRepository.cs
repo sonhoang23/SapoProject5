@@ -1,4 +1,5 @@
-﻿using SapoProject.Areas.Admin.Models.Entities;
+﻿using SapoProject.Areas.Admin.Models.DTO;
+using SapoProject.Areas.Admin.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,9 @@ namespace SapoProject.Areas.Admin.Repository.Interface
         IEnumerable<Product> GetListProductWithDetail();
         IEnumerable<Product> GetListProductWithoutDetail();
         Product GetProductByID(int productID);
-        void CreateProduct(Product product);
+        void CreateProduct(ProductCreate productCreate);
         void DeleteProduct(int product);
-        void UpdateProduct(Product productID);
+        void UpdateProduct(ProductEdit productID);
         void Save();
     }
 }

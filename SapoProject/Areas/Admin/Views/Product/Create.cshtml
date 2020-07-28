@@ -1,62 +1,78 @@
-﻿@model SapoProject.Areas.Admin.Models.Entities.Product
+﻿@model SapoProject.Areas.Admin.Models.DTO.ProductCreate
 
 @{
 	ViewData["Title"] = "Create";
 	Layout = "_Layout";
 }
 
-<h1>Create</h1>
+<h1>Create Product Sapo Project</h1>
 
-<h4>Product</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ProductName" class="control-label"></label>
-                <input asp-for="ProductName" class="form-control" />
-                <span asp-validation-for="ProductName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OriginalPrice" class="control-label"></label>
-                <input asp-for="OriginalPrice" class="form-control" />
-                <span asp-validation-for="OriginalPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ShortDescription" class="control-label"></label>
-                <input asp-for="ShortDescription" class="form-control" />
-                <span asp-validation-for="ShortDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EntireDescription" class="control-label"></label>
-                <input asp-for="EntireDescription" class="form-control" />
-                <span asp-validation-for="EntireDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ViewCount" class="control-label"></label>
-                <input asp-for="ViewCount" class="form-control" />
-                <span asp-validation-for="ViewCount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedDate" class="control-label"></label>
-                <input asp-for="CreatedDate" class="form-control" />
-                <span asp-validation-for="CreatedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<form enctype="multipart/form-data" asp-action="Create">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<div class="col">
+					<div class="row">
+						<div class="col-xs-12 col-md-8">
+							<div class="form-group">
+								<label asp-for="ProductName" class="control-label myDIV">Product Name</label>
+								<div class="hide">Input your product name that you want to sell!</div>
+								<input asp-for="ProductName" class="form-control" />
+								<span asp-validation-for="ProductName" class="text-danger"></span>
+							</div>
+							<div class="form-group">
+								<label asp-for="Price" class="control-label myDIV"></label>
+								<div class="hide">This is price that you sell, after Original price has decreased!</div>
+								<input asp-for="Price" class="form-control" />
+								<span asp-validation-for="Price" class="text-danger"></span>
+							</div>
+
+							<div class="form-group">
+								<label asp-for="OriginalPrice" class="control-label myDIV"></label>
+								<div class="hide">This Price is before!</div>
+								<input asp-for="OriginalPrice" class="form-control" />
+								<span asp-validation-for="OriginalPrice" class="text-danger"></span>
+							</div>
+						</div>
+						<!--upload Image HTML-->
+						<div class="col-xs-12 col-md-4">
+
+							<div class="form-group">
+								<label asp-for="Photo" class="control-label myDIV">Input Image</label>
+								<div class="hide">click to Browse to chose your image from computer!</div>
+								<div class="custom-file">
+									<input asp-for="Photo" class="form-control custom-file-input" />
+									<label class="custom-file-label">upload</label>
+								</div>
+							</div>
+						</div>
+						<!---->
+					</div>
+					<div class="form-group">
+						<script src="~/ckfinder/ckfinder.js"></script>
+						<label asp-for="ShortDescription" class="control-label myDIV"></label>
+						<div class="hide">Short description appear to list of product, which is about a brief of your product specific!</div>
+						<textarea class="ckeditor" asp-for="ShortDescription">Short Description</textarea>
+						<span asp-validation-for="ShortDescription" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="EntireDescription" class="control-label myDIV"></label>
+						<div class="hide">Detailed information of your product!</div>
+						<textarea class="ckeditor" asp-for="EntireDescription">Long Description</textarea>
+						<span asp-validation-for="EntireDescription" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Create" class="btn btn-primary" />
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
-
 <div>
-    <a asp-action="GetListProductWithDetail">Back to List</a>
+	<a asp-action="GetListProductWithDetail">Back to List</a>
 </div>
 
 

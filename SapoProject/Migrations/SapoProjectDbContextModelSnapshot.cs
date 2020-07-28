@@ -33,6 +33,10 @@ namespace SapoProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("FixedDate")
                         .HasColumnType("datetime2");
 
