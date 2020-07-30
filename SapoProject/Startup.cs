@@ -10,8 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SapoProject.Areas.Admin.Models.Data;
-
-
+using SapoProject.Areas.Admin.Repository.Interface;
+using SapoProject.Areas.Admin.Repository.Repo;
 using Westwind.AspNetCore.LiveReload;
 namespace SapoProject
 {
@@ -28,12 +28,12 @@ namespace SapoProject
         public void ConfigureServices(IServiceCollection services)
         {
 
-           services.AddLiveReload(config =>
-            {
-                // optional - use config instead
-                //config.LiveReloadEnabled = true;
-                //config.FolderToMonitor = Path.GetFullname(Path.Combine(Env.ContentRootPath,"..")) ;
-            }); 
+            services.AddLiveReload(config =>
+             {
+                 // optional - use config instead
+                 //config.LiveReloadEnabled = true;
+                 //config.FolderToMonitor = Path.GetFullname(Path.Combine(Env.ContentRootPath,"..")) ;
+             });
             services.AddControllersWithViews().AddRazorRuntimeCompilation(); ;
             services.AddSession(options =>
             {
@@ -43,8 +43,9 @@ namespace SapoProject
             });
             services.AddDbContext<SapoProjectDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("SapoProjectDbContext")));
-
-
+            services.AddMemoryCache();
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

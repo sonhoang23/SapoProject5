@@ -9,31 +9,26 @@ using SapoProject.Areas.Admin.Controllers.Interface;
 using SapoProject.Areas.Admin.Models.Data;
 using SapoProject.Areas.Admin.Models.DTO;
 using SapoProject.Areas.Admin.Models.Entities;
+using SapoProject.Areas.Admin.Repository.Interface;
 using SapoProject.Areas.Admin.Repository.Repo;
 
 namespace SapoProject.Areas.Admin.Controllers
 {
-    public class UserController : Controller, IUserController
+    public class UserController : Controller
     {
-        private readonly SapoProjectDbContext _context;
-        UserRepository userRepository;
-        public UserController(SapoProjectDbContext context)
+        private readonly IUserRepository _userRepository;
+        public UserController(IUserRepository userRepository)
         {
-            this._context = context;
-            this.userRepository = new UserRepository(_context);
+
+            _userRepository = userRepository;
         }
         [HttpGet]
         public ActionResult Login()
         {
-            if (HttpContext.Session.GetString("username") == null)
-            {
-                ViewBag.Title = "Login To Sapo";
+           
                 return View();
-            }
-            else
-            {
-                return RedirectToAction(actionName: "GetListProductWithDetail", controllerName: "Product");
-            }
+         
+          
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -42,13 +37,13 @@ namespace SapoProject.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                if (userRepository.LoginUser(user) == 1)
+                if (_userRepository.LoginUser(user) == 1)
                 {
                     HttpContext.Session.SetString("username", user.userAccount);
                     HttpContext.Session.SetInt32("id", user.Id);
                     return RedirectToAction(actionName: "GetListProductWithDetail", controllerName: "Product");
                 }
-                if (userRepository.LoginUser(user) == 0)
+                if (_userRepository.LoginUser(user) == 0)
                 {
                     ViewBag.Title = "Login To Sapo";
                     return RedirectToAction(actionName: "Login", controllerName: "User");
@@ -77,15 +72,15 @@ namespace SapoProject.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Register(UserRegister user)
         {
-            if (userRepository.CreateUser(user) == 1)
+            if (_userRepository.CreateUser(user) == 1)
             {   //chấp nhận register
                 return RedirectToAction(actionName: "Login", controllerName: "User");
             }
-            if (userRepository.CreateUser(user) == 2)
+            if (_userRepository.CreateUser(user) == 2)
             {   //trùng acc
                 return RedirectToAction(actionName: "Register", controllerName: "User");
             }
-            if (userRepository.CreateUser(user) == 3)
+            if (_userRepository.CreateUser(user) == 3)
             {   //sai mk xác nhận
                 return RedirectToAction(actionName: "Register", controllerName: "User");
             }

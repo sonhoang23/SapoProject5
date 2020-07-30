@@ -5,11 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SapoProject.Areas.Admin.Repository.Interface
 {
-   public interface IUserRepository:IDisposable
+    public interface IUserRepository : IDisposable
     {
         int CreateUser(UserRegister User);
         int LoginUser(UserLogin userLogin);
         void UpdateUser(User UserID);
         void Save();
+        void Dispose();
     }
 }

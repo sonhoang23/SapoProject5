@@ -15,36 +15,18 @@ namespace SapoProject.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly SapoProjectDbContext _context;
-        ProductRepository userRepository;
+      
         public HomeController(SapoProjectDbContext context)
         {
-            this._context = context;
-          // this.userRepository = new ProductRepository(_context);
         }
 
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetString("username") == null)
-            {
-                 return RedirectToAction(actionName: "Login", controllerName: "User");
-            }
-            else
-            {
                 return View();
-            }
-
         }
         public IActionResult Privacy()
         {
-            if (HttpContext.Session.GetString("username") == null)
-            {
-                return RedirectToAction(actionName: "Login", controllerName: "User");
-            }
-            else
-            {
-                return View();
-            }
+                return View(); 
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

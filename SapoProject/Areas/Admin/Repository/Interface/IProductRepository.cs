@@ -12,6 +12,7 @@ namespace SapoProject.Areas.Admin.Repository.Interface
         IEnumerable<Product> GetListProductWithDetail();
         IEnumerable<Product> GetListProductWithoutDetail();
         Product GetProductByID(int productID);
+        ProductEdit GetProductEditByID(int productID);
         void CreateProduct(ProductCreate productCreate);
         void DeleteProduct(int product);
         void UpdateProduct(ProductEdit productID);

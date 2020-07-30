@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<SapoProject.Areas.Admin.Models.Entities.Product>
 
 @{
-	ViewData["Title"] = "Index";
 	Layout = "_Layout";
 }
 
-<h1>Index</h1>
+<h1>List Product</h1>
 
-<p>
-	<a asp-action="Create">Create New</a>
-</p>
+<form>
+
+	<button style="height:auto; width:auto; margin-top:20px;margin-bottom:20px" asp-action="Create" class="btn btn-info">Create New Product</button>
+</form>
 
 
 <div class="card mb-4">
@@ -31,8 +31,6 @@
 						<th>Image</th>
 						<th>Price</th>
 						<th>Original Price</th>
-						<th>Short Description</th>
-						<th>Long Description</th>
 						<th>View Count</th>
 						<th>Created Date</th>
 						<th>Fixed Date</th>
@@ -45,8 +43,6 @@
 						<th>Image</th>
 						<th>Price</th>
 						<th>Original Price</th>
-						<th>Short Description</th>
-						<th>Long Description</th>
 						<th>View Count</th>
 						<th>Created Date</th>
 						<th>Fixed Date</th>
@@ -63,23 +59,13 @@
 								</div>
 							</td>
 							<td>
-								<img src=@item.FilePath width="100" height="150">
+								<img src=@item.FilePath style="width:320px">
 							</td>
 							<td>
 								@Html.DisplayFor(modelItem => item.Price)
 							</td>
 							<td style="width:100px">
 								@Html.DisplayFor(modelItem => item.OriginalPrice)
-							</td>
-							<td>
-								<div style="overflow: scroll;width: 250px; height:400px;font-size:1vw">
-									@Html.Raw(@item.ShortDescription)
-								</div>
-							</td>
-							<td>
-								<div style="overflow: scroll;width: 400px; height:400px; font-size:1vw">
-									@Html.Raw(@item.EntireDescription)
-								</div>
 							</td>
 							<td>
 								@Html.DisplayFor(modelItem => item.ViewCount)
@@ -91,9 +77,15 @@
 								@Html.DisplayFor(modelItem => item.FixedDate)
 							</td>
 							<td>
-								<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-								<a asp-action="ProductDetail" asp-route-id="@item.Id">Details</a> |
-								<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+								<form>
+									<div class="col">
+										<button style="height:inherit; width:inherit; margin-top:15px" asp-action="ProductDetail" asp-route-id="@item.Id" class="btn btn-info">Details</button>
+										<button style="height:inherit; width:inherit; margin-top:15px" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</button>
+										<button style="height:inherit; width:inherit; margin-top:15px" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</button>
+									</div>
+								</form>
+
 							</td>
 						</tr>
 					}
@@ -103,4 +95,4 @@
 
 		</div>
 	</div>
-</div>	  
+</div>

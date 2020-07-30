@@ -9,14 +9,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
+
+
+
 namespace SapoProject.Areas.Admin.Repository.Repo
 {
     public class UserRepository : IUserRepository
     {
         private readonly SapoProjectDbContext _context;
+
         public UserRepository(SapoProjectDbContext context)
         {
-            this._context = context;
+            _context = context;
 
         }
 
@@ -27,10 +32,9 @@ namespace SapoProject.Areas.Admin.Repository.Repo
             {
                 if (!_context.User.Any(i => i.UserAccount == userRegister.userAccount))
                 {
-                   // user.Id = _context.User.Last().Id+1;
                     user.UserName = userRegister.userName;
                     user.PhoneNumber = userRegister.phoneNumber;
-                    user.Address = userRegister.address +"-"+userRegister.district+"-"+userRegister.city+"-"+userRegister.country;
+                    user.Address = userRegister.address + "-" + userRegister.district + "-" + userRegister.city + "-" + userRegister.country;
                     user.Age = userRegister.age;
                     user.Sex = userRegister.sex;
                     user.Email = userRegister.email;
@@ -50,19 +54,9 @@ namespace SapoProject.Areas.Admin.Repository.Repo
             }
         }
 
-        public void DeleteUser(int User)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Dispose()
         {
-            throw new NotImplementedException();
-        }
-
-        public User GetUserByID(int UserID)
-        {
-            throw new NotImplementedException();
+        
         }
 
         public IEnumerable<User> GetUsers()
@@ -70,10 +64,7 @@ namespace SapoProject.Areas.Admin.Repository.Repo
             return _context.User.ToList();
         }
 
-        public void InsertUser(User User)
-        {
-            throw new NotImplementedException();
-        }
+    
 
         public int LoginUser(UserLogin userLogin)
         {
@@ -81,8 +72,8 @@ namespace SapoProject.Areas.Admin.Repository.Repo
 
             var userCheck = _context.User.Where(n => n.UserAccount == userLogin.userAccount && n.UserPassWord == userLogin.userPassWord);
             if (userCheck.Count() > 0)
-            {    
-                    return 1;
+            {
+                return 1;
 
             }
             else
@@ -93,12 +84,12 @@ namespace SapoProject.Areas.Admin.Repository.Repo
 
         public void Save()
         {
-            throw new NotImplementedException();
+          
         }
 
         public void UpdateUser(User UserID)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

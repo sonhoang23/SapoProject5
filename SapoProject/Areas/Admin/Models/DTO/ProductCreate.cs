@@ -10,14 +10,20 @@ namespace SapoProject.Areas.Admin.Models.DTO
     public class ProductCreate
     {
         public int Id { set; get; }
+        [Required]
         public String ProductName { set; get; }
+        [Required]
         public String Price { set; get; }
+        [Required]
         public String OriginalPrice { set; get; }
+        [Required]
         public String ShortDescription { set; get; }
+        [Required]
         public String EntireDescription { set; get; }
-    //    public Dept? Department { set; get; }
+        [Required]
+        //    public Dept? Department { set; get; } 
         public IFormFile Photo { set; get; }
 
-       
+
     }
 }

@@ -11,17 +11,20 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+
 namespace SapoProject.Areas.Admin.Repository.Repo
 {
     public class ProductRepository : IProductRepository
     {
         private readonly SapoProjectDbContext _context;
-        private readonly IHostingEnvironment _hostingEnvironment;
-
-        public ProductRepository(SapoProjectDbContext context, IHostingEnvironment hostingEnvironment)
+        private readonly IHostEnvironment _hostingEnvironment;
+       
+        public ProductRepository(SapoProjectDbContext context, IHostEnvironment hostingEnvironment)
         {
-            this._context = context;
-            this._hostingEnvironment = hostingEnvironment;
+    
+            _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
         private static void OpenSqlConnection()
         {
@@ -75,7 +78,7 @@ namespace SapoProject.Areas.Admin.Repository.Repo
         }
         public IEnumerable<Product> GetListProductWithDetail()
         {
-            return _context.Product.Where(x=>x.Status==1).ToList();
+            return _context.Product.Where(x => x.Status == 1).ToList();
         }
         public IEnumerable<Product> GetListProductWithoutDetail()
         {
@@ -164,7 +167,7 @@ namespace SapoProject.Areas.Admin.Repository.Repo
                     Status = 1,
                     ViewCount = productEdit.ViewCount
 
-                }; 
+                };
                 _context.Update(product);
                 _context.SaveChanges();
             }
@@ -184,7 +187,7 @@ namespace SapoProject.Areas.Admin.Repository.Repo
                     Status = 1,
                     ViewCount = productEdit.ViewCount
 
-                }; 
+                };
                 _context.Update(product);
                 _context.SaveChanges();
             }
@@ -204,7 +207,7 @@ namespace SapoProject.Areas.Admin.Repository.Repo
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+           
         }
 
         public void Save()

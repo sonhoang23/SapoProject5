@@ -6,40 +6,28 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using SapoProject.Areas.Admin.Controllers.Interface;
 using SapoProject.Areas.Admin.Models.Data;
 using SapoProject.Areas.Admin.Models.DTO;
 using SapoProject.Areas.Admin.Models.Entities;
+using SapoProject.Areas.Admin.Repository.Interface;
 using SapoProject.Areas.Admin.Repository.Repo;
 
 namespace SapoProject.Areas.Admin.Controllers
 {
-    public class ProductController : Controller, IProductController
+    public class ProductController : Controller
     {
-        private readonly SapoProjectDbContext _context;
-        private readonly IHostingEnvironment _hostingEnvironment;
-        ProductRepository productRepository;
-        public ProductController(SapoProjectDbContext context, IHostingEnvironment hostingEnvironment )
+        private readonly IProductRepository _productRepository;
+        public ProductController(IProductRepository productRepository)
         {
-            this._context = context;
-            this._hostingEnvironment = hostingEnvironment;
-   
-            this.productRepository = new ProductRepository(_context, hostingEnvironment);
+            _productRepository = productRepository;
         }
-
         // GET: Product/Create
         [HttpGet]
         public ActionResult Create()
         {
-            if (HttpContext.Session.GetString("username") == null)
-            {
-                return RedirectToAction(actionName: "Login", controllerName: "User");
-            }
-            else
-            {
-                return View();
-            }
-
+            return View();
         }
 
         [HttpPost]
@@ -61,7 +49,7 @@ namespace SapoProject.Areas.Admin.Controllers
                         {
                             if (productCreate.Photo != null)
                             {
-                                productRepository.CreateProduct(productCreate);
+                                _productRepository.CreateProduct(productCreate);
                             }
 
                         }
@@ -83,56 +71,28 @@ namespace SapoProject.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult GetListProductWithoutDetail()
         {
-            if (HttpContext.Session.GetString("username") == null)
-            {
-                return RedirectToAction(actionName: "Login", controllerName: "User");
-            }
-            else
-            {
-                return View(productRepository.GetListProductWithoutDetail());
-            }
-
+            return View(_productRepository.GetListProductWithoutDetail());
         }
 
         // GET: /admin/product/GetListProductWithDetail
         [HttpGet]
         public ActionResult GetListProductWithDetail()
         {
-            if (HttpContext.Session.GetString("username") == null)
-            {
-                return RedirectToAction(actionName: "Login", controllerName: "User");
-            }
-            else
-            {
-                return View(productRepository.GetListProductWithDetail());
-            }
+            ViewData["Title"] = "Welcom to Product List!";
+            return View(_productRepository.GetListProductWithDetail());
 
         }
         // GET: Product/ProductDetailDetails/5
         public ActionResult ProductDetail(int id)
         {
-            if (HttpContext.Session.GetString("username") == null)
-            {
-                return RedirectToAction(actionName: "Login", controllerName: "User");
-            }
-            else
-            {
-                return View(productRepository.GetProductByID(id));
-            }
-
+            return View(_productRepository.GetProductByID(id));
         }
         // GET: Product/Edit/5
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            if (HttpContext.Session.GetString("username") == null)
-            {
-                return RedirectToAction(actionName: "Login", controllerName: "User");
-            }
-            else
-            {
-                return View(productRepository.GetProductEditByID(id));
-            }
+
+            return View(_productRepository.GetProductEditByID(id));
 
         }
         //POST: 
@@ -141,52 +101,37 @@ namespace SapoProject.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(int id, ProductEdit productEdit)
         {
 
-            if (HttpContext.Session.GetString("username") == null)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(actionName: "Login", controllerName: "User");
+                try
+                {
+                    _productRepository.UpdateProduct(productEdit);
+                    return RedirectToAction(actionName: "GetListProductWithDetail", controllerName: "Product");
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+
+                    return RedirectToAction(actionName: "NoFound", controllerName: "Share");
+
+                }
             }
             else
             {
-                if (ModelState.IsValid)
-                {
-                    try
-                    {
-                        productRepository.UpdateProduct(productEdit);
-                        return RedirectToAction(actionName: "GetListProductWithDetail", controllerName: "Product");
-                    }
-                    catch (DbUpdateConcurrencyException)
-                    {
-
-                        return RedirectToAction(actionName: "NoFound", controllerName: "Share");
-
-                    }
-                    return RedirectToAction("GetListProductWithDetail");
-                }
-                else
-                {
-                    return RedirectToAction(actionName: "NoFound", controllerName: "Share");
-                }
+                return RedirectToAction(actionName: "NoFound", controllerName: "Share");
             }
+
 
         }
         // GET: Product/Delete/5
         public ActionResult Delete(int id)
         {
-            if (HttpContext.Session.GetString("username") == null)
+            if (_productRepository.GetProductByID(id) != null)
             {
-                return RedirectToAction(actionName: "Login", controllerName: "User");
+                return View(_productRepository.GetProductByID(id));
             }
             else
             {
-                if (productRepository.GetProductByID(id) != null)
-                {
-                    return View(productRepository.GetProductByID(id));
-                }
-                else
-                {
-                    return RedirectToAction(actionName: "NoFound", controllerName: "Share");
-                }
-
+                return RedirectToAction(actionName: "NoFound", controllerName: "Share");
             }
 
         }
@@ -196,46 +141,25 @@ namespace SapoProject.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id, Product product)
         {
-            if (HttpContext.Session.GetString("username") == null)
+
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(actionName: "Login", controllerName: "User");
-            }
-            else
-            {
-                if (ModelState.IsValid)
+                try
                 {
-                    try
-                    {
-                        productRepository.DeleteProduct(id);
-                        return RedirectToAction(actionName: "GetListProductWithDetail", controllerName: "Product");
-                    }
-                    catch (DbUpdateConcurrencyException)
-                    {
-                        return RedirectToAction(actionName: "NoFound", controllerName: "Share");
-                    }
+                    _productRepository.DeleteProduct(id);
+                    return RedirectToAction(actionName: "GetListProductWithDetail", controllerName: "Product");
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
                     return RedirectToAction(actionName: "NoFound", controllerName: "Share");
                 }
             }
-
-        }
-
-
-        public ActionResult testFinder()
-        {
+            else
+            {
+                return RedirectToAction(actionName: "NoFound", controllerName: "Share");
+            }
 
 
-            return View();
-        }
-
-
-        public ActionResult CKFinder()
-        {
-            ViewBag.Message = "Welcome to CKFinder!";
-
-            return View();
         }
     }
 }
