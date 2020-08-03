@@ -13,6 +13,8 @@ namespace SapoProject.Areas.Admin.Models.Configurations
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.ToTable("User");
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).UseIdentityColumn();
             builder.Property(x => x.UserName).HasMaxLength(50).IsRequired();
             builder.Property(x => x.PhoneNumber).HasColumnType("varchar").HasMaxLength(20).IsRequired();
             builder.Property(x => x.Age).HasMaxLength(3).IsRequired();

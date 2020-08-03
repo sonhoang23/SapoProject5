@@ -1,6 +1,4 @@
 ﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Web.Administration;
 using SapoProject.Areas.Admin.Models.Data;
 using SapoProject.Areas.Admin.Models.DTO;
 using SapoProject.Areas.Admin.Models.Entities;
@@ -9,9 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace SapoProject.Areas.Admin.Repository.Repo
 {
@@ -19,38 +17,20 @@ namespace SapoProject.Areas.Admin.Repository.Repo
     {
         private readonly SapoProjectDbContext _context;
         private readonly IHostEnvironment _hostingEnvironment;
-       
+
         public ProductRepository(SapoProjectDbContext context, IHostEnvironment hostingEnvironment)
         {
-    
+
             _context = context;
             _hostingEnvironment = hostingEnvironment;
-        }
-        private static void OpenSqlConnection()
-        {
-            string connectionString = GetConnectionString();
-
-            using (SqlConnection connection = new SqlConnection())
-            {
-                connection.ConnectionString = connectionString;
-
-                connection.Open();
-
-                Console.WriteLine("State: {0}", connection.State);
-                Console.WriteLine("ConnectionString: {0}",
-                    connection.ConnectionString);
-            }
         }
 
         static private string GetConnectionString()
         {
             return "Server=.;Database=SapoProjectDb;Trusted_Connection=True;MultipleActiveResultSets=true";
         }
-
-
-
         //POST: create
-        public void CreateProduct(ProductCreate productCreate)
+        public async Task CreateProduct(ProductCreate productCreate)
         {
             string uniqueFileName = null;
 
@@ -73,18 +53,19 @@ namespace SapoProject.Areas.Admin.Repository.Repo
                 Status = 1
             };
 
-            _context.Add(newProduct);
-            _context.SaveChanges();
+            await _context.AddAsync(newProduct);
+            await _context.SaveChangesAsync();
         }
-        public IEnumerable<Product> GetListProductWithDetail()
+
+        public async Task<IEnumerable<Product>> GetListProductWithDetail()
         {
-            return _context.Product.Where(x => x.Status == 1).ToList();
+            return await _context.Product.Where(x => x.Status == 1).ToListAsync();
         }
         public IEnumerable<Product> GetListProductWithoutDetail()
         {
             return _context.Product.ToList();
         }
-        public IEnumerable<Product> GetListProductWithoutDetail(int page)
+        public List<Product> GetListProductWithoutDetail(int page)
         {
             String sql = "SELECT * FROM Product LIMIT @start, @limit";
             List<Product> pageProduct = new List<Product>();
@@ -111,11 +92,9 @@ namespace SapoProject.Areas.Admin.Repository.Repo
 
                     }
                 }
-
             }
             return pageProduct;
         }
-
         public ProductEdit GetProductEditByID(int productID)
         {
             Product product = GetProductByID(productID);
@@ -141,7 +120,7 @@ namespace SapoProject.Areas.Admin.Repository.Repo
         {
             return _context.Product.Find(productID);
         }
-        public void UpdateProduct(ProductEdit productEdit)
+        public async Task UpdateProduct(ProductEdit productEdit)
         {
             if (productEdit.Photo != null)
             {
@@ -169,7 +148,7 @@ namespace SapoProject.Areas.Admin.Repository.Repo
 
                 };
                 _context.Update(product);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             else
             {
@@ -189,23 +168,21 @@ namespace SapoProject.Areas.Admin.Repository.Repo
 
                 };
                 _context.Update(product);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
 
 
-
         }
-        public void DeleteProduct(int productID)
+        public async Task DeleteProduct(int productID)
         {
             Product product = GetProductByID(productID);
             product.Status = 0;
             _context.Update(product);
-            _context.SaveChanges();
-
+            await _context.SaveChangesAsync();
 
         }
 
-        public void Dispose()
+       public void Dispose()
         {
            
         }
@@ -214,7 +191,6 @@ namespace SapoProject.Areas.Admin.Repository.Repo
         {
             throw new NotImplementedException();
         }
-
 
     }
 }

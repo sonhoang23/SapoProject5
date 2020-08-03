@@ -5,25 +5,58 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Routing;
 
 namespace SapoProject.Areas.Admin.Controllers
 {
     public class BaseController : Controller
     {
-        public async Task OnActionExecutionAsync(
-          ActionExecutingContext context,
-          ActionExecutionDelegate next)
+        public override void OnActionExecuting(ActionExecutingContext
+                                               context)
         {
-            if (HttpContext.Session.GetString("username") == null)
+            if (context.HttpContext.Session.GetString("userAccount") == null || context.HttpContext.Session.GetInt32("status") == null)
             {
+                context.Result = new RedirectToRouteResult(
+                  new RouteValueDictionary
+                  {
+                    { "controller", "User" },
+                    { "action", "Login" }
+                  });
 
             }
-                // Do something before the action executes.
+        }
+        public override void OnActionExecuted(ActionExecutedContext
+                                              context)
+        {
 
-                // next() calls the action method.
-                var resultContext = await next();
-            // resultContext.Result is set.
-            // Do something after the action executes.
         }
     }
 }
+
+/* : Controller
+{
+
+ public async Task OnActionExecutionAsync(
+                  ActionExecutingContext context,
+                  ActionExecutionDelegate next)
+ {
+     // Do something before the action executes.
+     if (context.HttpContext.Session.GetString("userAccount") == null || context.HttpContext.Session.GetInt32("status") == null)
+     {
+         context.Result = new RedirectToRouteResult(
+           new RouteValueDictionary
+           {
+                    { "controller", "User" },
+                    { "action", "Login" }
+           });
+
+     }
+     // next() calls the action method.
+     var resultContext = await next();
+     // resultContext.Result is set.
+     // Do something after the action executes.
+ }
+
+}
+}
+   */

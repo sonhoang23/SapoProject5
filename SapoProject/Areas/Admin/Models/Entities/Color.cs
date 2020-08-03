@@ -9,5 +9,6 @@ namespace SapoProject.Areas.Admin.Models.Entities
     {
         public int Id { set; get; }
         public String ColorName { set; get; }
+        public List<ProductColor> ProductColors { get; set; }
     }
 }

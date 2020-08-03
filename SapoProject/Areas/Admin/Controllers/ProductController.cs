@@ -1,28 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
-using SapoProject.Areas.Admin.Controllers.Interface;
 using SapoProject.Areas.Admin.Models.Data;
 using SapoProject.Areas.Admin.Models.DTO;
 using SapoProject.Areas.Admin.Models.Entities;
 using SapoProject.Areas.Admin.Repository.Interface;
-using SapoProject.Areas.Admin.Repository.Repo;
+
 
 namespace SapoProject.Areas.Admin.Controllers
 {
-    public class ProductController : Controller
+
+    public class ProductController : BaseController
     {
+        private readonly SapoProjectDbContext _context;
         private readonly IProductRepository _productRepository;
         public ProductController(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
+
+        public PartialViewResult PartialView_Header()
+        {
+            ViewBag.TerritoryID = "Hoang Son";
+
+            return PartialView();
+        }
+
         // GET: Product/Create
         [HttpGet]
         public ActionResult Create()
@@ -49,7 +52,7 @@ namespace SapoProject.Areas.Admin.Controllers
                         {
                             if (productCreate.Photo != null)
                             {
-                                _productRepository.CreateProduct(productCreate);
+                                await _productRepository.CreateProduct(productCreate);
                             }
 
                         }
@@ -72,15 +75,13 @@ namespace SapoProject.Areas.Admin.Controllers
         public ActionResult GetListProductWithoutDetail()
         {
             return View(_productRepository.GetListProductWithoutDetail());
-        }
-
-        // GET: /admin/product/GetListProductWithDetail
+        }        // GET: /admin/product/GetListProductWithDetail
         [HttpGet]
-        public ActionResult GetListProductWithDetail()
+        public async Task<ActionResult> GetListProductWithDetail()
         {
             ViewData["Title"] = "Welcom to Product List!";
-            return View(_productRepository.GetListProductWithDetail());
-
+            return View(await _productRepository.GetListProductWithDetail());
+            // return View(_productRepository.GetListProductWithoutDetail());
         }
         // GET: Product/ProductDetailDetails/5
         public ActionResult ProductDetail(int id)
@@ -91,21 +92,18 @@ namespace SapoProject.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-
             return View(_productRepository.GetProductEditByID(id));
-
         }
         //POST: 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, ProductEdit productEdit)
         {
-
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _productRepository.UpdateProduct(productEdit);
+                    await _productRepository.UpdateProduct(productEdit);
                     return RedirectToAction(actionName: "GetListProductWithDetail", controllerName: "Product");
                 }
                 catch (DbUpdateConcurrencyException)
@@ -119,8 +117,6 @@ namespace SapoProject.Areas.Admin.Controllers
             {
                 return RedirectToAction(actionName: "NoFound", controllerName: "Share");
             }
-
-
         }
         // GET: Product/Delete/5
         public ActionResult Delete(int id)
@@ -133,9 +129,7 @@ namespace SapoProject.Areas.Admin.Controllers
             {
                 return RedirectToAction(actionName: "NoFound", controllerName: "Share");
             }
-
         }
-
         // POST: Product/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -146,7 +140,7 @@ namespace SapoProject.Areas.Admin.Controllers
             {
                 try
                 {
-                    _productRepository.DeleteProduct(id);
+                    await _productRepository.DeleteProduct(id);
                     return RedirectToAction(actionName: "GetListProductWithDetail", controllerName: "Product");
                 }
                 catch (DbUpdateConcurrencyException)
@@ -158,8 +152,6 @@ namespace SapoProject.Areas.Admin.Controllers
             {
                 return RedirectToAction(actionName: "NoFound", controllerName: "Share");
             }
-
-
         }
     }
 }

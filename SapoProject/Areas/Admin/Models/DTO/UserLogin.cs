@@ -17,6 +17,7 @@ namespace SapoProject.Areas.Admin.Models.DTO
         [StringLength(50, MinimumLength = 1)]
         [Display(Name = "User Pass Word")]
         public String userPassWord { set; get; }
+        public bool rememberPassWord { set; get; }
 
     }
 }

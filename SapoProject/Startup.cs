@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using SapoProject.Areas.Admin.Models.Data;
 using SapoProject.Areas.Admin.Repository.Interface;
 using SapoProject.Areas.Admin.Repository.Repo;
+using SapoProject.Areas.Customer.Repository.Interface;
+using SapoProject.Areas.Customer.Repository.Repo;
 using Westwind.AspNetCore.LiveReload;
 namespace SapoProject
 {
@@ -46,6 +48,8 @@ namespace SapoProject
             services.AddMemoryCache();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,7 +78,7 @@ namespace SapoProject
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{area=admin}/{controller=User}/{action=Login}/{id?}");
+                    pattern: "{area=Customer}/{controller=Customer}/{action=index}/{id?}");
             });
         }
     }

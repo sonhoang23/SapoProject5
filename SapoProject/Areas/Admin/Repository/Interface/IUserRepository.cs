@@ -2,15 +2,15 @@
 using System;
 using SapoProject.Areas.Admin.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace SapoProject.Areas.Admin.Repository.Interface
 {
     public interface IUserRepository : IDisposable
     {
-        int CreateUser(UserRegister User);
+         Task<int> CreateUser(UserRegister User);
         int LoginUser(UserLogin userLogin);
-        void UpdateUser(User UserID);
-        void Save();
-        void Dispose();
+        Task UpdateUser(User UserID);
+        int GetUserStatusByUserAccount(string UserAccount);
     }
 }

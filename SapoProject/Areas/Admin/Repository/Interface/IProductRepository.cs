@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 
 namespace SapoProject.Areas.Admin.Repository.Interface
 {
-    public interface IProductRepository:IDisposable
+    public interface IProductRepository : IDisposable
     {
-        IEnumerable<Product> GetListProductWithDetail();
+        Task<IEnumerable<Product>> GetListProductWithDetail();
         IEnumerable<Product> GetListProductWithoutDetail();
         Product GetProductByID(int productID);
         ProductEdit GetProductEditByID(int productID);
-        void CreateProduct(ProductCreate productCreate);
-        void DeleteProduct(int product);
-        void UpdateProduct(ProductEdit productID);
+        Task CreateProduct(ProductCreate productCreate);
+        Task DeleteProduct(int product);
+        Task UpdateProduct(ProductEdit productID);
         void Save();
+        void Dispose();
+
     }
 }

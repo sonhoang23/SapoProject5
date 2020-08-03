@@ -9,10 +9,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-
-
-
-
 namespace SapoProject.Areas.Admin.Repository.Repo
 {
     public class UserRepository : IUserRepository
@@ -24,13 +20,12 @@ namespace SapoProject.Areas.Admin.Repository.Repo
             _context = context;
 
         }
-
-        public int CreateUser(UserRegister userRegister)
+        public async Task<int> CreateUser(UserRegister userRegister)
         {
             User user = new User();
             if (userRegister.userPassWord == userRegister.userPassWordAgain && userRegister.userPassWord != null)
             {
-                if (!_context.User.Any(i => i.UserAccount == userRegister.userAccount))
+                if (! await _context.User.AnyAsync(i => i.UserAccount == userRegister.userAccount))
                 {
                     user.UserName = userRegister.userName;
                     user.PhoneNumber = userRegister.phoneNumber;
@@ -42,8 +37,8 @@ namespace SapoProject.Areas.Admin.Repository.Repo
                     user.UserAccount = userRegister.userAccount;
                     user.UserPassWord = userRegister.userPassWord;
                     user.Status = 1;
-                    _context.User.Add(user);
-                    _context.SaveChanges();
+                    await _context.User.AddAsync(user);
+                    await _context.SaveChangesAsync();
                     return 1;
                 }
                 return 2;
@@ -56,7 +51,7 @@ namespace SapoProject.Areas.Admin.Repository.Repo
 
         public void Dispose()
         {
-        
+
         }
 
         public IEnumerable<User> GetUsers()
@@ -64,7 +59,13 @@ namespace SapoProject.Areas.Admin.Repository.Repo
             return _context.User.ToList();
         }
 
-    
+        public int GetUserStatusByUserAccount(string userAccount)
+        {
+            int userStatus = (from user in _context.User
+                              where user.UserAccount == userAccount
+                              select user.Status).First();
+            return userStatus;
+        }
 
         public int LoginUser(UserLogin userLogin)
         {
@@ -74,22 +75,17 @@ namespace SapoProject.Areas.Admin.Repository.Repo
             if (userCheck.Count() > 0)
             {
                 return 1;
-
             }
             else
             {
                 return 0;
             }
         }
+    
 
-        public void Save()
+        public async Task UpdateUser(User UserID)
         {
-          
-        }
 
-        public void UpdateUser(User UserID)
-        {
-            
         }
     }
 }
