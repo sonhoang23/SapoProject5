@@ -16,10 +16,6 @@ namespace SapoProject.Areas.Admin.Controllers
     public class HomeController : Controller
     {
       
-        public HomeController(SapoProjectDbContext context)
-        {
-        }
-
         public IActionResult Index()
         {
                 return View();

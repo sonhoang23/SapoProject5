@@ -14,7 +14,6 @@ namespace SapoProject.Areas.Admin.Controllers
         {
             _userRepository = userRepository;
         }
-    
         [HttpGet]
         public ActionResult Login()
         {
@@ -23,7 +22,6 @@ namespace SapoProject.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public ActionResult Login(UserLogin userLogin)
         {
 
@@ -31,6 +29,7 @@ namespace SapoProject.Areas.Admin.Controllers
             {
                 if (_userRepository.LoginUser(userLogin) == 1)
                 {
+
                     HttpContext.Session.SetString("userAccount", userLogin.userAccount);
                     HttpContext.Session.SetInt32("status", _userRepository.GetUserStatusByUserAccount(userLogin.userAccount));
 

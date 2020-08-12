@@ -1,0 +1,92 @@
+﻿@model SapoProject.Areas.Admin.Models.DTO.CategoryEdit
+
+@{
+	Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Edit</title>
+</head>
+<body>
+	<div class="row">
+		<div class="col-xs-12 col-md-12">
+			<form enctype="multipart/form-data" asp-action="Edit">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<input type="hidden" asp-for="Id" />
+				<div class="col">
+					<div class="row">
+						<div class="col-xs-12 col-md-8">
+							<div class="col">
+								<div class="form-group">
+									<label asp-for="CategoryName" class="control-label">Category Name</label>
+									<input asp-for="CategoryName" class="form-control" />
+									<span asp-validation-for="CategoryName" class="text-danger"></span>
+								</div>
+								<div class="form-group">
+									<label asp-for="Status" class="control-label">Status</label>
+									<label asp-for="Status" class="control-label">Status</label>
+									<select asp-for="Status" class="form-control" placeholder="Click to select Status">
+										<option value="1">1: Remain</option>
+										<option value="0">0: Delete Category</option>
+									</select>
+									<span asp-validation-for="Status" class="text-danger"></span>
+								</div>
+								<div class="form-group">
+									<label asp-for="ParentCategoryName" class="control-label">Recent Parent Category</label>
+									<input readonly asp-for="ParentCategoryName" class="form-control" />
+									<span asp-validation-for="ParentCategoryName" class="text-danger"></span>
+								</div>
+								<div class="form-group">
+									<label asp-for="ParentCategoryNameEdit" class="control-label">Parent Category</label>
+									<select asp-for="ParentCategoryNameEdit" class="form-control" placeholder="Click to select Parent Category">
+										@foreach (var item in @ViewBag.ParentCategoryNameEdit)
+										{
+											<option value="@item">@item</option>
+										}
+
+									</select>
+									<span asp-validation-for="ParentCategoryName" class="text-danger"></span>
+								</div>
+							</div>
+						</div>
+						<!--upload Image HTML-->
+						<div class="col-xs-12 col-md-4">
+							<div class="form-group">
+								<label asp-for="imageURL" class="control-label">Image</label>
+								<input readonly asp-for="imageURL" class="form-control" />
+								<span asp-validation-for="imageURL" class="text-danger"></span>
+							</div>
+							<img asp-for="FilePath" src=@Model.imageURL style="width:inherit">
+							<div class="custom-file">
+								<input asp-for="Photo" class="custom-file-input" id="customFile">
+								<label class="custom-file-label" for="customFile">Choose file</label>
+							</div>
+							<!---->
+						</div>
+
+					</div>
+					<div class="form-group">
+						<script src="~/ckfinder/ckfinder.js"></script>
+						<label asp-for="ShortDescription" class="control-label"></label>
+						<textarea class="ckeditor" asp-for="ShortDescription">Short Description</textarea>
+						<span asp-validation-for="ShortDescription" class="text-danger"></span>
+					</div>
+
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Save" class="btn btn-primary" />
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div>
+		<a asp-action="Index">Back to List</a>
+	</div>
+
+</body>
+</html>

@@ -27,7 +27,8 @@ namespace SapoProject.Areas.Admin.Repository.Repo
 
         static private string GetConnectionString()
         {
-            return "Server=.;Database=SapoProjectDb;Trusted_Connection=True;MultipleActiveResultSets=true";
+            return ConnectionString.GetConnectionString();
+
         }
         //POST: create
         public async Task CreateProduct(ProductCreate productCreate)
@@ -48,6 +49,7 @@ namespace SapoProject.Areas.Admin.Repository.Repo
                 ShortDescription = productCreate.ShortDescription,
                 EntireDescription = productCreate.EntireDescription,
                 FilePath = filePath,
+                CategoryId= GetCategoryIdByCategoryName(productCreate.CategoryName),
                 CreatedDate = DateTime.Now,
                 FixedDate = DateTime.Now,
                 Status = 1
@@ -74,7 +76,7 @@ namespace SapoProject.Areas.Admin.Repository.Repo
                 SqlCommand command = new SqlCommand(sql, connection);
                 command.Parameters.AddWithValue("@start", (page - 1) * 10);
                 command.Parameters.AddWithValue("@limit", page);
-                command.ExecuteReader();
+                // command.ExecuteReader();
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -105,6 +107,7 @@ namespace SapoProject.Areas.Admin.Repository.Repo
                 OriginalPrice = product.OriginalPrice,
                 ShortDescription = product.ShortDescription,
                 EntireDescription = product.EntireDescription,
+                CategoryName= GetCategoryNameById(product.CategoryId),
                 CreatedDate = product.CreatedDate,
                 FilePath = product.FilePath,
                 FixedDate = product.FixedDate,
@@ -140,6 +143,7 @@ namespace SapoProject.Areas.Admin.Repository.Repo
                     OriginalPrice = productEdit.OriginalPrice,
                     ShortDescription = productEdit.ShortDescription,
                     EntireDescription = productEdit.EntireDescription,
+                    CategoryId=GetCategoryIdByCategoryName(productEdit.CategoryNameEdit),
                     FilePath = filePath,
                     CreatedDate = productEdit.CreatedDate,
                     FixedDate = DateTime.Now,
@@ -160,6 +164,7 @@ namespace SapoProject.Areas.Admin.Repository.Repo
                     OriginalPrice = productEdit.OriginalPrice,
                     ShortDescription = productEdit.ShortDescription,
                     EntireDescription = productEdit.EntireDescription,
+                    CategoryId = GetCategoryIdByCategoryName(productEdit.CategoryNameEdit),
                     FilePath = productEdit.FilePath,
                     CreatedDate = DateTime.Now,
                     FixedDate = DateTime.Now,
@@ -181,10 +186,107 @@ namespace SapoProject.Areas.Admin.Repository.Repo
             await _context.SaveChangesAsync();
 
         }
-
-       public void Dispose()
+        public List<String> GetCategoryName()
         {
-           
+            String sql = "SELECT CategoryName FROM Category where Status = '1'";
+            List<String> ParentCategoryName = new List<String>();
+            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
+            {
+                SqlCommand command = new SqlCommand(sql, connection);
+                connection.Open();
+                // command.ExecuteReader();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ParentCategoryName.Add(reader.GetString(0));
+                    }
+                }
+            }
+            return ParentCategoryName;
+        }
+        public int GetCategoryIdByCategoryName(string CategoryName)
+        {
+            int CategoryId;
+            String sql = "SELECT CategoryId FROM Category where CategoryName = @CategoryName";
+            //String sql = "SELECT CategoryId FROM Category where CategoryName = 'Electronic Products'";
+
+            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
+            {
+                SqlCommand command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@CategoryName", CategoryName);
+                connection.Open();
+                // command.ExecuteReader();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        CategoryId = reader.GetInt32(0);
+                        return CategoryId;
+                    }
+
+                }
+
+            }
+            return 0;
+        }
+        public String GetCategoryNameById(int Id)
+        {
+            String sql = "SELECT CategoryName FROM Category where Status != '0' and CategoryId = @CategoryId";
+            String CategoryName;
+
+            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
+            {
+                SqlCommand command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@CategoryId", Id);
+                connection.Open();
+                // command.ExecuteReader();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        CategoryName = reader.GetString(0);
+                        return CategoryName;
+                    }
+                }
+            }
+            return null;
+        }
+        public List<String> GetCategoryNameOrderByProductCategory(int Id)
+        {
+
+            List<String> GetCategoryNameOrderByProductCategory = new List<String>();
+            GetCategoryNameOrderByProductCategory.Add(GetCategoryNameById(GetCategoryIdByProductId(Id)));
+            GetCategoryNameOrderByProductCategory.AddRange(GetCategoryName());
+            return GetCategoryNameOrderByProductCategory;
+        }
+        public int GetCategoryIdByProductId(int Id)
+        {
+            String sql = "SELECT CategoryId FROM Product where Status != '0' and Id = @CategoryId";
+
+            int CategoryId;
+
+            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
+            {
+                SqlCommand command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@CategoryId", Id);
+                connection.Open();
+                // command.ExecuteReader();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        CategoryId = reader.GetInt32(0);
+                        return CategoryId;
+                    }
+                }
+            }
+            return 0;
+        }
+        public void Dispose()
+        {
+
         }
 
         public void Save()

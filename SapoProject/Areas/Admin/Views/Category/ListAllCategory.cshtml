@@ -1,0 +1,73 @@
+@model IEnumerable<SapoProject.Areas.Admin.Models.Entities.Category>
+
+@{
+	Layout = "_Layout";
+}
+
+<h1>List Product</h1>
+
+<form>
+
+	<button style="height:auto; width:auto; margin-top:20px;margin-bottom:20px" asp-action="Create" class="btn btn-info">Create New Product</button>
+</form>
+
+
+<div class="card mb-4">
+	<div class="card-header">
+		<i class="fas fa-table mr-1"></i>
+		@ViewData["Title"]
+	</div>
+	<div class="card-body">
+
+		<div class="table-responsive w">
+
+			<table class="table table-bordered table table-hover" id="dataTable" width="50%" cellspacing="0"
+				   data-show-toggle="true"
+				   data-show-refresh="true"
+				   data-pagination-detail-h-align="right">
+				<thead>
+					<tr>
+						<th>Category Name</th>
+						<th>Image</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<th>Product Name</th>
+						<th>Image</th>
+						<th>Description</th>
+					</tr>
+				</tfoot>
+				<tbody>
+					@foreach (var item in ViewBag.ListAllChildCategory)
+					{
+						<tr>
+							<td>
+								<div>
+									@item.CategoryId
+									@item.CategoryName
+								</div>
+							</td>					
+							<td>
+								<img src=@item.imageURL style="width:100px">		
+							</td>
+							<td>
+								<form>
+									<div class="col">
+									
+										<button style="height:inherit; width:inherit; margin-top:15px" asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-warning">Edit</button>
+									
+									</div>
+								</form>
+
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+
+
+		</div>
+	</div>
+</div>

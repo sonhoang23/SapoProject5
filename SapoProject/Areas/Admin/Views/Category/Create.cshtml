@@ -1,0 +1,66 @@
+﻿@model SapoProject.Areas.Admin.Models.DTO.CategoryCreate
+
+@{
+	ViewData["Title"] = "Create";
+	Layout = "_Layout";
+}
+
+<h1>Create Category Sapo Project</h1>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<form enctype="multipart/form-data" asp-action="Create">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<div class="col">
+					<div class="row">
+						<div class="col-xs-12 col-md-8">
+							<div class="form-group">
+								<label asp-for="CategoryName" class="control-label myDIV">Category Name</label>
+								<div class="hide">Input your category name</div>
+								<input asp-for="CategoryName" class="form-control" />
+								<span asp-validation-for="CategoryName" class="text-danger"></span>
+							</div>
+							<div class="form-group">
+								<label asp-for="ParentCategoryName" class="control-label">Parent Category</label>
+								<select asp-for="ParentCategoryName" class="form-control" placeholder="Click to select Parent Category">
+										@foreach (var item in @ViewBag.ParentCategoryName)
+										{<option value="@item">@item</option>}
+								
+								</select>
+								<span asp-validation-for="ParentCategoryName" class="text-danger"></span>
+							</div>
+						</div>
+						<!--upload Image HTML-->
+						<div class="col-xs-12 col-md-4">
+						
+							<div class="form-group">
+								<label asp-for="Photo" class="control-label myDIV">Input Image</label>
+								<div class="hide">click to Browse to chose your image from computer!</div>
+								<div class="custom-file">
+									<input asp-for="Photo" class="form-control custom-file-input" />
+									<label class="custom-file-label">upload</label>
+								</div>
+							</div>
+						</div>	 
+				
+					</div>
+					<div class="form-group">
+						<script src="~/ckfinder/ckfinder.js"></script>
+						<label asp-for="ShortDescription" class="control-label myDIV"></label>
+						<div class="hide">Short description appear to list of category, which is about a brief of your category specific!</div>
+						<textarea class="ckeditor" asp-for="ShortDescription">Short Description</textarea>
+						<span asp-validation-for="ShortDescription" class="text-danger"></span>
+					</div>
+					
+					<div class="form-group">
+						<input type="submit" value="Create" class="btn btn-primary" />
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div>
+</div>
+
+

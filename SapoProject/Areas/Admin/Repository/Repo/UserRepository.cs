@@ -81,11 +81,5 @@ namespace SapoProject.Areas.Admin.Repository.Repo
                 return 0;
             }
         }
-    
-
-        public async Task UpdateUser(User UserID)
-        {
-
-        }
     }
 }

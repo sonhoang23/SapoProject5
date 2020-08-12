@@ -9,12 +9,9 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width" />
-	<title>Edit</title>
 </head>
 <body>
-
 	<h4>Product</h4>
-	<hr />
 	<div class="row">
 		<div class="col-xs-12 col-md-12">
 			<form enctype="multipart/form-data" asp-action="Edit">
@@ -41,6 +38,22 @@
 									<span asp-validation-for="OriginalPrice" class="text-danger"></span>
 								</div>
 								<div class="form-group">
+									<label asp-for="CategoryName" class="control-label">Recent Category</label>
+									<input readonly asp-for="CategoryName" class="form-control" />
+									<span asp-validation-for="CategoryName" class="text-danger"></span>
+								</div>
+								<div class="form-group">
+									<label asp-for="CategoryNameEdit" class="control-label">Parent Category</label>
+									<select asp-for="CategoryNameEdit" class="form-control" placeholder="Click to select Category">
+										@foreach (var item in @ViewBag.CategoryNameEditViewBag)
+										{
+											<option value="@item">@item</option>
+										}
+
+									</select>
+									<span asp-validation-for="CategoryNameEdit" class="text-danger"></span>
+								</div>
+								<div class="form-group">
 									<label asp-for="Status" class="control-label">Status</label>
 									<label asp-for="Status" class="control-label">Status</label>
 									<select asp-for="Status" class="form-control" placeholder="Click to select Status">
@@ -56,7 +69,7 @@
 						<!--upload Image HTML-->
 						<div class="col-xs-12 col-md-4">
 							<div class="form-group">
-								<label asp-for="FilePath" class="control-label">Original Price</label>
+								<label asp-for="FilePath" class="control-label">Image</label>
 								<input readonly asp-for="FilePath" class="form-control" />
 								<span asp-validation-for="FilePath" class="text-danger"></span>
 							</div>

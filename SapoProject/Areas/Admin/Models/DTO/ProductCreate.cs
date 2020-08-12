@@ -20,6 +20,7 @@ namespace SapoProject.Areas.Admin.Models.DTO
         public String ShortDescription { set; get; }
         [Required]
         public String EntireDescription { set; get; }
+        public String? CategoryName { get; set; }
         [Required]
         //    public Dept? Department { set; get; } 
         public IFormFile Photo { set; get; }

@@ -20,15 +20,19 @@ namespace SapoProject.Areas.Admin.Models.Data
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
-            //    modelBuilder.ApplyConfiguration(new ProductColorConfiguration());
-            //  base.OnModelCreating(modelBuilder);
+            // modelBuilder.ApplyConfiguration(new ProductColorConfiguration());
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<User> User { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<WebInfor> WebInfor { get; set; }
-        public DbSet<SapoProject.Areas.Customer.Models.Entities.ProductClient> ProductClient { get; set; }
-       // public DbSet<Category> Category { get; set; }
+        //   public DbSet<ProductClient> ProductClient { get; set; }
+        public DbSet<Category> Category { get; set; }
+        //   public DbSet<ProductClient> ProductClient { get; set; }
+       // public DbSet<SapoProject.Areas.Admin.Models.DTO.CategoryEdit> CategoryUpdate { get; set; }
+        //   public DbSet<ProductClient> ProductClient { get; set; }
+        // public DbSet<CategoryCreate> CategoryCreate { get; set; }
         // public DbSet<ProductColorConfiguration> ProductColorConfiguration { get; set; }
     }
 

@@ -17,22 +17,18 @@
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-		<partial name="PartialView_Header.cshtml" />
+		@await Component.InvokeAsync("Header")
+		<!--	<partial name="PartialView_Header.cshtml" /> -->
 	</nav>
 	<div id="layoutSidenav">
 		<partial name="PartialView_layout_SideLeft.cshtml" />
-
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid">
 					@RenderBody()
 				</div>
 			</main>
-
 			<partial name="PartialView_Footer.cshtml" />
-
-
-
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
@@ -47,7 +43,5 @@
 	<script src="/ckeditor/ckeditor.js"></script>
 	<script src="/MainJavaScript.js"></script>
 	<script src="~/ckfinder/ckfinder.js"></script>
-
-
 </body>
 </html>

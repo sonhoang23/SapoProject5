@@ -15,7 +15,10 @@ namespace SapoProject.Areas.Admin.Repository.Interface
         ProductEdit GetProductEditByID(int productID);
         Task CreateProduct(ProductCreate productCreate);
         Task DeleteProduct(int product);
-        Task UpdateProduct(ProductEdit productID);
+        Task UpdateProduct(ProductEdit productEdit);
+        List<String> GetCategoryName();
+        String GetCategoryNameById(int Id);
+        List<String> GetCategoryNameOrderByProductCategory(int Id);
         void Save();
         void Dispose();
 

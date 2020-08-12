@@ -1,25 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SapoProject.Areas.Admin.Models.Data;
-using SapoProject.Areas.Admin.Models.DTO;
-using SapoProject.Areas.Admin.Models.Entities;
 using SapoProject.Areas.Admin.Repository.Interface;
-
 
 namespace SapoProject.Areas.Admin.Controllers
 {
-
-    public class ShareController : BaseController
+    public class SharedController : Controller
     {
-     
-        public PartialViewResult PartialView_Header()
+        private readonly ISharedRepository _shareRepository;
+        public SharedController(ISharedRepository shareRepository)
         {
-            ViewBag.TerritoryID = "Hoang Son";
-
-            return PartialView();
+            _shareRepository = shareRepository;
         }
-
-        
+        [HttpGet]
+        public IActionResult GetProductByCategory(String id)
+        {
+            return View();
+        }
     }
 }

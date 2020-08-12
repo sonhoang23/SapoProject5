@@ -1,38 +1,25 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SapoProject.Areas.Admin.Models.Data;
 using SapoProject.Areas.Admin.Models.DTO;
 using SapoProject.Areas.Admin.Models.Entities;
 using SapoProject.Areas.Admin.Repository.Interface;
-
-
 namespace SapoProject.Areas.Admin.Controllers
 {
-
     public class ProductController : BaseController
     {
-        private readonly SapoProjectDbContext _context;
         private readonly IProductRepository _productRepository;
         public ProductController(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
-
-        public PartialViewResult PartialView_Header()
-        {
-            ViewBag.TerritoryID = "Hoang Son";
-
-            return PartialView();
-        }
-
         // GET: Product/Create
         [HttpGet]
         public ActionResult Create()
         {
+           ViewBag.CategoryNameViewBag= _productRepository.GetCategoryName();
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ProductCreate productCreate)
@@ -84,6 +71,7 @@ namespace SapoProject.Areas.Admin.Controllers
             // return View(_productRepository.GetListProductWithoutDetail());
         }
         // GET: Product/ProductDetailDetails/5
+        [HttpGet]
         public ActionResult ProductDetail(int id)
         {
             return View(_productRepository.GetProductByID(id));
@@ -92,6 +80,8 @@ namespace SapoProject.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            ViewBag.CategoryNameEditViewBag = _productRepository.GetCategoryNameOrderByProductCategory(id);
+           
             return View(_productRepository.GetProductEditByID(id));
         }
         //POST: 
@@ -135,7 +125,6 @@ namespace SapoProject.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id, Product product)
         {
-
             if (ModelState.IsValid)
             {
                 try

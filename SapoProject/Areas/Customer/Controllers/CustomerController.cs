@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,17 +12,33 @@ namespace SapoProject.Areas.Customer.Controllers
 
     public class CustomerController : Controller
     {
-        private readonly ICustomerRepository _Repository;
+        private readonly ICustomerRepository _customerRepository;
         public CustomerController(ICustomerRepository customerRepository)
         {
-            _Repository = customerRepository;
+            _customerRepository = customerRepository;
         }
 
         [HttpGet]
-        public ActionResult Index(int? pageNumber)
+        public ActionResult Index(int? pageNumber, String? name)
         {
-            ViewBag.listPagedProduct = _Repository.GetListProductWithDetail(pageNumber);
-            return View(_Repository.GetListProductWithDetail(pageNumber));
+            if (name == null)
+            {
+                ViewBag.listPagedProduct = _customerRepository.GetListProductWithDetail(pageNumber);
+                ViewBag.CategoryName = null;
+            }
+            else
+            {
+                ViewBag.listPagedProduct = _customerRepository.GetListProductWithDetailByCategoryName(pageNumber, name);
+                ViewBag.CategoryName = name;
+            }
+            // return View(_customerRepository.GetListProductWithDetail(pageNumber));
+            return View();
+        }
+        [HttpGet]
+        public ActionResult ProductDetail(int id)
+        {
+            Product product = _customerRepository.GetProductByID(id);
+            return View(product);
         }
     }
 

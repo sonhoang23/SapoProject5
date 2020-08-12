@@ -15,6 +15,8 @@ namespace SapoProject.Areas.Admin.Models.DTO
         public String OriginalPrice { set; get; }
         public String ShortDescription { set; get; }
         public String EntireDescription { set; get; }
+        public string CategoryName { set; get; }
+        public string CategoryNameEdit { set; get; }
         public String FilePath { set; get; }
         public int ViewCount { set; get; }
 

@@ -22,7 +22,6 @@ namespace SapoProject.Areas.Admin.Controllers
                     { "controller", "User" },
                     { "action", "Login" }
                   });
-
             }
         }
         public override void OnActionExecuted(ActionExecutedContext

@@ -35,6 +35,17 @@
 								<input asp-for="OriginalPrice" class="form-control" />
 								<span asp-validation-for="OriginalPrice" class="text-danger"></span>
 							</div>
+							<div class="form-group">
+								<label asp-for="CategoryName" class="control-label">Parent Category</label>
+								<select asp-for="CategoryName" class="form-control" placeholder="Click to select Category">
+									@foreach (var item in @ViewBag.CategoryNameViewBag)
+									{
+										<option value="@item">@item</option>
+}
+
+								</select>
+								<span asp-validation-for="CategoryName" class="text-danger"></span>
+							</div>
 						</div>
 						<!--upload Image HTML-->
 						<div class="col-xs-12 col-md-4">

@@ -10,7 +10,7 @@ namespace SapoProject.Areas.Admin.Repository.Interface
     {
          Task<int> CreateUser(UserRegister User);
         int LoginUser(UserLogin userLogin);
-        Task UpdateUser(User UserID);
+      
         int GetUserStatusByUserAccount(string UserAccount);
     }
 }

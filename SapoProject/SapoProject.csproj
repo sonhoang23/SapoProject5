@@ -3,100 +3,110 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Migrations\20200731072615_update_db_Category.cs"/>
-    <Compile Remove="Migrations\20200731072615_update_db_Category.Designer.cs"/>
-    <Compile Remove="Migrations\20200731074221_update_db_Category_1.cs"/>
-    <Compile Remove="Migrations\20200731074221_update_db_Category_1.Designer.cs"/>
-    <Compile Remove="Migrations\20200731075831_update_db_Category_2.cs"/>
-    <Compile Remove="Migrations\20200731075831_update_db_Category_2.Designer.cs"/>
-    <Compile Remove="Migrations\20200731081218_update_db_Category_3.cs"/>
-    <Compile Remove="Migrations\20200731081218_update_db_Category_3.Designer.cs"/>
-    <Compile Remove="Migrations\20200731081545_update_db_Category.cs"/>
-    <Compile Remove="Migrations\20200731081545_update_db_Category.Designer.cs"/>
-    <Compile Remove="Migrations\20200731081652_update_db_category_1.cs"/>
-    <Compile Remove="Migrations\20200731081652_update_db_category_1.Designer.cs"/>
-    <Compile Remove="Migrations\20200731081848_update_db_category_2.cs"/>
-    <Compile Remove="Migrations\20200731081848_update_db_category_2.Designer.cs"/>
+    <Compile Remove="Migrations\20200731072615_update_db_Category.cs" />
+    <Compile Remove="Migrations\20200731072615_update_db_Category.Designer.cs" />
+    <Compile Remove="Migrations\20200731074221_update_db_Category_1.cs" />
+    <Compile Remove="Migrations\20200731074221_update_db_Category_1.Designer.cs" />
+    <Compile Remove="Migrations\20200731075831_update_db_Category_2.cs" />
+    <Compile Remove="Migrations\20200731075831_update_db_Category_2.Designer.cs" />
+    <Compile Remove="Migrations\20200731081218_update_db_Category_3.cs" />
+    <Compile Remove="Migrations\20200731081218_update_db_Category_3.Designer.cs" />
+    <Compile Remove="Migrations\20200731081545_update_db_Category.cs" />
+    <Compile Remove="Migrations\20200731081545_update_db_Category.Designer.cs" />
+    <Compile Remove="Migrations\20200731081652_update_db_category_1.cs" />
+    <Compile Remove="Migrations\20200731081652_update_db_category_1.Designer.cs" />
+    <Compile Remove="Migrations\20200731081848_update_db_category_2.cs" />
+    <Compile Remove="Migrations\20200731081848_update_db_category_2.Designer.cs" />
+    <Compile Remove="Migrations\20200805030828_update_category.cs" />
+    <Compile Remove="Migrations\20200805030828_update_category.Designer.cs" />
+    <Compile Remove="Migrations\20200805031400_update_category.cs" />
+    <Compile Remove="Migrations\20200805031400_update_category.Designer.cs" />
+    <Compile Remove="Migrations\20200805032228_update_category.cs" />
+    <Compile Remove="Migrations\20200805032228_update_category.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="wwwroot\Assest\dist\assets\demo\chart-area-demo.js"/>
-    <None Include="wwwroot\Assest\dist\assets\demo\chart-bar-demo.js"/>
-    <None Include="wwwroot\Assest\dist\assets\demo\chart-pie-demo.js"/>
-    <None Include="wwwroot\Assest\dist\assets\demo\datatables-demo.js"/>
-    <None Include="wwwroot\Assest\dist\assets\img\error-404-monochrome.svg"/>
-    <None Include="wwwroot\Assest\dist\css\styles.css"/>
-    <None Include="wwwroot\Assest\dist\js\scripts.js"/>
-    <None Include="wwwroot\Assest\scripts\build-assets.js"/>
-    <None Include="wwwroot\Assest\scripts\build-pug.js"/>
-    <None Include="wwwroot\Assest\scripts\build-scripts.js"/>
-    <None Include="wwwroot\Assest\scripts\build-scss.js"/>
-    <None Include="wwwroot\Assest\scripts\clean.js"/>
-    <None Include="wwwroot\Assest\scripts\render-assets.js"/>
-    <None Include="wwwroot\Assest\scripts\render-pug.js"/>
-    <None Include="wwwroot\Assest\scripts\render-scripts.js"/>
-    <None Include="wwwroot\Assest\scripts\render-scss.js"/>
-    <None Include="wwwroot\Assest\scripts\sb-watch.js"/>
-    <None Include="wwwroot\Assest\scripts\start-debug.js"/>
-    <None Include="wwwroot\Assest\scripts\start.js"/>
-    <None Include="wwwroot\Assest\src\assets\demo\chart-area-demo.js"/>
-    <None Include="wwwroot\Assest\src\assets\demo\chart-bar-demo.js"/>
-    <None Include="wwwroot\Assest\src\assets\demo\chart-pie-demo.js"/>
-    <None Include="wwwroot\Assest\src\assets\demo\datatables-demo.js"/>
-    <None Include="wwwroot\Assest\src\assets\img\error-404-monochrome.svg"/>
-    <None Include="wwwroot\Assest\src\js\scripts.js"/>
-    <None Include="wwwroot\Assest\src\pug\layouts\authentication.pug"/>
-    <None Include="wwwroot\Assest\src\pug\layouts\dashboard.pug"/>
-    <None Include="wwwroot\Assest\src\pug\layouts\error.pug"/>
-    <None Include="wwwroot\Assest\src\pug\layouts\includes\footer.pug"/>
-    <None Include="wwwroot\Assest\src\pug\layouts\includes\head\css.pug"/>
-    <None Include="wwwroot\Assest\src\pug\layouts\includes\head\icons.pug"/>
-    <None Include="wwwroot\Assest\src\pug\layouts\includes\head\meta.pug"/>
-    <None Include="wwwroot\Assest\src\pug\layouts\includes\head\title.pug"/>
-    <None Include="wwwroot\Assest\src\pug\layouts\includes\navigation\sidenav.pug"/>
-    <None Include="wwwroot\Assest\src\pug\layouts\includes\navigation\topnav.pug"/>
-    <None Include="wwwroot\Assest\src\pug\layouts\includes\scripts.pug"/>
-    <None Include="wwwroot\Assest\src\pug\pages\401.pug"/>
-    <None Include="wwwroot\Assest\src\pug\pages\404.pug"/>
-    <None Include="wwwroot\Assest\src\pug\pages\500.pug"/>
-    <None Include="wwwroot\Assest\src\pug\pages\charts.pug"/>
-    <None Include="wwwroot\Assest\src\pug\pages\includes\datatable.pug"/>
-    <None Include="wwwroot\Assest\src\pug\pages\includes\page-header.pug"/>
-    <None Include="wwwroot\Assest\src\pug\pages\index.pug"/>
-    <None Include="wwwroot\Assest\src\pug\pages\layout-sidenav-light.pug"/>
-    <None Include="wwwroot\Assest\src\pug\pages\layout-static.pug"/>
-    <None Include="wwwroot\Assest\src\pug\pages\login.pug"/>
-    <None Include="wwwroot\Assest\src\pug\pages\password.pug"/>
-    <None Include="wwwroot\Assest\src\pug\pages\register.pug"/>
-    <None Include="wwwroot\Assest\src\pug\pages\tables.pug"/>
-    <None Include="wwwroot\Assest\src\scss\layout\_authentication.scss"/>
-    <None Include="wwwroot\Assest\src\scss\layout\_dashboard-default.scss"/>
-    <None Include="wwwroot\Assest\src\scss\layout\_dashboard-fixed.scss"/>
-    <None Include="wwwroot\Assest\src\scss\layout\_error.scss"/>
-    <None Include="wwwroot\Assest\src\scss\navigation\sidenav\_sidenav-dark.scss"/>
-    <None Include="wwwroot\Assest\src\scss\navigation\sidenav\_sidenav-light.scss"/>
-    <None Include="wwwroot\Assest\src\scss\navigation\sidenav\_sidenav.scss"/>
-    <None Include="wwwroot\Assest\src\scss\navigation\_nav.scss"/>
-    <None Include="wwwroot\Assest\src\scss\navigation\_topnav.scss"/>
-    <None Include="wwwroot\Assest\src\scss\styles.scss"/>
-    <None Include="wwwroot\Assest\src\scss\variables\_navigation.scss"/>
-    <None Include="wwwroot\Assest\src\scss\variables\_spacing.scss"/>
-    <None Include="wwwroot\Assest\src\scss\_global.scss"/>
-    <None Include="wwwroot\Assest\src\scss\_variables.scss"/>
+    <Content Remove="Areas\Customer\Views\Shared\Components\MenuLeftSide\_PartialView_CategoryMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="CKSource.CKFinder" Version="3.5.1.1"/>
-    <PackageReference Include="jQuery" Version="3.5.1"/>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.6"/>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.5"/>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5"/>
+    <None Include="Areas\Customer\Views\Shared\Components\MenuLeftSide\_PartialView_CategoryMenu.cshtml" />
+    <None Include="wwwroot\Assest\dist\assets\demo\chart-area-demo.js" />
+    <None Include="wwwroot\Assest\dist\assets\demo\chart-bar-demo.js" />
+    <None Include="wwwroot\Assest\dist\assets\demo\chart-pie-demo.js" />
+    <None Include="wwwroot\Assest\dist\assets\demo\datatables-demo.js" />
+    <None Include="wwwroot\Assest\dist\assets\img\error-404-monochrome.svg" />
+    <None Include="wwwroot\Assest\dist\css\styles.css" />
+    <None Include="wwwroot\Assest\dist\js\scripts.js" />
+    <None Include="wwwroot\Assest\scripts\build-assets.js" />
+    <None Include="wwwroot\Assest\scripts\build-pug.js" />
+    <None Include="wwwroot\Assest\scripts\build-scripts.js" />
+    <None Include="wwwroot\Assest\scripts\build-scss.js" />
+    <None Include="wwwroot\Assest\scripts\clean.js" />
+    <None Include="wwwroot\Assest\scripts\render-assets.js" />
+    <None Include="wwwroot\Assest\scripts\render-pug.js" />
+    <None Include="wwwroot\Assest\scripts\render-scripts.js" />
+    <None Include="wwwroot\Assest\scripts\render-scss.js" />
+    <None Include="wwwroot\Assest\scripts\sb-watch.js" />
+    <None Include="wwwroot\Assest\scripts\start-debug.js" />
+    <None Include="wwwroot\Assest\scripts\start.js" />
+    <None Include="wwwroot\Assest\src\assets\demo\chart-area-demo.js" />
+    <None Include="wwwroot\Assest\src\assets\demo\chart-bar-demo.js" />
+    <None Include="wwwroot\Assest\src\assets\demo\chart-pie-demo.js" />
+    <None Include="wwwroot\Assest\src\assets\demo\datatables-demo.js" />
+    <None Include="wwwroot\Assest\src\assets\img\error-404-monochrome.svg" />
+    <None Include="wwwroot\Assest\src\js\scripts.js" />
+    <None Include="wwwroot\Assest\src\pug\layouts\authentication.pug" />
+    <None Include="wwwroot\Assest\src\pug\layouts\dashboard.pug" />
+    <None Include="wwwroot\Assest\src\pug\layouts\error.pug" />
+    <None Include="wwwroot\Assest\src\pug\layouts\includes\footer.pug" />
+    <None Include="wwwroot\Assest\src\pug\layouts\includes\head\css.pug" />
+    <None Include="wwwroot\Assest\src\pug\layouts\includes\head\icons.pug" />
+    <None Include="wwwroot\Assest\src\pug\layouts\includes\head\meta.pug" />
+    <None Include="wwwroot\Assest\src\pug\layouts\includes\head\title.pug" />
+    <None Include="wwwroot\Assest\src\pug\layouts\includes\navigation\sidenav.pug" />
+    <None Include="wwwroot\Assest\src\pug\layouts\includes\navigation\topnav.pug" />
+    <None Include="wwwroot\Assest\src\pug\layouts\includes\scripts.pug" />
+    <None Include="wwwroot\Assest\src\pug\pages\401.pug" />
+    <None Include="wwwroot\Assest\src\pug\pages\404.pug" />
+    <None Include="wwwroot\Assest\src\pug\pages\500.pug" />
+    <None Include="wwwroot\Assest\src\pug\pages\charts.pug" />
+    <None Include="wwwroot\Assest\src\pug\pages\includes\datatable.pug" />
+    <None Include="wwwroot\Assest\src\pug\pages\includes\page-header.pug" />
+    <None Include="wwwroot\Assest\src\pug\pages\index.pug" />
+    <None Include="wwwroot\Assest\src\pug\pages\layout-sidenav-light.pug" />
+    <None Include="wwwroot\Assest\src\pug\pages\layout-static.pug" />
+    <None Include="wwwroot\Assest\src\pug\pages\login.pug" />
+    <None Include="wwwroot\Assest\src\pug\pages\password.pug" />
+    <None Include="wwwroot\Assest\src\pug\pages\register.pug" />
+    <None Include="wwwroot\Assest\src\pug\pages\tables.pug" />
+    <None Include="wwwroot\Assest\src\scss\layout\_authentication.scss" />
+    <None Include="wwwroot\Assest\src\scss\layout\_dashboard-default.scss" />
+    <None Include="wwwroot\Assest\src\scss\layout\_dashboard-fixed.scss" />
+    <None Include="wwwroot\Assest\src\scss\layout\_error.scss" />
+    <None Include="wwwroot\Assest\src\scss\navigation\sidenav\_sidenav-dark.scss" />
+    <None Include="wwwroot\Assest\src\scss\navigation\sidenav\_sidenav-light.scss" />
+    <None Include="wwwroot\Assest\src\scss\navigation\sidenav\_sidenav.scss" />
+    <None Include="wwwroot\Assest\src\scss\navigation\_nav.scss" />
+    <None Include="wwwroot\Assest\src\scss\navigation\_topnav.scss" />
+    <None Include="wwwroot\Assest\src\scss\styles.scss" />
+    <None Include="wwwroot\Assest\src\scss\variables\_navigation.scss" />
+    <None Include="wwwroot\Assest\src\scss\variables\_spacing.scss" />
+    <None Include="wwwroot\Assest\src\scss\_global.scss" />
+    <None Include="wwwroot\Assest\src\scss\_variables.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CKSource.CKFinder" Version="3.5.1.1" />
+    <PackageReference Include="jQuery" Version="3.5.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3"/>
-    <PackageReference Include="Microsoft.Web.Administration" Version="11.1.0"/>
-    <PackageReference Include="WestWind.AspnetCore.LiveReload" Version="0.2.5"/>
-    <PackageReference Include="X.PagedList.Mvc.Core" Version="8.0.7"/>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Microsoft.Web.Administration" Version="11.1.0" />
+    <PackageReference Include="WestWind.AspnetCore.LiveReload" Version="0.2.5" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="8.0.7" />
     
   </ItemGroup>
   <ItemGroup>
@@ -225,10 +235,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Customer\Controllers\"/>
-    <Folder Include="Areas\Customer\Data\"/>
-    <Folder Include="Areas\Customer\Models\"/>
-    <Folder Include="Uploads\"/>
-    <Folder Include="wwwroot\ProductImages\"/>
+    <Folder Include="Areas\Customer\Data\" />
+    <Folder Include="Areas\Customer\Models\" />
+    <Folder Include="Uploads\" />
+    <Folder Include="wwwroot\ProductImages\" />
   </ItemGroup>
 </Project>

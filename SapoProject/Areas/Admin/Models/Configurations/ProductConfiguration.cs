@@ -22,13 +22,8 @@ namespace SapoProject.Areas.Admin.Models.Configurations
             builder.Property(x => x.EntireDescription).IsRequired();
             builder.Property(x => x.FilePath).IsRequired();
             builder.Property(x => x.Status).IsRequired();
-            //builder.Property(x => x.CategoryId).IsRequired();
-            //  builder.HasOne<Category>(s => s.Category).WithMany(g => g.Products).HasForeignKey(s => s.CategoryId);
-
-
-
-
-
+            builder.Property(x => x.CategoryId).IsRequired();
+            builder.HasOne<Category>(s => s.Category).WithMany(g => g.Products).HasForeignKey(s => s.CategoryId);
         }
     }
 }

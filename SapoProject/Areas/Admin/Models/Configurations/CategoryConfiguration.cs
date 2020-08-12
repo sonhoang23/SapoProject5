@@ -14,8 +14,8 @@ namespace SapoProject.Areas.Admin.Models.Configurations
         {
             {
                 builder.ToTable("Category");
-                builder.HasKey(x => x.Id);
-                builder.Property(x => x.Id).UseIdentityColumn();
+                builder.HasKey(x => x.CategoryId);
+                builder.Property(x => x.CategoryId).UseIdentityColumn();
                 builder.Property(x => x.CategoryName).HasMaxLength(50).IsRequired();
                 builder.Property(x => x.IsShowOnHome).HasMaxLength(50).IsRequired();
                 builder.Property(x => x.ParentId).HasMaxLength(50).IsRequired();
