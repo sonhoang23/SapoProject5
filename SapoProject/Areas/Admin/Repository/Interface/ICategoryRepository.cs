@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using SapoProject.Model.Entities;
 namespace SapoProject.Areas.Admin.Repository.Interface
 {
     public interface ICategoryRepository : IDisposable

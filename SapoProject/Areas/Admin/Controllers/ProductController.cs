@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SapoProject.Areas.Admin.Models.DTO;
-using SapoProject.Areas.Admin.Models.Entities;
+
 using SapoProject.Areas.Admin.Repository.Interface;
+using SapoProject.Model.Entities;
+
 namespace SapoProject.Areas.Admin.Controllers
 {
     public class ProductController : BaseController

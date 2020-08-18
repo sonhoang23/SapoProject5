@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SapoProject.Areas.Admin.Models.Entities;
+using SapoProject.Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

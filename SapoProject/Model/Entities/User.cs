@@ -1,12 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading.Tasks;
-
-namespace SapoProject.Models.Entities
+namespace SapoProject.Model.Entities
 {
-    public class Person
+    public class User
     {
         public int Id { set; get; }
         public String UserName { set; get; }
@@ -19,6 +17,9 @@ namespace SapoProject.Models.Entities
         public String EmailReset { set; get; }
         public String UserAccount { set; get; }
         public String UserPassWord { set; get; }
+        public int UserRole { set; get; }
         public int Status { set; get; }
+        public List<Order> Order { set; get; }
+
     }
 }

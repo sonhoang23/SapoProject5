@@ -1,10 +1,9 @@
 using Microsoft.Data.SqlClient;
 using SapoProject.Areas.Admin.Models.Data;
-using SapoProject.Areas.Admin.Models.Entities;
-using SapoProject.Areas.Customer.Models.Entities;
+using SapoProject.Model.Entities;
+using SapoProject.Model;
 using SapoProject.Areas.Customer.Repository.Interface;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using X.PagedList;
 namespace SapoProject.Areas.Customer.Repository.Repo

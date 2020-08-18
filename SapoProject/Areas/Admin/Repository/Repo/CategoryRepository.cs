@@ -1,14 +1,13 @@
 using Microsoft.Data.SqlClient;
 using SapoProject.Areas.Admin.Models.Data;
 using SapoProject.Areas.Admin.Models.DTO;
-using SapoProject.Areas.Admin.Models.Entities;
 using SapoProject.Areas.Admin.Repository.Interface;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
+using SapoProject.Model.Entities;
 using System.Threading.Tasks;
 
 namespace SapoProject.Areas.Admin.Repository.Repo

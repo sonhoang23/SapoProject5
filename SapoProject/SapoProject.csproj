@@ -25,10 +25,10 @@
     <Compile Remove="Migrations\20200805032228_update_category.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Remove="Areas\Customer\Views\Shared\Components\MenuLeftSide\_PartialView_CategoryMenu.cshtml" />
+    <Content Remove="Areas\Customer\Views\Shared\Components\MenuLeftSide\_PartialView_ListMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Areas\Customer\Views\Shared\Components\MenuLeftSide\_PartialView_CategoryMenu.cshtml" />
+    <None Include="Areas\Customer\Views\Shared\Components\ListMenu\_PartialView_ListMenu.cshtml" />
     <None Include="wwwroot\Assest\dist\assets\demo\chart-area-demo.js" />
     <None Include="wwwroot\Assest\dist\assets\demo\chart-bar-demo.js" />
     <None Include="wwwroot\Assest\dist\assets\demo\chart-pie-demo.js" />
@@ -96,6 +96,7 @@
   <ItemGroup>
     <PackageReference Include="CKSource.CKFinder" Version="3.5.1.1" />
     <PackageReference Include="jQuery" Version="3.5.1" />
+    <PackageReference Include="jQuery.Validation" Version="1.19.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
@@ -103,6 +104,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Ajax" Version="3.2.6" />
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Validation" Version="3.2.11" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Microsoft.Web.Administration" Version="11.1.0" />
     <PackageReference Include="WestWind.AspnetCore.LiveReload" Version="0.2.5" />
@@ -235,8 +238,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Admin\Models\Entities\" />
     <Folder Include="Areas\Customer\Data\" />
     <Folder Include="Areas\Customer\Models\" />
+    <Folder Include="Areas\Customer\Models\Entities\" />
     <Folder Include="Uploads\" />
     <Folder Include="wwwroot\ProductImages\" />
   </ItemGroup>

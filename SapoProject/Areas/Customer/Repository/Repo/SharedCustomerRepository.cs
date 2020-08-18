@@ -1,5 +1,5 @@
 using SapoProject.Areas.Admin.Models.Data;
-using SapoProject.Areas.Admin.Models.Entities;
+using SapoProject.Model.Entities;
 using SapoProject.Areas.Customer.Repository.Interface;
 using System.Collections.Generic;
 using System.Linq;

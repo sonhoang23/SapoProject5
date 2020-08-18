@@ -1,4 +1,4 @@
-namespace SapoProject.Models.Entities
+namespace SapoProject.Model
 {
     public static class ConnectionString
     {

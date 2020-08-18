@@ -9,10 +9,10 @@ using SapoProject.Areas.Customer.Repository.Interface;
 namespace SapoProject.Areas.Customer.Controllers
 {
 
-    public class SharedCustomerController : Controller
+    public class SharedController : Controller
     {
         private readonly ISharedCustomerRepository _Repository;
-        public SharedCustomerController(ISharedCustomerRepository customerRepository)
+        public SharedController(ISharedCustomerRepository customerRepository)
         {
             _Repository = customerRepository;
         }

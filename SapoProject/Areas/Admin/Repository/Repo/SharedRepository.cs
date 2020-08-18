@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SapoProject.Areas.Admin.Models.Data;
 using SapoProject.Areas.Admin.Models.DTO;
-using SapoProject.Areas.Admin.Models.Entities;
+using SapoProject.Model.Entities;
 using SapoProject.Areas.Admin.Repository.Interface;
 using System;
 using System.Collections.Generic;

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using SapoProject.Areas.Admin.Repository.Interface;
 using SapoProject.Areas.Admin.Models.DTO;
 using Microsoft.EntityFrameworkCore;
-using SapoProject.Areas.Admin.Models.Entities;
+using SapoProject.Model.Entities;
 
 namespace SapoProject.Areas.Admin.Controllers
 {

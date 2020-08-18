@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SapoProject.Areas.Admin.Models.Entities
+namespace SapoProject.Model.Entities
 {
-    public class Category
+    public class ParentCategory
     {
         public int CategoryId { set; get; }
         public String CategoryName { set; get; }
@@ -15,8 +15,5 @@ namespace SapoProject.Areas.Admin.Models.Entities
         public int ParentId { set; get; }
         public String imageURL { set; get; }
         public int Status { set; get; }
-
-
-        public List<Product> Products { set; get; }
     }
 }

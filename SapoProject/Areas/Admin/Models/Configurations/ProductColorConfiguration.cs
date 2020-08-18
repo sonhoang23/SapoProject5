@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using SapoProject.Model.Entities;
 namespace SapoProject.Areas.Admin.Models.Configurations
 {
     public class ProductColorConfiguration : IEntityTypeConfiguration<ProductColor>

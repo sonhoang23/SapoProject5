@@ -1,9 +1,8 @@
-
-using SapoProject.Models.Entities;
+using SapoProject.Model.Entities;
 
 namespace SapoProject.Areas.Customer.Models.Entities
 {
-    public class ProductDislay:RootProduct
+    public class ProductDislay:Product
     {
        public int CustomerRole{set;get;}
     }

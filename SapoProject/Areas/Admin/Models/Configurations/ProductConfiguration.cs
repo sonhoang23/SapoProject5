@@ -1,10 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SapoProject.Areas.Admin.Models.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using SapoProject.Model.Entities;
 
 namespace SapoProject.Areas.Admin.Models.Configurations
 {
@@ -24,6 +21,7 @@ namespace SapoProject.Areas.Admin.Models.Configurations
             builder.Property(x => x.Status).IsRequired();
             builder.Property(x => x.CategoryId).IsRequired();
             builder.HasOne<Category>(s => s.Category).WithMany(g => g.Products).HasForeignKey(s => s.CategoryId);
+            builder.HasOne<OrderDetail>(s => s.OrderDetail).WithOne(ad => ad.Product).HasForeignKey<OrderDetail>(ad => ad.ProductId);
         }
     }
 }

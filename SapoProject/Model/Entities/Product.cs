@@ -1,12 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace SapoProject.Models.Entities
+
+namespace SapoProject.Model.Entities
 {
-    public class RootProduct
+    public class Product
     {
         public int Id { set; get; }
         public String ProductName { set; get; }
@@ -21,7 +19,10 @@ namespace SapoProject.Models.Entities
         [DataType(DataType.Date)]
         public DateTime CreatedDate { set; get; }
         public DateTime FixedDate { set; get; }
-       
 
+        public int Status { set; get; }
+        public int CategoryId { get; set; }
+        public Category Category { set; get; }
+        public OrderDetail OrderDetail { set; get; }
     }
 }

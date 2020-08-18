@@ -1,10 +1,6 @@
 using System;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SapoProject.Areas.Admin.Models.DTO;
-using SapoProject.Areas.Admin.Models.Entities;
-using SapoProject.Areas.Admin.Repository.Interface;
+using SapoProject.Model.Entities;
 using SapoProject.Areas.Customer.Repository.Interface;
 
 namespace SapoProject.Areas.Customer.Controllers
@@ -20,7 +16,7 @@ namespace SapoProject.Areas.Customer.Controllers
 
         [HttpGet]
         public ActionResult Index(int? pageNumber, String? name)
-        {
+     {
             if (name == null)
             {
                 ViewBag.listPagedProduct = _customerRepository.GetListProductWithDetail(pageNumber);
@@ -40,6 +36,18 @@ namespace SapoProject.Areas.Customer.Controllers
             Product product = _customerRepository.GetProductByID(id);
             return View(product);
         }
+       /*   public JsonResult OnPostProduct()
+           {
+               return new JsonResult("Hello Response Back");
+           }    */
+        [HttpGet]
+        public ActionResult OnPostProduct(int? pageNumber, String name1)
+        {
+            ViewBag.listPagedProduct = _customerRepository.GetListProductWithDetailByCategoryName(pageNumber, name1);
+            ViewBag.CategoryName = name1;
+            return PartialView("_PartialView_MenuProduct");
+        }   
+      
     }
 
 }
