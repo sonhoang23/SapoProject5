@@ -34,13 +34,13 @@
 				<div class="thumbnail product-box">
 					<img src=@item.FilePath>
 					<div class="caption">
-						<h4 style="height:50px"><a href="#">@item.ProductName</a></h4>
+						<h4 style="height:50px"><a asp-controller="Customer" asp-action="ProductDetail" asp-route-id="@item.Id" >@item.ProductName</a></h4>
 						<p>Price : <strong>@item.Price</strong>  </p>
 						<button type="button" style="height: inherit; width:100%" class="btn btn-info" data-toggle="collapse" data-target="#longDescription_@item.Id">Brief of Product</button>
 						<div id="longDescription_@item.Id" style="margin-top:20px; margin-bottom:20px" class="collapse">
 							<p>	@Html.Raw(@item.ShortDescription)</p>
 						</div>
-						<p><a href="#" class="btn btn-success" role="button">Add To Cart</a> <a asp-controller="Customer" asp-action="ProductDetail" asp-route-id="@item.Id" class="btn btn-primary" role="button">See Details</a></p>
+						<p><a asp-controller="Product" asp-action="AddToCart" asp-route-id="@item.Id"  class="btn btn-success" role="button">Add To Cart</a> <a asp-controller="Customer" asp-action="ProductDetail" asp-route-id="@item.Id" class="btn btn-primary" role="button">See Details</a></p>
 					</div>
 				</div>
 			</div>

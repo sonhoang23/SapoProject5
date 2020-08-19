@@ -1,5 +1,4 @@
 using SapoProject.Areas.Admin.Models.DTO;
-using SapoProject.Areas.Admin.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

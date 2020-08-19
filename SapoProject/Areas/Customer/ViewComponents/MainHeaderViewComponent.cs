@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using SapoProject.Areas.Customer.Repository.Interface;
 using System.Threading.Tasks;
 
@@ -17,8 +18,9 @@ namespace SapoProject.Areas.Customer.ViewComponents
          int maxPriority, bool isDone)
         {
             string MyView = "_PartialView_Header";
-            return  View(MyView);
+            return View(MyView);
+
         }
-       
+
     }
 }

@@ -1,4 +1,4 @@
-using SapoProject.Areas.Admin.Models.Data;
+using SapoProject.Model.Data;
 using SapoProject.Model.Entities;
 using SapoProject.Areas.Customer.Repository.Interface;
 using System.Collections.Generic;

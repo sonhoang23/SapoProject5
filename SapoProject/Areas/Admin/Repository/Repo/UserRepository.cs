@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SapoProject.Areas.Admin.Models.Data;
+using SapoProject.Model.Data;
 using SapoProject.Areas.Admin.Models.DTO;
 using SapoProject.Model.Entities;
 using SapoProject.Areas.Admin.Repository.Interface;

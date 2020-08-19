@@ -14,8 +14,8 @@ namespace SapoProject.Model.Entities
         public DateTime DateCompleted { set; get; }
 
         //User entity
-        public int UserId { set; get; }
-        public User User { set; get; }
+        public int ClientId { set; get; }
+        public Client Client { set; get; }
 
          //OrderDetail
         public List<OrderDetail> OrderDetails { set; get; }

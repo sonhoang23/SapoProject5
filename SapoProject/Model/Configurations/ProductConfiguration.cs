@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SapoProject.Areas.Admin.Models.Entities;
 using SapoProject.Model.Entities;
 
-namespace SapoProject.Areas.Admin.Models.Configurations
+namespace SapoProject.Model.Configurations
 {
     public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {

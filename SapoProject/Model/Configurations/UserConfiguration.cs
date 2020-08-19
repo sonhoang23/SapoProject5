@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SapoProject.Areas.Admin.Models.Configurations
+namespace SapoProject.Model.Configurations
 {
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {

@@ -1,14 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SapoProject.Areas.Admin.Models.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using SapoProject.Areas.Admin.Models.DTO;
-using SapoProject.Areas.Admin.Models.Configurations;
+using SapoProject.Model.Configurations;
 using SapoProject.Model.Entities;
 
-namespace SapoProject.Areas.Admin.Models.Data
+namespace SapoProject.Model.Data
 {
     public class SapoProjectDbContext : DbContext
     {
@@ -22,21 +16,18 @@ namespace SapoProject.Areas.Admin.Models.Data
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
             modelBuilder.ApplyConfiguration(new OrderDetailConfiguration());
+            modelBuilder.ApplyConfiguration(new ClientConfiguration());
             // modelBuilder.ApplyConfiguration(new ProductColorConfiguration());
             base.OnModelCreating(modelBuilder);
         }
-
+        public DbSet<Client> Client { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<WebInfor> WebInfor { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<OrderDetail> OrderDetail { get; set; }
-        //   public DbSet<ProductClient> ProductClient { get; set; }
-        // public DbSet<SapoProject.Areas.Admin.Models.DTO.CategoryEdit> CategoryUpdate { get; set; }
-        //   public DbSet<ProductClient> ProductClient { get; set; }
-        // public DbSet<CategoryCreate> CategoryCreate { get; set; }
-        // public DbSet<ProductColorConfiguration> ProductColorConfiguration { get; set; }
+  
     }
 
 }

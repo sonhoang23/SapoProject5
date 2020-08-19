@@ -6,74 +6,95 @@
 <div class="col-sm-8" style="margin-left:50px" id="BodyInfo">
 	<div class="row">
 		<h1>Trang Thông tin chi tiết</h1>
-
-		<div>
-			<h4>Sản phẩm @Model.ProductName</h4>
-			<hr />
-			<div class="col-md-13">
-				<div class="col">
-					<div class="row">
-						<div class="col-md-6">
-							<img src="@Model.FilePath" />
-						</div>
-						<div class="col-md-6">
-							<div class="col">
-								<div class="row" style="margin-left:0px">
-									<h2>@Html.DisplayFor(model => model.ProductName)</h2>
-								</div>
-								<div class="row" style="margin-top:10px;margin-left:0px">
-									<h3 style="color:red">
-										@Model.Price
-									</h3>
-									<div class="font-italic" style="margin-left:20px">
-										<h5>
-											<del>
-												@Model.OriginalPrice
-											</del>
-										</h5>
+		<form asp-action="AddToOrder" asp-controller="Product" method="post">
+			<div>
+				<h4>Sản phẩm @Model.ProductName</h4>
+				<hr />
+				<div class="col-md-13">
+					<div class="col">
+						<div class="row">
+							<div class="col-md-6">
+								<img src="@Model.FilePath" />
+							</div>
+							<div class="col-md-6">
+								<div class="col">
+									<div class="row" style="margin-left:0px">
+										<h2>@Html.DisplayFor(model => model.ProductName)</h2>
 									</div>
-								</div>
-								<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#shortDescription">Brief of Product</button>
-								<div id="shortDescription" style="margin-top:20px; margin-bottom:20px" class="collapse">
-									@Html.Raw(@Model.ShortDescription)
-								</div>
-
-								<div>
-									<div class="form-group" style="margin-top:20px; height:auto">
-										<input type="number" min="0" placeholder="Quantity" />
-									</div>
-								</div>
-								<div class="row" style="margin-left:auto">
-									<div class="form-group" style="margin-top:20px">
-										<button type="button" class="btn btn-success">Add to card</button>
-
-										<button type="button" class="btn btn-success">Buy Now</button>
-									</div>
-								</div>
-								<div style="border-width: 1px !important" class="border border-warning">
-									<h5>Do you need to be advised that you should to chose?</h5>
-									<h5>contact with us now or enter your phone number or email below!</h5>
-									<div class="row" style="margin-left: auto">
-										<div class="form-group" style="margin-top:20px">
-											<input style="width:300px;height:initial " type="text" min="0" placeholder="Phone Number or Email" />
-											<button type="button" class="btn btn-primary">Contact Me Now</button>
+									<div class="row" style="margin-top:10px;margin-left:0px">
+										<h3 style="color:red">
+											@Model.Price
+										</h3>
+										<div class="font-italic" style="margin-left:20px">
+											<h5>
+												<del>
+													@Model.OriginalPrice
+												</del>
+											</h5>
 										</div>
 									</div>
+									<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#shortDescription">Brief of Product</button>
+									<div id="shortDescription" style="margin-top:20px; margin-bottom:20px" class="collapse">
+										@Html.Raw(@Model.ShortDescription)
+									</div>
+									<div>
+										<div style="margin-top:20px; height:auto">
+											<div class="form-group">
+												<input asp-for="Id" class="form-control" />
+
+												<input class="form-control" type="number" data-val="true" id="quantity" name="quantity" min="0" placeholder="Quantity" />
+											</div>
+										</div>
+									</div>
+									<div class="row" style="margin-left:auto">
+										<div style="margin-top:20px">
+											<button type="submit" class="btn btn-success" asp-action="AddToOrder" asp-controller="Product" asp-route-id="@Model.Id">Add to card</button>
+
+											<button type="submit" class="btn btn-success">Buy Now</button>
+										</div>
+									</div>
+									<div style="border-width: 1px !important" class="border border-warning">
+										<h5>Do you need to be advised that you should to chose?</h5>
+										<h5>contact with us now or enter your phone number or email below!</h5>
+										<div class="row" style="margin-left: auto">
+											<div class="form-group" style="margin-top:20px">
+												<input style="width:300px;height:initial " type="text" min="0" placeholder="Phone Number or Email" />
+												<button type="button" class="btn btn-primary">Contact Me Now</button>
+											</div>
+										</div>
+									</div>
+
 								</div>
 
 							</div>
-
 						</div>
 					</div>
-				</div>
-				<hr />
-				<h2>Click to see more about this product!</h2>
-				<button type="button" style="height: inherit; width:100%" class="btn btn-info" data-toggle="collapse" data-target="#longDescription">Brief of Product</button>
-				<div id="longDescription" style="margin-top:20px; margin-bottom:20px" class="collapse">
-					@Html.Raw(@Model.EntireDescription)
+					<hr />
+					<h2>Click to see more about this product!</h2>
+					<button type="button" style="height: inherit; width:100%" class="btn btn-info" data-toggle="collapse" data-target="#longDescription">Brief of Product</button>
+					<div id="longDescription" style="margin-top:20px; margin-bottom:20px" class="collapse">
+						@Html.Raw(@Model.EntireDescription)
+					</div>
 				</div>
 			</div>
-		</div>
-
+		</form>
 	</div>
+
 </div>
+
+<form>
+	<div class="form-group">
+		<label for="exampleInputEmail1">Email address</label>
+		<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+		<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	</div>
+	<div class="form-group">
+		<label for="exampleInputPassword1">Password</label>
+		<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+	</div>
+	<div class="form-check">
+		<input type="checkbox" class="form-check-input" id="exampleCheck1">
+		<label class="form-check-label" for="exampleCheck1">Check me out</label>
+	</div>
+	<button type="submit" class="btn btn-primary" asp-action="AddToOrder" asp-controller="Customer">Submit</button>
+</form>

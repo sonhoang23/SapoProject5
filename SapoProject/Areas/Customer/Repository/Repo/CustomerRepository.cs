@@ -1,11 +1,15 @@
-using Microsoft.Data.SqlClient;
-using SapoProject.Areas.Admin.Models.Data;
+using SapoProject.Model.Data;
 using SapoProject.Model.Entities;
 using SapoProject.Model;
 using SapoProject.Areas.Customer.Repository.Interface;
 using System;
 using System.Linq;
 using X.PagedList;
+using SapoProject.Areas.Customer.Models.DTO;
+using Microsoft.Data.SqlClient;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
 namespace SapoProject.Areas.Customer.Repository.Repo
 {
     public class CustomerRepository : ICustomerRepository
@@ -26,36 +30,27 @@ namespace SapoProject.Areas.Customer.Repository.Repo
         {
 
         }
-        /*   public List<ProductClient> GetListProductWithDetail()
-           {
-               String sql = "SELECT * FROM Product";
-               List<ProductClient> productClients = new List<ProductClient>();
-               using (SqlConnection connection = new SqlConnection(ConnectionString.GetConnectionString()))
-               {
-                   connection.Open();
-                   SqlCommand command = new SqlCommand(sql, connection);
-                   using (SqlDataReader reader = command.ExecuteReader())
-                   {
-                       while (reader.Read())
-                       {
-                           ProductClient product = new ProductClient();
-                           product.Id = reader.GetInt32(1);
-                           product.ProductName = reader.GetString(1).ToString();
-                           product.Price = reader.GetString(2).ToString();
-                           product.OriginalPrice = reader.GetString(3).ToString();
-                           product.ShortDescription = reader.GetString(4).ToString();
-                           product.EntireDescription = reader.GetString(5).ToString();
-                           product.ViewCount = reader.GetInt32(6);
-                           product.CreatedDate = reader.GetDateTime(7);
-                           product.FixedDate = reader.GetDateTime(8);
-                           product.FilePath = reader.GetString(10).ToString();
-                           productClients.Add(product);
-                       }
-                   }
-               }
-               return productClients;
+        public int LoginUser(ClientLogin clientLogin)
+        {
+            User user = new User();
 
-           }*/
+            var userCheck = _context.Client.Where(n => n.ClientAccount == clientLogin.clientAccount && n.ClientPassWord == clientLogin.clientPassWord);
+            if (userCheck.Count() > 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        public int GetUserStatusByUserAccount(string userAccount)
+        {
+            int userStatus = (from Client in _context.Client
+                              where Client.ClientAccount == userAccount
+                              select Client.Status).First();
+            return userStatus;
+        }
         public IPagedList<Product> GetListProductWithDetail(int? page)
         {
              var pageNumber = page ?? 1;
@@ -118,9 +113,63 @@ namespace SapoProject.Areas.Customer.Repository.Repo
         {
             return _context.Product.Find(productID);
         }
-        public void Save()
+        public async Task<int> CreateClient(ClientRegister clientRegister)
+        {
+            Client client = new Client();
+            if (clientRegister.userPassWord == clientRegister.userPassWordAgain && clientRegister.userPassWord != null)
+            {
+                if (!await _context.Client.AnyAsync(i => i.ClientAccount == clientRegister.userAccount))
+                {
+                    client.CustomerName = clientRegister.userName;
+                    client.PhoneNumber = clientRegister.phoneNumber;
+                    client.Address = clientRegister.address + "-" + clientRegister.district + "-" + clientRegister.city + "-" + clientRegister.country;
+                    client.Age = clientRegister.age;
+                    client.Sex = clientRegister.sex;
+                    client.Email = clientRegister.email;
+                    client.EmailReset = clientRegister.emailReset;
+                    client.ClientAccount = clientRegister.userAccount;
+                    client.ClientPassWord = clientRegister.userPassWord;
+                    client.Status = 1;
+                    await _context.Client.AddAsync(client);
+                    await _context.SaveChangesAsync();
+                    return 1;
+                }
+                return 2;
+            }
+            else
+            {
+                return 3;
+            }
+        }
+        public int GetClientIdByClientAccout(string clientAccount)
+        {
+            int Id;
+            String sql = "SELECT Id FROM Client where ClientAccount = @clientAccount";
+
+            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
+            {
+                SqlCommand command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@clientAccount", clientAccount);
+                connection.Open();
+                // command.ExecuteReader();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        Id = reader.GetInt32(0);
+                        return Id;
+                    }
+
+                }
+
+            }
+            return 0;
+        }
+            public void Save()
         {
             throw new NotImplementedException();
         }
+
     }
 }

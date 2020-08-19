@@ -23,12 +23,14 @@
     <Compile Remove="Migrations\20200805031400_update_category.Designer.cs" />
     <Compile Remove="Migrations\20200805032228_update_category.cs" />
     <Compile Remove="Migrations\20200805032228_update_category.Designer.cs" />
+    <Compile Remove="Migrations\20200819031744_Create_Customer.cs" />
+    <Compile Remove="Migrations\20200819031744_Create_Customer.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Areas\Customer\Views\Shared\Components\MenuLeftSide\_PartialView_ListMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Areas\Customer\Views\Shared\Components\ListMenu\_PartialView_ListMenu.cshtml" />
+    <None Include="Areas\Customer\Views\Shared\Components\ListMenuHeader\_PartialView_ListMenuHeader.cshtml" />
     <None Include="wwwroot\Assest\dist\assets\demo\chart-area-demo.js" />
     <None Include="wwwroot\Assest\dist\assets\demo\chart-bar-demo.js" />
     <None Include="wwwroot\Assest\dist\assets\demo\chart-pie-demo.js" />
@@ -240,8 +242,6 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\Entities\" />
     <Folder Include="Areas\Customer\Data\" />
-    <Folder Include="Areas\Customer\Models\" />
-    <Folder Include="Areas\Customer\Models\Entities\" />
     <Folder Include="Uploads\" />
     <Folder Include="wwwroot\ProductImages\" />
   </ItemGroup>

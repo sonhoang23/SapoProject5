@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SapoProject.Model.Entities;
 
-namespace SapoProject.Areas.Admin.Models.Configurations
+namespace SapoProject.Model.Configurations
 {
     public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {

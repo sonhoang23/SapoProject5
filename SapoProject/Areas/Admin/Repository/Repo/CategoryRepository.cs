@@ -1,5 +1,5 @@
 using Microsoft.Data.SqlClient;
-using SapoProject.Areas.Admin.Models.Data;
+using SapoProject.Model.Data;
 using SapoProject.Areas.Admin.Models.DTO;
 using SapoProject.Areas.Admin.Repository.Interface;
 using System;

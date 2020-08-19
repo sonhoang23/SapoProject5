@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SapoProject.Areas.Admin.Models.Data;
+using SapoProject.Model.Data;
 using SapoProject.Areas.Admin.Repository.Interface;
 using SapoProject.Areas.Admin.Repository.Repo;
 using SapoProject.Areas.Customer.Repository.Interface;
@@ -61,6 +61,7 @@ namespace SapoProject
             services.AddTransient<ISharedRepository, SharedRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<ISharedCustomerRepository, SharedCustomerRepository>();
+            services.AddTransient<IProductCustomerRepository, ProductCustomerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

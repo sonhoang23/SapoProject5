@@ -1,12 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SapoProject.Areas.Admin.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SapoProject.Model.Entities;
-namespace SapoProject.Areas.Admin.Models.Configurations
+namespace SapoProject.Model.Configurations
 {
     public class ProductColorConfiguration : IEntityTypeConfiguration<ProductColor>
     {

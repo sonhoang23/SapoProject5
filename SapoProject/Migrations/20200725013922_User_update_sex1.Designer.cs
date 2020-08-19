@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SapoProject.Areas.Admin.Models.Data;
+using SapoProject.Model.Data;
 
 namespace SapoProject.Migrations
 {

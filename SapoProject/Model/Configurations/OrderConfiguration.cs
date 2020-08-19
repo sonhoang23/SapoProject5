@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SapoProject.Areas.Admin.Models.Configurations
+namespace SapoProject.Model.Configurations
 {
     public class OrderConfiguration : IEntityTypeConfiguration<Order>
     {
@@ -19,7 +19,7 @@ namespace SapoProject.Areas.Admin.Models.Configurations
                 builder.Property(x => x.Status).HasMaxLength(50).IsRequired();
                 builder.Property(x => x.DateCreated).IsRequired();
                 builder.Property(x => x.DateCompleted).IsRequired();
-                builder.HasOne<User>(s => s.User).WithMany(g => g.Order).HasForeignKey(s => s.UserId);
+                builder.HasOne<Client>(s => s.Client).WithMany(g => g.Order).HasForeignKey(s => s.ClientId);
 
             }
         }
