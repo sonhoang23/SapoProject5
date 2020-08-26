@@ -110,6 +110,7 @@
     <PackageReference Include="Microsoft.jQuery.Unobtrusive.Validation" Version="3.2.11" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Microsoft.Web.Administration" Version="11.1.0" />
+    <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
     <PackageReference Include="WestWind.AspnetCore.LiveReload" Version="0.2.5" />
     <PackageReference Include="X.PagedList.Mvc.Core" Version="8.0.7" />
     

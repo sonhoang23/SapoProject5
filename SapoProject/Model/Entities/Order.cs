@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SapoProject.Model.Entities
 {
-    public class Order
+    public class OrderClient
     {
         public int OrderId { set; get; }
         

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using SapoProject.Areas.Customer.Models.DTO;
 using SapoProject.Model.Entities;
@@ -18,6 +19,7 @@ namespace SapoProject.Areas.Customer.Repository.Interface
         int GetClientIdByClientAccout(string clientAccount);
         void Save();
         void Dispose();
-
+        void UpdateProductViewCount(int id);
+        IPagedList<Product> MainSearch(string? search, int? page);
     }
 }

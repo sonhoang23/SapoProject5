@@ -11,7 +11,7 @@ namespace SapoProject.Model.Configurations
             builder.ToTable("Product");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
-            builder.Property(x => x.ProductName).HasMaxLength(50).IsRequired();
+            builder.Property(x => x.ProductName).IsRequired();
             builder.Property(x => x.Price).HasColumnType("varchar").HasMaxLength(50).IsRequired();
             builder.Property(x => x.OriginalPrice).HasColumnType("varchar").HasMaxLength(50).IsRequired();
             builder.Property(x => x.ShortDescription).IsRequired();

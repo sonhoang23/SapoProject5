@@ -1,12 +1,19 @@
 ﻿<nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<a class="navbar-brand" asp-controller="Customer" asp-action="index"><strong>Sapo Project</strong></a>
+		<div class="row">
+			<div class="col-lg-3">
+				<div class="navbar-header">
+					<a class="navbar-brand" asp-controller="Customer" asp-action="index"><strong>Sapo Project</strong></a>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				@await Component.InvokeAsync("MainSearch")
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="col-lg-3">
+				@await Component.InvokeAsync("ListMenuHeader")
+			</div>
 		</div>
-
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		@await Component.InvokeAsync("ListMenuHeader")
 		<!-- /.navbar-collapse -->
 	</div>
 	<!-- /.container-fluid -->

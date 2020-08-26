@@ -10,7 +10,7 @@ using SapoProject.Model.Entities;
 
 namespace SapoProject.Areas.Admin.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
         private readonly ICategoryRepository _categoryRepository;
         public CategoryController(ICategoryRepository categoryRepository)
@@ -36,23 +36,13 @@ namespace SapoProject.Areas.Admin.Controllers
             {
                 if (categoryCreate == null)
                 {
-                    return RedirectToAction(actionName: "NoFound", controllerName: "Share");
+                    return RedirectToAction(actionName: "NoFound", controllerName: "Shared");
                 }
                 else
                 {
                     try
                     {
-                        try
-                        {
-                            if (categoryCreate.Photo != null)
-                            {
-                                await _categoryRepository.CreateCategory(categoryCreate);
-                            }
-                        }
-                        catch
-                        {
-
-                        }
+                        await _categoryRepository.CreateCategory(categoryCreate);
                     }
                     catch (DbUpdateConcurrencyException)
                     {
@@ -63,7 +53,12 @@ namespace SapoProject.Areas.Admin.Controllers
                     return RedirectToAction("Create");
                 }
             }
-            return View(categoryCreate);
+            else
+            {
+                ViewBag.ParentCategoryName = _categoryRepository.GetParentCategoryName();
+                return View(categoryCreate);
+            }
+            // return RedirectToAction(actionName: "NoFound", controllerName: "Shared");
         }
         [HttpGet]
         public ActionResult ListAllCategory()
@@ -76,6 +71,7 @@ namespace SapoProject.Areas.Admin.Controllers
         }
 
         // GET: Product/ProductDetailDetails/5
+        [HttpGet]
         public ActionResult DetailCategory(int CategoryId)
         {
             return View(_categoryRepository.GetCategoryByID(CategoryId));
@@ -88,7 +84,7 @@ namespace SapoProject.Areas.Admin.Controllers
             return View(_categoryRepository.GetCategoryEditByID(id));
         }
         //POST: 
-         [HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(CategoryEdit categorytEdit)
         {
@@ -96,7 +92,7 @@ namespace SapoProject.Areas.Admin.Controllers
             {
                 try
                 {
-                   await _categoryRepository.UpdateCategory(categorytEdit);
+                    await _categoryRepository.UpdateCategory(categorytEdit);
                     return RedirectToAction(actionName: "GetListProductWithDetail", controllerName: "Product");
                 }
                 catch (DbUpdateConcurrencyException)
@@ -108,7 +104,9 @@ namespace SapoProject.Areas.Admin.Controllers
             }
             else
             {
-                return RedirectToAction(actionName: "NoFound", controllerName: "Share");
+                ViewBag.ParentCategoryNameEdit = _categoryRepository.GetParentCategoryNameOrderByChildCatgory(categorytEdit.Id);
+
+                return View(categorytEdit);
             }
         }
         // GET: Product/Delete/5

@@ -19,7 +19,7 @@ namespace SapoProject.Model.Configurations
                 builder.Property(x => x.Quantity).HasMaxLength(50).IsRequired();
                 builder.Property(x => x.DateCreated).HasColumnType("DateTime").IsRequired();
                 builder.Property(x => x.Status).IsRequired();
-                builder.HasOne<Order>(s => s.Order).WithMany(g => g.OrderDetails).HasForeignKey(s => s.OrderId);
+                builder.HasOne<OrderClient>(s => s.OrderClient).WithMany(g => g.OrderDetails).HasForeignKey(s => s.OrderClientId);
                 
             }
         }

@@ -36,8 +36,17 @@ namespace SapoProject.Areas.Customer.Controllers
         [HttpGet]
         public ActionResult ProductDetail(int id)
         {
+            _customerRepository.UpdateProductViewCount(id);
             Product product = _customerRepository.GetProductByID(id);
-            return View(product);
+            if (product == null)
+            {
+                return RedirectToAction(actionName: "NoFound", controllerName: "Shared");
+            }
+            else
+            {
+                return View(product);
+            }
+
         }
         /*   public JsonResult OnPostProduct()
             {
@@ -75,20 +84,24 @@ namespace SapoProject.Areas.Customer.Controllers
                 if (_customerRepository.LoginUser(clientLogin) == 0)
                 {
                     ViewBag.Title = "Login To Sapo";
+                    TempData["Message"] = "No Found Account or Input Wrong Password";
                     return RedirectToAction(actionName: "Login", controllerName: "Customer");
                 }
             }
             else
             {
+                @ViewBag.Title = "Login to Sapo Project";
                 return View(clientLogin);
             }
-            return RedirectToAction(actionName: "Login", controllerName: "User");
+            return RedirectToAction(actionName: "Login", controllerName: "Customer");
         }
         [HttpGet]
-        public ActionResult LogOut()
+        public ActionResult Logout()
         {
-            HttpContext.Session.Remove("username");
-            return RedirectToAction(actionName: "Login", controllerName: "User");
+            HttpContext.Session.Remove("clientAccount");
+            HttpContext.Session.Remove("status");
+            HttpContext.Session.Remove("Id");
+            return RedirectToAction(actionName: "Login", controllerName: "Customer");
 
         }
         //return View();
@@ -106,17 +119,32 @@ namespace SapoProject.Areas.Customer.Controllers
                 HttpContext.Session.SetString("clientAccount", clientRegister.userAccount);
                 HttpContext.Session.SetInt32("status", 1);
 
+                HttpContext.Session.SetString("clientAccount", clientRegister.userAccount);
+                HttpContext.Session.SetInt32("status", _customerRepository.GetUserStatusByUserAccount(clientRegister.userAccount));
+                HttpContext.Session.SetInt32("Id", _customerRepository.GetClientIdByClientAccout(clientRegister.userAccount));
+
+
                 return RedirectToAction(actionName: "Index", controllerName: "Customer");
             }
             if (await _customerRepository.CreateClient(clientRegister) == 2)
             {   //trùng acc
-                return RedirectToAction(actionName: "Register", controllerName: "Customer");
+                TempData["Message"] = "Have Account Already";
+                return View(clientRegister);
             }
             if (await _customerRepository.CreateClient(clientRegister) == 3)
             {   //sai mk xác nhận
-                return RedirectToAction(actionName: "Register", controllerName: "Customer");
+                TempData["Message"] = "Please match 2 Password";
+                return View(clientRegister);
             }
-            return RedirectToAction(actionName: "Register", controllerName: "Customer");
+            return View(clientRegister);
+        }
+        [HttpGet]
+        public ActionResult MainSearch(String? search, int? page)
+        {
+            ViewBag.listPagedProduct = _customerRepository.MainSearch(search, page);
+            ViewBag.CategoryName = name;
+            return View("Index"); 
+
         }
 
     }

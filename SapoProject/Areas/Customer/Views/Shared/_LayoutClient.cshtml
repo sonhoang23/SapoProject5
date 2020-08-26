@@ -11,24 +11,29 @@
 	<!-- Fontawesome core CSS -->
 	<link href="/ClientAssest/css/font-awesome.min.css" rel="stylesheet" />
 	<!--GOOGLE FONT -->
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	<!--Slide Show Css -->
-	<link href="./ClientAssest/ItemSlider/css/main-style.css" rel="stylesheet" />
+	<link href="/ClientAssest/ItemSlider/css/main-style.css" rel="stylesheet" />
 	<!-- custom CSS here -->
-	<link href="./ClientAssest/css/style.css" rel="stylesheet" />
-
+	<link href="/ClientAssest/css/style.css" rel="stylesheet" />
+	<link href="~/css/MainStyleSheet.css" rel="stylesheet" />
+	<script src="~/js/MainJavaScript.js"></script>
 </head>
 <body>
+
 	@await Component.InvokeAsync("MainHeader")
-	<!-- <partial name="_PartialView_SlideProduct.cshtml" />-->
+
+	<div class="d-flex justify-content-center">
+		<partial name="_PartialView_SlideProduct.cshtml" />
+	</div>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-3">
 				@await Component.InvokeAsync("LeftSide")
 			</div>
-
-			@RenderBody()
-
+			<div class="col-sm-9">
+				@RenderBody()
+			</div>
 		</div>
 	</div>
 	<!--Footer -->
@@ -41,12 +46,10 @@
 	<!--Slider JavaScript file  -->
 	<script src="/ClientAssest/ItemSlider/js/modernizr.custom.63321.js"></script>
 	<script src="/ClientAssest/ItemSlider/js/jquery.catslider.js"></script>
-	<script>
-		$(function () {
-			$('#mi-slider').catslider();
-		});
-	</script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="~/lib/jquery/dist/jquery.js"></script>
 </body>
 
 

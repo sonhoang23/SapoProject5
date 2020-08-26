@@ -18,7 +18,7 @@ namespace SapoProject.Model.Entities
         public String ClientPassWord { set; get; }
         public int ClientRole { set; get; }
         public int Status { set; get; }
-        public List<Order> Order { set; get; }
+        public List<OrderClient> OrderClient { set; get; }
 
     }
 }

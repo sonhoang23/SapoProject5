@@ -1,0 +1,82 @@
+﻿@model IEnumerable<SapoProject.Areas.Customer.Models.DTO.ProductShowOrderDetail>
+
+@{
+	ViewData["Title"] = "Order";
+	Layout = "_LayoutClient";
+}
+
+<h1>Order</h1>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Image</th>
+			<th>Product Name</th>
+			<th>Price</th>
+			<th>Quantity</th>
+			<th>Total Price</th>
+		</tr>
+	</thead>
+	<tbody>
+		<h3><strong>@TempData["Message"]</strong></h3>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					<div>
+						<img src=@item.FilePath style="width:100px">
+					</div>
+				</td>
+				<td>
+					<h4 style="height:50px"><a asp-controller="Customer" asp-action="ProductDetail" asp-route-id="@item.Id">@item.ProductName</a></h4>
+				</td>
+				<td>
+					<p id="price_@item.Id"></p>@item.Price
+				</td>
+				<td>
+					<input type="number" data-val="true" class="product-quantity" target-price="@item.Price" id="quantity_@item.Id" name="quantity" min="1" value="@item.Quantity">
+
+				</td>
+				<td>
+					<p id="pricebyquantity_@item.Id"></p>@item.PriceByQuantity
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+<div class="col">
+	<h3>General Infomation</h3>
+	<h5>Number of Product: @ViewBag.productCount</h5>
+	<h5>Total Price: @ViewBag.totalPrice</h5>
+	<form asp-action="ApprovalOrder" asp-controller="Product" method="post">
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+		<div class="form-group">
+			<button type="submit">Buy Goods!</button>
+		</div>
+	</form>
+</div>
+
+
+<script type="text/javascript">
+	console.log("dddddddddd");
+	$('.product-quantity').change(function () {
+		console.log("cccccccccc");
+		let price = $(this).attr('target-price');
+		console.log($(this).attr('target-price'));
+		console.log(price);
+		//console.log($(this).val());
+		//console.log(price * $(this).val());
+	});
+</script>
+<script type="text/javascript">
+	console.log("eeeeeeeeeeeeeeeeee");
+	$('.product-quantity').change(function () {
+		console.log("cccccccccc");
+	});
+</script>
+
+<script>
+	$(document).ready(function () {
+		console.log("cccccccccccc");
+	});
+</script>

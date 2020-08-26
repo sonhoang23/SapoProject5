@@ -14,7 +14,7 @@ namespace SapoProject.Model.Data
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
-            modelBuilder.ApplyConfiguration(new OrderConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderClientConfiguration());
             modelBuilder.ApplyConfiguration(new OrderDetailConfiguration());
             modelBuilder.ApplyConfiguration(new ClientConfiguration());
             // modelBuilder.ApplyConfiguration(new ProductColorConfiguration());
@@ -25,7 +25,7 @@ namespace SapoProject.Model.Data
         public DbSet<Product> Product { get; set; }
         public DbSet<WebInfor> WebInfor { get; set; }
         public DbSet<Category> Category { get; set; }
-        public DbSet<Order> Order { get; set; }
+        public DbSet<OrderClient> OrderClient { get; set; }
         public DbSet<OrderDetail> OrderDetail { get; set; }
   
     }

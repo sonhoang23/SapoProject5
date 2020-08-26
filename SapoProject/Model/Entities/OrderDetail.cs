@@ -14,8 +14,8 @@ namespace SapoProject.Model.Entities
         public int Status { set; get; }
 
         //Order
-        public int OrderId { set; get; }
-        public Order Order { set; get; }
+        public int OrderClientId { set; get; }
+        public OrderClient OrderClient { set; get; }
         //Product
         public int ProductId { set; get; }
         public Product Product { set; get; }

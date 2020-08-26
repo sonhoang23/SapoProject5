@@ -9,6 +9,7 @@ using SapoProject.Areas.Customer.Models.DTO;
 using Microsoft.Data.SqlClient;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace SapoProject.Areas.Customer.Repository.Repo
 {
@@ -53,7 +54,7 @@ namespace SapoProject.Areas.Customer.Repository.Repo
         }
         public IPagedList<Product> GetListProductWithDetail(int? page)
         {
-             var pageNumber = page ?? 1;
+            var pageNumber = page ?? 1;
             return _context.Product.Where(x => x.Status == 1).ToList().ToPagedList(pageNumber, 9);
         }
         public String GetCategoryNameById(int Id)
@@ -166,10 +167,71 @@ namespace SapoProject.Areas.Customer.Repository.Repo
             }
             return 0;
         }
-            public void Save()
+        public void Save()
         {
             throw new NotImplementedException();
         }
 
+        public void UpdateProductViewCount(int id)
+        {
+
+            var query =
+    from product in _context.Product
+    where product.Id == id
+    select product;
+
+            foreach (Product product1 in query)
+            {
+                product1.ViewCount = GetProductViewCountByProductId(id) + 1;
+                // Insert any additional changes to column values.
+            }
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                // Provide for exceptions.
+            }
+        }
+
+        private int GetProductViewCountByProductId(int id)
+        {
+            String sql = "SELECT ViewCount FROM Product where Id = @id";
+
+            using (SqlConnection connection = new SqlConnection(GetConnectionString()))
+            {
+                SqlCommand command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@id", id);
+                connection.Open();
+                // command.ExecuteReader();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        int viewCount = reader.GetInt32(0);
+                        return viewCount;
+                    }
+
+                }
+                return 0;
+
+            }
+        }
+
+        public IPagedList<Product> MainSearch(string? search, int? page)
+        {
+            List<Product> products = new List<Product>();
+            var pageNumber = page ?? 1;
+
+            if (!String.IsNullOrEmpty(search))
+            {
+              return _context.Product.Where(s => s.ProductName.Contains(search)).ToList().ToPagedList(pageNumber, 9);
+            }
+
+            return null;
+        }
     }
 }

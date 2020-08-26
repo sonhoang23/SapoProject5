@@ -38,11 +38,13 @@ namespace SapoProject.Areas.Admin.Controllers
                 if (_userRepository.LoginUser(userLogin) == 0)
                 {
                     ViewBag.Title = "Login To Sapo";
+                    TempData["Message"] = "No Found Account or Input Wrong Password";
                     return RedirectToAction(actionName: "Login", controllerName: "User");
                 }
             }
             else
             {
+                @ViewBag.Title = "Login to Sapo Project";
                 return View(userLogin);
             }
             return RedirectToAction(actionName: "Login", controllerName: "User");

@@ -13,9 +13,9 @@ namespace SapoProject.Areas.Customer.Models.DTO
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter the name!")]
         [StringLength(50, MinimumLength = 1)]
         public String clientAccount { set; get; }
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your Pass Word!")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Please enter your PassWord!")]
         [StringLength(50, MinimumLength = 1)]
-        [Display(Name = "User Pass Word")]
+        [Display(Name = "User PassWord")]
         public String clientPassWord { set; get; }
         public bool rememberPassWord { set; get; }
 

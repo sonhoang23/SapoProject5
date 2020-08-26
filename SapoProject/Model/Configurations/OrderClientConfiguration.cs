@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace SapoProject.Model.Configurations
 {
-    public class OrderConfiguration : IEntityTypeConfiguration<Order>
+    public class OrderClientConfiguration : IEntityTypeConfiguration<OrderClient>
     {
-        public void Configure(EntityTypeBuilder<Order> builder)
+        public void Configure(EntityTypeBuilder<OrderClient> builder)
         {
             {
-                builder.ToTable("Order");
+                builder.ToTable("OrderClient");
                 builder.HasKey(x => x.OrderId);
                 builder.Property(x => x.OrderId).UseIdentityColumn();
                 builder.Property(x => x.Status).HasMaxLength(50).IsRequired();
                 builder.Property(x => x.DateCreated).IsRequired();
                 builder.Property(x => x.DateCompleted).IsRequired();
-                builder.HasOne<Client>(s => s.Client).WithMany(g => g.Order).HasForeignKey(s => s.ClientId);
+                builder.HasOne<Client>(s => s.Client).WithMany(g => g.OrderClient).HasForeignKey(s => s.ClientId);
 
             }
         }

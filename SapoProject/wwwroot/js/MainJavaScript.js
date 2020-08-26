@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
 	CKEDITOR.replace("noidung");
 	$("#selectImg").click(function () {
-		console.log("adhajdjasdbjasdajdajdnajdnsaj");
 		var finder = new CKFinder();
 		finder.selectActionFunction = function (baseUrl) {
 			baseUrl = baseUrl.substring(baseUrl.lastIndexOf("/") + 1);
@@ -33,4 +32,8 @@ function readURL(input) {
 		reader.readAsDataURL(input.files[0]);
 	}
 }
+
+$(document).ready(function () {
+	console.log("11111111111111111");
 	
+});

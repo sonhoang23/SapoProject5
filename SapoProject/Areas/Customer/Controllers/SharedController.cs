@@ -10,6 +10,12 @@ namespace SapoProject.Areas.Customer.Controllers
         {
             _Repository = customerRepository;
         }
+        [HttpGet]
+        public ActionResult NoFound()
+        {
+            @ViewBag.Title = "Product";
+            return View();
+        }
     }
 
 }

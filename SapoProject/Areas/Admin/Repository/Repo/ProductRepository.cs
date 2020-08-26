@@ -49,14 +49,14 @@ namespace SapoProject.Areas.Admin.Repository.Repo
                 ShortDescription = productCreate.ShortDescription,
                 EntireDescription = productCreate.EntireDescription,
                 FilePath = filePath,
-                CategoryId= GetCategoryIdByCategoryName(productCreate.CategoryName),
+                CategoryId = GetCategoryIdByCategoryName(productCreate.CategoryName),
                 CreatedDate = DateTime.Now,
                 FixedDate = DateTime.Now,
                 Status = 1
             };
-
-            await _context.AddAsync(newProduct);
-            await _context.SaveChangesAsync();
+           
+            _context.Add(newProduct);
+            _context.SaveChanges();
         }
 
         public async Task<IEnumerable<Product>> GetListProductWithDetail()
@@ -107,7 +107,7 @@ namespace SapoProject.Areas.Admin.Repository.Repo
                 OriginalPrice = product.OriginalPrice,
                 ShortDescription = product.ShortDescription,
                 EntireDescription = product.EntireDescription,
-                CategoryName= GetCategoryNameById(product.CategoryId),
+                CategoryName = GetCategoryNameById(product.CategoryId),
                 CreatedDate = product.CreatedDate,
                 FilePath = product.FilePath,
                 FixedDate = product.FixedDate,
@@ -143,7 +143,7 @@ namespace SapoProject.Areas.Admin.Repository.Repo
                     OriginalPrice = productEdit.OriginalPrice,
                     ShortDescription = productEdit.ShortDescription,
                     EntireDescription = productEdit.EntireDescription,
-                    CategoryId=GetCategoryIdByCategoryName(productEdit.CategoryNameEdit),
+                    CategoryId = GetCategoryIdByCategoryName(productEdit.CategoryNameEdit),
                     FilePath = filePath,
                     CreatedDate = productEdit.CreatedDate,
                     FixedDate = DateTime.Now,
