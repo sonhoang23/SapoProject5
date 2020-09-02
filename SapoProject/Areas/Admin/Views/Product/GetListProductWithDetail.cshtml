@@ -4,11 +4,10 @@
 	Layout = "_Layout";
 }
 
-<h1>List Product</h1>
+	<h1>@ViewData["Title"]</h1>
 
 <form>
-
-	<button style="height:auto; width:auto; margin-top:20px;margin-bottom:20px" asp-action="Create" class="btn btn-info">Create New Product</button>
+	<button style="height:auto; width:auto; margin-top:20px;margin-bottom:20px" asp-action="Create" class="btn btn-info">Tạo Mới Sản Phẩm</button>
 </form>
 
 
@@ -21,55 +20,36 @@
 
 		<div class="table-responsive w">
 
-			<table class="table table-bordered table table-hover" id="dataTable" width="50%" cellspacing="0"
+			<table class="table table-bordered table table-hover" id="dataTable" width="100%" cellspacing="0"
 				   data-show-toggle="true"
 				   data-show-refresh="true"
 				   data-pagination-detail-h-align="right">
 				<thead>
 					<tr>
-						<th>Product Name</th>
-						<th>Image</th>
-						<th>Price</th>
-						<th>Original Price</th>
-						<th>View Count</th>
-						<th>Created Date</th>
-						<th>Fixed Date</th>
-						<th>Option</th>
+						<th style="width:20%">Tên Sản Phẩm</th>
+						<th style="width:20%; width:initial">Ảnh Sản Phẩm</th>
+						<th style="width:5%; width:initial">Giá Bán</th>
+						<th style="width:5%; width:initial">Ngày Tạo</th>
+						<th style="width:5%; width:initial">Ngày Chỉnh Sửa</th>
+						<th style="width:20%; width:initial">Tùy Chọn</th>
 					</tr>
 				</thead>
-				<tfoot>
-					<tr>
-						<th>Product Name</th>
-						<th>Image</th>
-						<th>Price</th>
-						<th>Original Price</th>
-						<th>View Count</th>
-						<th>Created Date</th>
-						<th>Fixed Date</th>
-						<th>Option</th>
-					</tr>
-				</tfoot>
 				<tbody>
 					@foreach (var item in Model)
 					{
 						<tr>
 							<td>
-								<div>
+								<div style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical">
 									@Html.DisplayFor(modelItem => item.ProductName)
 								</div>
 							</td>
 							<td>
-								<img src=@item.FilePath style="height:180px">
+								<img src=@item.FilePath style="height:100px">
 							</td>
 							<td>
 								@Html.DisplayFor(modelItem => item.Price)
 							</td>
-							<td style="width:100px">
-								@Html.DisplayFor(modelItem => item.OriginalPrice)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.ViewCount)
-							</td>
+
 							<td>
 								@Html.DisplayFor(modelItem => item.CreatedDate)
 							</td>
@@ -77,12 +57,11 @@
 								@Html.DisplayFor(modelItem => item.FixedDate)
 							</td>
 							<td>
-
 								<form>
 									<div class="col">
-										<button style="height:inherit; width:inherit; margin-top:15px" asp-action="ProductDetail" asp-route-id="@item.Id" class="btn btn-info">Details</button>
-										<button style="height:inherit; width:inherit; margin-top:15px" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</button>
-										<button style="height:inherit; width:inherit; margin-top:15px" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</button>
+										<button style="height:inherit; width:inherit; margin-top:15px" asp-action="ProductDetail" asp-route-id="@item.Id" class="btn btn-info">Chi Tiết</button>
+										<button style="height:inherit; width:inherit; margin-top:15px" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Sửa</button>
+										<button style="height:inherit; width:inherit; margin-top:15px" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Xóa</button>
 									</div>
 								</form>
 

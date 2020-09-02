@@ -20,6 +20,7 @@ namespace SapoProject.Areas.Customer.Repository.Interface
         void Save();
         void Dispose();
         void UpdateProductViewCount(int id);
-        IPagedList<Product> MainSearch(string? search, int? page);
+        IPagedList<Product> GetListProductWithDetailByMainSearch(string? search, int? page); 
+
     }
 }

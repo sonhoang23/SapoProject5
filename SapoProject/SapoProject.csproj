@@ -244,6 +244,7 @@
     <Folder Include="Areas\Admin\Models\Entities\" />
     <Folder Include="Areas\Customer\Data\" />
     <Folder Include="Uploads\" />
+    <Folder Include="wwwroot\Image\Advertisement\ImageSlideShow\" />
     <Folder Include="wwwroot\ProductImages\" />
   </ItemGroup>
 </Project>

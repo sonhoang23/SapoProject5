@@ -17,7 +17,7 @@ namespace SapoProject.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            @ViewBag.Title = "Login to Sapo Project";
+            @ViewBag.Title = "Đăng Nhập Trang Quản Lý Sapo Project";
             return View();
         }
         [HttpPost]

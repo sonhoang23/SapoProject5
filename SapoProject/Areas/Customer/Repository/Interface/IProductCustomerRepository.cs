@@ -16,5 +16,7 @@ namespace SapoProject.Areas.Customer.Repository.Interface
         void UpdateOrderDetail(int orderClientId, ProductAddToOrder product);
         List<ProductShowOrderDetail> GetProductShowOrderDetail(int clientId);
         void ApprovalOrder(int clientId, int OrderId);
+        int CheckProductInOrderDetail(int orderClientId, int productId);
+        void UpdateQuantityInOrderViewByAjax(int orderClientId, int productId, int quantity);
     }
 }

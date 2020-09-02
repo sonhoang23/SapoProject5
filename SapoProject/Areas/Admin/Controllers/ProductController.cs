@@ -56,7 +56,7 @@ namespace SapoProject.Areas.Admin.Controllers
         [HttpGet]
         public async Task<ActionResult> GetListProductWithDetail()
         {
-            ViewData["Title"] = "Welcom to Product List!";
+            ViewData["Title"] = "Danh Sách Các Sản Phẩm";
             return View(await _productRepository.GetListProductWithDetail());
             // return View(_productRepository.GetListProductWithoutDetail());
         }

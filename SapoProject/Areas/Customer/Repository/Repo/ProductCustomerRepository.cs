@@ -92,6 +92,8 @@ namespace SapoProject.Areas.Customer.Repository.Repo
 
         public void UpdateOrderDetail(int orderClientId, ProductAddToOrder product)
         {
+            product.quantity = (0 < 1) ? 1 : 1;
+
             if (CheckProductInOrderDetail(orderClientId, product.Id) == 1)
             {
                 UpdateQuantityProductInOrderDetail(orderClientId, product);
@@ -100,10 +102,8 @@ namespace SapoProject.Areas.Customer.Repository.Repo
             {
                 CreateProductInOrderDetail(orderClientId, product);
             }
-
-
-
         }
+
 
         private void CreateProductInOrderDetail(int orderClientId, ProductAddToOrder product)
         {
@@ -122,11 +122,7 @@ namespace SapoProject.Areas.Customer.Repository.Repo
         private void UpdateQuantityProductInOrderDetail(int orderClientId, ProductAddToOrder product)
         {
             OrderDetail orderDetail = GetOrderDetailByOrderClientIdAndProductId(orderClientId, product.Id);
-
-
             orderDetail.Quantity = orderDetail.Quantity + product.quantity;
-
-            ;
             _context.Update(orderDetail);
             _context.SaveChanges();
         }
@@ -136,7 +132,7 @@ namespace SapoProject.Areas.Customer.Repository.Repo
             return _context.OrderDetail.Where(x => x.Status == 1 && x.OrderClientId == orderClientId && x.ProductId == productId).FirstOrDefault();
         }
 
-        private int CheckProductInOrderDetail(int orderClientId, int productId)
+        public int CheckProductInOrderDetail(int orderClientId, int productId)
         {
             var productOrderDetailCheck = _context.OrderDetail.Where(n => n.OrderClientId == orderClientId && n.ProductId == productId);
             if (productOrderDetailCheck.Count() > 0)
@@ -156,12 +152,12 @@ namespace SapoProject.Areas.Customer.Repository.Repo
             List<ProductShowOrderDetail> productShowOrderDetailsList = new List<ProductShowOrderDetail>();
 
 
-            for (int index = 0; index <= orderDetails.Count()-1; index++)
+            for (int index = 0; index <= orderDetails.Count() - 1; index++)
             {
                 Product product = GetProductByID(orderDetails[index].ProductId);
 
-                char[] arr = {'.'};
-                String stringPrice = product.Price.Replace(".", ""); 
+                char[] arr = { '.' };
+                String stringPrice = product.Price.Replace(".", "");
                 String PriceByQuantity = (Int32.Parse(stringPrice) * orderDetails[index].Quantity).ToString();
                 decimal PriceByQuantityDecimal = decimal.Parse(PriceByQuantity);
                 decimal a = 120202020;
@@ -196,17 +192,26 @@ namespace SapoProject.Areas.Customer.Repository.Repo
         }
         private List<OrderDetail> GetListOrderDetail(int orderClient)
         {
-            return _context.OrderDetail.Where(x => x.Status == 1 && x.OrderClientId==orderClient).ToList();
+            return _context.OrderDetail.Where(x => x.Status == 1 && x.OrderClientId == orderClient).ToList();
         }
 
-        public void ApprovalOrder(int clientId)
-        {
-            throw new NotImplementedException();
-        }
-
+       
         public void ApprovalOrder(int clientId, int OrderId)
         {
-            //_context.Update(product);
+            OrderClient orderClient;
+            orderClient= _context.OrderClient.Where(x => x.Status == 1 && x.ClientId == clientId).FirstOrDefault();
+            orderClient.Status = 2;
+            orderClient.DateCompleted = DateTime.Now;
+            _context.Update(orderClient);
+            _context.SaveChanges();
+        }
+
+        public void UpdateQuantityInOrderViewByAjax(int orderClientId, int productId, int quantity)
+        {
+            OrderDetail orderDetail = GetOrderDetailByOrderClientIdAndProductId(orderClientId, productId);
+            orderDetail.Quantity = quantity;
+            _context.Update(orderDetail);
+            _context.SaveChanges();
         }
     }
 }

@@ -1,15 +1,47 @@
 @model IEnumerable<SapoProject.Model.Entities.Category>
 <div>
-	<a href="#" class="list-group-item active">
-		Electronics
+	<a class="list-group-item active">
+		Category
 	</a>
 	<ul class="list-group">
 		@foreach (var item in Model)
 		{
 			<li class="list-group-item">
-				<a asp-controller="Customer" asp-action="Index" asp-route-name="@item.CategoryName">@item.CategoryName</a>
+				<div class="row">
+					<div class="col-md-4">
+						<a asp-controller="Customer" asp-action="Index" asp-route-categoryName="@item.CategoryName">
+							<img style="height:40px; overflow: hidden" src=@item.imageURL href="@item.">
+						</a>
+					</div>
+					<div class="col-md-8">
+						<a asp-controller="Customer" asp-action="Index" asp-route-categoryName="@item.CategoryName">@item.CategoryName</a>
+					</div>
+				</div>
 			</li>
+
 		}
 	</ul>
+	@*<button onclick="myFunction()">Click me</button>
+		<p id="demo"></p>*@
+
 </div>
-<!-- /.div -->
+
+@*<script>
+		function myFunction() {
+			document.getElementById("demo").innerHTML = "Hello World";
+			$.ajax({
+				type: "GET",
+				url: 'https://localhost:44310/Customer/Customer/TestAjaxMenu',
+				//url: 'https://localhost:44310/Customer/Customer/OnPostProduct',
+
+				success: function (result) {
+					document.getElementById("renderBodyid").innerHTML = result;
+					console.log('my message' + result);
+				},
+				error: function () {
+					alert("Error while inserting data");
+				}
+			});
+			return false;
+		}
+	</script>*@

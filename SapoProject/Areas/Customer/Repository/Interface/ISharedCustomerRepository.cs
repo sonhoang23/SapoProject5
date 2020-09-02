@@ -10,5 +10,6 @@ namespace SapoProject.Areas.Customer.Repository.Interface
         List<Category> ListAllParentCategory();
         void Save();
         void Dispose();
+        List<AdvertisementSlideShow> GetAdvertisementSlideShow();
     }
 }

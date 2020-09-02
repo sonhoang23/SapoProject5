@@ -17,32 +17,31 @@
 					<div class="row">
 						<div class="col-xs-12 col-md-8">
 							<div class="form-group">
-								<label asp-for="ProductName" class="control-label myDIV">Product Name</label>
-								<div class="hide">Input your product name that you want to sell!</div>
+								<label asp-for="ProductName" class="control-label myDIV"></label>
+								<div class="hide">Nhập tên Sản Phẩm Bạn Muốn Bán!</div>
 								<input asp-for="ProductName" class="form-control" />
 								<span asp-validation-for="ProductName" class="text-danger"></span>
 							</div>
 							<div class="form-group">
 								<label asp-for="Price" class="control-label myDIV"></label>
-								<div class="hide">This is price that you sell, after Original price has decreased!</div>
+								<div class="hide">Giá Khách Hàng Mua Của Bạn</div>
 								<input asp-for="Price" class="form-control" />
 								<span asp-validation-for="Price" class="text-danger"></span>
 							</div>
 
 							<div class="form-group">
 								<label asp-for="OriginalPrice" class="control-label myDIV"></label>
-								<div class="hide">This Price is before!</div>
+								<div class="hide">Gía Gốc Tạo Sự So Sánh</div>
 								<input asp-for="OriginalPrice" class="form-control" />
 								<span asp-validation-for="OriginalPrice" class="text-danger"></span>
 							</div>
 							<div class="form-group">
-								<label asp-for="CategoryName" class="control-label">Category</label>
-								<select asp-for="CategoryName" class="form-control" placeholder="Click to select Category">
+								<label asp-for="CategoryName" class="control-label"></label>
+								<select asp-for="CategoryName" class="form-control" placeholder="Nhấn Để Chọn Danh Mục Sản Phẩm">
 									@foreach (var item in ViewData["CategoryNameViewBag"] as IList<String>)
 									{
 										<option value="@item">@item</option>
-}
-
+									}
 								</select>
 								<span asp-validation-for="CategoryName" class="text-danger"></span>
 							</div>
@@ -51,11 +50,11 @@
 						<div class="col-xs-12 col-md-4">
 
 							<div class="form-group">
-								<label asp-for="Photo" class="control-label myDIV">Input Image</label>
-								<div class="hide">click to Browse to chose your image from computer!</div>
+								<label asp-for="Photo" class="control-label myDIV"></label>
+								<div class="hide">Click Để Chọn Ảnh Từ Thiết Bị Của Bạn!</div>
 								<div class="custom-file">
 									<input asp-for="Photo" class="form-control custom-file-input" />
-									<label class="custom-file-label">upload</label>
+									<label class="custom-file-label">Đường Link ảnh</label>
 								</div>
 							</div>
 						</div>
@@ -64,18 +63,18 @@
 					<div class="form-group">
 						<script src="~/ckfinder/ckfinder.js"></script>
 						<label asp-for="ShortDescription" class="control-label myDIV"></label>
-						<div class="hide">Short description appear to list of product, which is about a brief of your product specific!</div>
+						<div class="hide">Thông Tin Vắn Tắt Của Sản Phẩm!</div>
 						<textarea class="ckeditor" asp-for="ShortDescription">Short Description</textarea>
 						<span asp-validation-for="ShortDescription" class="text-danger"></span>
 					</div>
 					<div class="form-group">
 						<label asp-for="EntireDescription" class="control-label myDIV"></label>
-						<div class="hide">Detailed information of your product!</div>
+						<div class="hide">Thông Tin Chi Tiết Của Sản Phẩm!</div>
 						<textarea class="ckeditor" asp-for="EntireDescription">Long Description</textarea>
 						<span asp-validation-for="EntireDescription" class="text-danger"></span>
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Create" class="btn btn-primary" />
+						<input type="submit" value="Tạo Sản Phẩm" class="btn btn-primary" />
 					</div>
 				</div>
 			</form>

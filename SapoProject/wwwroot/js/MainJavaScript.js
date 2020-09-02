@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-	CKEDITOR.replace("noidung");
+	//CKEDITOR.replace("noidung");
 	$("#selectImg").click(function () {
 		var finder = new CKFinder();
 		finder.selectActionFunction = function (baseUrl) {

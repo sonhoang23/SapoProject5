@@ -62,6 +62,9 @@ namespace SapoProject
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<ISharedCustomerRepository, SharedCustomerRepository>();
             services.AddTransient<IProductCustomerRepository, ProductCustomerRepository>();
+            services.AddTransient<IAdvertisementRepository, AdvertisementRepository>();
+            services.AddTransient<IClientRepository, ClientRepository>();
+            services.AddTransient<IOrderClientRepository, OrderClientRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

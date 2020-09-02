@@ -7,32 +7,42 @@
 	<meta name="author" content="">
 	<title>Sapo</title>
 	<!-- Bootstrap core CSS -->
-	<link href="/ClientAssest/css/bootstrap.css" rel="stylesheet">
+	<link href="~/ClientAssest/css/bootstrap.css" rel="stylesheet" />
 	<!-- Fontawesome core CSS -->
-	<link href="/ClientAssest/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="~/ClientAssest/css/font-awesome.min.css" rel="stylesheet" />
 	<!--GOOGLE FONT -->
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	<!--Slide Show Css -->
-	<link href="/ClientAssest/ItemSlider/css/main-style.css" rel="stylesheet" />
+	<link href="~/ClientAssest/ItemSlider/css/main-style.css" rel="stylesheet" />
 	<!-- custom CSS here -->
-	<link href="/ClientAssest/css/style.css" rel="stylesheet" />
+	<link href="~/ClientAssest/css/style.css" rel="stylesheet" />
 	<link href="~/css/MainStyleSheet.css" rel="stylesheet" />
 	<script src="~/js/MainJavaScript.js"></script>
+	<!-- custom Slide show here -->
+	<link href="~/css/SlideShow.css" rel="stylesheet" />
+	<script src="~/js/SlideShow.js"></script>
+
+	<!-- custom Slide show test here -->
+	@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>*@
+
 </head>
 <body>
-
 	@await Component.InvokeAsync("MainHeader")
-
 	<div class="d-flex justify-content-center">
-		<partial name="_PartialView_SlideProduct.cshtml" />
+		@await Component.InvokeAsync("AdvertisementSlideShow")
 	</div>
+	<br />
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-3">
 				@await Component.InvokeAsync("LeftSide")
 			</div>
 			<div class="col-sm-9">
-				@RenderBody()
+				<div id="renderBodyid">
+					@RenderBody()
+				</div>
 			</div>
 		</div>
 	</div>
@@ -40,17 +50,11 @@
 	@await Component.InvokeAsync("Footer")
 	<!--Footer end -->
 	<!--Core JavaScript file  -->
-	<script src="/ClientAssest/js/jquery-1.10.2.js"></script>
+	<script src="~/ClientAssest/js/jquery-1.10.2.js"></script>
 	<!--bootstrap JavaScript file  -->
-	<script src="/ClientAssest/js/bootstrap.js"></script>
+	<script src="~/ClientAssest/js/bootstrap.js"></script>
 	<!--Slider JavaScript file  -->
-	<script src="/ClientAssest/ItemSlider/js/modernizr.custom.63321.js"></script>
-	<script src="/ClientAssest/ItemSlider/js/jquery.catslider.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="~/lib/jquery/dist/jquery.js"></script>
+	<script src="~/ClientAssest/ItemSlider/js/modernizr.custom.63321.js"></script>
+	<script src="~/ClientAssest/ItemSlider/js/jquery.catslider.js"></script>
 </body>
-
-
 </html>

@@ -221,7 +221,7 @@ namespace SapoProject.Areas.Customer.Repository.Repo
             }
         }
 
-        public IPagedList<Product> MainSearch(string? search, int? page)
+        public IPagedList<Product> GetListProductWithDetailByMainSearch(string? search, int? page)
         {
             List<Product> products = new List<Product>();
             var pageNumber = page ?? 1;
@@ -233,5 +233,18 @@ namespace SapoProject.Areas.Customer.Repository.Repo
 
             return null;
         }
+        public IPagedList<Product> MainSearchPageList(string? search, int? page)
+        {
+            List<Product> products = new List<Product>();
+            var pageNumber = page ?? 1;
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                return _context.Product.Where(s => s.ProductName.Contains(search)).ToList().ToPagedList(pageNumber, 9);
+            }
+
+            return null;
+        }
+
     }
 }

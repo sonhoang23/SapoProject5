@@ -19,6 +19,7 @@ namespace SapoProject.Areas.Customer.Controllers
         public ActionResult Order()
         {
             int clientId = (int)HttpContext.Session.GetInt32("Id");
+            //check có order không?
             if (_productRepository.CheckOrderClient(clientId) == 0)
             {
                 return RedirectToAction(actionName: "NoHaveOrder", controllerName: "Product");
@@ -29,10 +30,10 @@ namespace SapoProject.Areas.Customer.Controllers
                 if (productShowOrderDetails.Count != 0)
                 {
                     int totalPrice = 0;
-
                     int totalQuantity = 0;
                     for (int index = 0; index <= productShowOrderDetails.Count - 1; index++)
                     {
+                        
                         totalPrice = totalPrice + Int32.Parse(productShowOrderDetails[index].PriceByQuantity.Replace(".", "").Replace("₫", ""));
                         totalQuantity = totalQuantity + productShowOrderDetails[index].Quantity;
                     }
@@ -48,8 +49,6 @@ namespace SapoProject.Areas.Customer.Controllers
                     TempData["Message"] = "Order Is Empty";
                     return View(productShowOrderDetails);
                 }
-
-
             }
         }
 
@@ -63,7 +62,7 @@ namespace SapoProject.Areas.Customer.Controllers
             return RedirectToAction(actionName: "Index", controllerName: "Customer");
         }
         [HttpPost]
-        public ActionResult ApprovalOrder(ProductShowOrderDetail product)
+        public ActionResult ApprovalOrder()
         {
             int clientId = (int)HttpContext.Session.GetInt32("Id");
             if (_productRepository.CheckOrderClient(clientId) == 0)
@@ -77,5 +76,56 @@ namespace SapoProject.Areas.Customer.Controllers
                 return RedirectToAction(actionName: "Index", controllerName: "Customer");
             }
         }
+        [HttpGet]
+        public ActionResult UpdateQuantityByAjax(int productId, int quantity)
+        {
+            int clientId = (int)HttpContext.Session.GetInt32("Id");
+
+            //check có order không?
+            if (_productRepository.CheckOrderClient(clientId) == 0)
+            {
+                return RedirectToAction(actionName: "NoHaveOrder", controllerName: "Product");
+            }
+            else
+            {     //có hoặc order mới được tạo
+                int orderClientId = _productRepository.GetOrderIdByClientId(clientId);
+                //check có sp trong Order Detail không
+                if (_productRepository.CheckProductInOrderDetail(orderClientId, productId) == 0)
+                {             //nếu không có sp trong orderdetail
+                    return RedirectToAction(actionName: "NoHaveOrder", controllerName: "Product");
+                }
+                else
+                {
+                    //nếu có sp trong orderdetail
+                    _productRepository.UpdateQuantityInOrderViewByAjax(orderClientId, productId, quantity);
+
+
+                    List<ProductShowOrderDetail> productShowOrderDetails = _productRepository.GetProductShowOrderDetail(clientId);
+
+                    int totalPrice = 0;
+                    int totalQuantity = 0;
+                    for (int index = 0; index <= productShowOrderDetails.Count - 1; index++)
+                    {
+                        totalPrice = totalPrice + Int32.Parse(productShowOrderDetails[index].PriceByQuantity.Replace(".", "").Replace("₫", ""));
+                        totalQuantity = totalQuantity + productShowOrderDetails[index].Quantity;
+                    }
+                    ViewBag.productCount = productShowOrderDetails.Count;
+                    ViewBag.totalPrice = String.Format("{0:C0}", totalPrice);
+                    ViewBag.totalQuantity = totalQuantity;
+                    return PartialView("_PartialViewTotalInformationOrderAjax");
+                }
+            }
+        }
+        [HttpGet]
+        public ActionResult TestAjaxMenu()
+        {
+            //return PartialView("_PartialView_MenuProduct1");
+            return View();
+        }
+
     }
 }
+
+
+
+

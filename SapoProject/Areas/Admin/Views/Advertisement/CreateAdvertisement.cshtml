@@ -1,0 +1,80 @@
+﻿@model SapoProject.Areas.Admin.Models.DTO.AdvertisementCreate
+
+@{
+	ViewData["Title"] = "CreateAdvertisement";
+	Layout = "_Layout";
+}
+
+<h1>CreateAdvertisement</h1>
+
+<h4>AdvertisementSlideShow</h4>
+<hr />
+<form enctype="multipart/form-data" asp-action="CreateAdvertisement">
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+	<div class="col">
+		<h3><strong>@TempData["Message"]</strong></h3>
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<label asp-for="AdvertisementName" class="control-label">Tên Quảng Cáo</label>
+					<input asp-for="AdvertisementName" class="form-control" />
+					<span asp-validation-for="AdvertisementName" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="DateCreated" class="control-label">Ngày Bắt Đầu</label>
+					<input asp-for="DateCreated" class="form-control" />
+					<span asp-validation-for="DateCreated" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="CompletedDate" class="control-label">Completed Date</label>
+					<input asp-for="CompletedDate" class="form-control" />
+					<span asp-validation-for="CompletedDate" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="AdvertisementDestination" class="control-label">Product Link</label>
+					<input asp-for="AdvertisementDestination" class="form-control" />
+					<span asp-validation-for="AdvertisementDestination" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Status" class="control-label">Advertisement Status</label>
+					<input asp-for="Status" class="form-control" />
+					<span asp-validation-for="Status" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="col">
+				<!--upload Image HTML-->
+				<div class="form-group">
+					<label asp-for="Photo" class="control-label myDIV">Input Image</label>
+					<div class="hide">click to Browse to chose your image from computer!</div>
+					<div class="custom-file">
+						<input asp-for="Photo" class="form-control custom-file-input" />
+						<label class="custom-file-label">upload</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="form-group">
+				<label asp-for="AdvertisementShortDescription" class="control-label myDIV">Advertisement Short Description</label>
+				<div class="hide">Short description appear to list of Advertisement, which is about a brief of your Advertisement specific!</div>
+				<textarea class="ckeditor" asp-for="AdvertisementShortDescription">Short Description</textarea>
+				<span asp-validation-for="AdvertisementShortDescription" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<label asp-for="AdvertisementLongDescription" class="control-label myDIV">Advertisement Long Description</label>
+				<div class="hide">Short description appear to list of Advertisement, which is about a brief of your Advertisement specific!</div>
+				<textarea class="ckeditor" asp-for="AdvertisementLongDescription">Long Description</textarea>
+				<span asp-validation-for="AdvertisementLongDescription" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<input type="submit" value="Create" class="btn btn-primary" />
+		</div>
+	</div>
+</form>
+
+<div>
+	<a asp-action="Index">Back to List</a>
+</div>
+

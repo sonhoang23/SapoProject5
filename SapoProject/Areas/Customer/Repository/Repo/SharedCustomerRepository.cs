@@ -3,6 +3,7 @@ using SapoProject.Model.Entities;
 using SapoProject.Areas.Customer.Repository.Interface;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace SapoProject.Areas.Customer.Repository.Repo
 {
@@ -20,6 +21,12 @@ namespace SapoProject.Areas.Customer.Repository.Repo
         {
 
         }
+
+        public List<AdvertisementSlideShow> GetAdvertisementSlideShow()
+        {
+            return _context.AdvertisementSlideShows.Where(x => x.Status != 0 && x.CompletedDate>= DateTime.Now).ToList();
+        }
+
         public List<Category> ListAllChildCategory()
         {
             return _context.Category.Where(x => x.Status != 0 && x.Status != 2).ToList();

@@ -62,10 +62,12 @@ namespace SapoProject.Areas.Admin.Repository.Repo
         public async Task<IEnumerable<Product>> GetListProductWithDetail()
         {
             return await _context.Product.Where(x => x.Status == 1).ToListAsync();
+
         }
         public IEnumerable<Product> GetListProductWithoutDetail()
         {
-            return _context.Product.ToList();
+             return _context.Product.ToList();
+         // return  null;
         }
         public List<Product> GetListProductWithoutDetail(int page)
         {

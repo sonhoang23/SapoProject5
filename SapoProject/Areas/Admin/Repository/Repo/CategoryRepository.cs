@@ -9,6 +9,7 @@ using System.Linq;
 using Microsoft.Extensions.Hosting;
 using SapoProject.Model.Entities;
 using System.Threading.Tasks;
+using SapoProject.Model;
 
 namespace SapoProject.Areas.Admin.Repository.Repo
 {
@@ -26,7 +27,7 @@ namespace SapoProject.Areas.Admin.Repository.Repo
 
         static private string GetConnectionString()
         {
-            return "Server=.;Database=SapoProjectDb;Trusted_Connection=True;MultipleActiveResultSets=true";
+            return ConnectionString.GetConnectionString();
         }
         //POST: create
         public async Task CreateCategory(CategoryCreate categoryCreate)

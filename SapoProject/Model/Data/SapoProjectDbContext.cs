@@ -17,6 +17,7 @@ namespace SapoProject.Model.Data
             modelBuilder.ApplyConfiguration(new OrderClientConfiguration());
             modelBuilder.ApplyConfiguration(new OrderDetailConfiguration());
             modelBuilder.ApplyConfiguration(new ClientConfiguration());
+            modelBuilder.ApplyConfiguration(new AdvertisementSlideShowConfiguration());
             // modelBuilder.ApplyConfiguration(new ProductColorConfiguration());
             base.OnModelCreating(modelBuilder);
         }
@@ -27,7 +28,8 @@ namespace SapoProject.Model.Data
         public DbSet<Category> Category { get; set; }
         public DbSet<OrderClient> OrderClient { get; set; }
         public DbSet<OrderDetail> OrderDetail { get; set; }
-  
+        public DbSet<AdvertisementSlideShow> AdvertisementSlideShows { get; set; }
+
     }
 
 }

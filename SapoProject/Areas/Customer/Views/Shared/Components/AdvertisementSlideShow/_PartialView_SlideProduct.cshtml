@@ -1,0 +1,79 @@
+﻿@model IEnumerable<SapoProject.Model.Entities.AdvertisementSlideShow>
+
+<div class="container">
+	<div id="myCarousel" class="carousel slide" data-ride="carousel" style="height:500px">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+
+
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			@*<li data-target="#myCarousel" data-slide-to="@i" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>*@
+
+			@for (var i = 1; i < Model.Count(); i++)
+			{
+				<li data-target="#myCarousel" data-slide-to="@i"></li>
+				@*<li data-target="#myCarousel" data-slide-to="@i" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>*@
+			}
+		</ol>
+
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner" style="height:inherit">
+			@if (Model.Count() > 0)
+			{
+
+				var listAdvertisement = Model.ToList();
+				<div class="item active" style="height:inherit">
+					<a href="@listAdvertisement[0].AdvertisementDestination">
+						<img src="@listAdvertisement[0].AdvertisementImageUrl" alt="Los Angeles" style="width:100%">
+					</a>
+					<div class="carousel-caption">
+						<h3>@listAdvertisement[0].AdvertisementName</h3>
+						<p>@Html.Raw(@listAdvertisement[0].AdvertisementShortDescription)</p>
+					</div>
+				</div>
+				@for (var i = 1; i < listAdvertisement.Count(); i++)
+				{
+					<div class="item" style="height:inherit">
+						<a href="@listAdvertisement[i].AdvertisementDestination">
+							<img src="@listAdvertisement[i].AdvertisementImageUrl" alt="Los Angeles" style="width:100%">
+						</a>
+						<div class="carousel-caption">
+							<h3>@listAdvertisement[i].AdvertisementName</h3>
+							<p>@Html.Raw(@listAdvertisement[i].AdvertisementShortDescription)</p>
+						</div>
+					</div>
+				}
+
+			}
+			@if (Model.Count() == 0)
+			{
+				var listAdvertisement = Model.ToList();
+				<div class="item active" style="height:inherit">
+					<a href="@listAdvertisement[0].AdvertisementDestination">
+						<img src="@listAdvertisement[0].AdvertisementImageUrl" alt="Los Angeles" style="width:100%">
+					</a>
+					<div class="carousel-caption">
+						<h3>@listAdvertisement[0].AdvertisementName</h3>
+						<p>@Html.Raw(@listAdvertisement[0].AdvertisementShortDescription)</p>
+					</div>
+				</div>
+			}
+
+
+		</div>
+
+		<!-- Left and right controls -->
+		<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#myCarousel" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+</div>

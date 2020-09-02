@@ -18,20 +18,27 @@ namespace SapoProject.Areas.Customer.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(int? pageNumber, String? name)
+        public ActionResult Index(PagingSearch pagingSearch)
         {
-            if (name == null)
+            ViewBag.searchName = pagingSearch.searchName;
+            ViewBag.categoryName = pagingSearch.categoryName;
+
+            if (pagingSearch.searchName != null)
             {
-                ViewBag.listPagedProduct = _customerRepository.GetListProductWithDetail(pageNumber);
-                ViewBag.CategoryName = null;
+                return View("Index", _customerRepository.GetListProductWithDetailByMainSearch(pagingSearch.searchName, pagingSearch.pageNumber));
+            }
+            if (pagingSearch.categoryName != null)
+            {
+                // ViewBag.listPagedProduct = _customerRepository.GetListProductWithDetailByCategoryName(pageNumber, name);
+                ViewBag.CategoryName = pagingSearch.categoryName;
+                return View(_customerRepository.GetListProductWithDetailByCategoryName(pagingSearch.pageNumber, pagingSearch.categoryName));
             }
             else
             {
-                ViewBag.listPagedProduct = _customerRepository.GetListProductWithDetailByCategoryName(pageNumber, name);
-                ViewBag.CategoryName = name;
+                ViewBag.CategoryName = null;
+                return View(_customerRepository.GetListProductWithDetail(pagingSearch.pageNumber));
             }
-            // return View(_customerRepository.GetListProductWithDetail(pageNumber));
-            return View();
+
         }
         [HttpGet]
         public ActionResult ProductDetail(int id)
@@ -48,17 +55,17 @@ namespace SapoProject.Areas.Customer.Controllers
             }
 
         }
-        /*   public JsonResult OnPostProduct()
+           public JsonResult OnPostProduct()
             {
                 return new JsonResult("Hello Response Back");
-            }    */
-        [HttpGet]
+            }    
+       /* [HttpGet]
         public ActionResult OnPostProduct(int? pageNumber, String name1)
         {
             ViewBag.listPagedProduct = _customerRepository.GetListProductWithDetailByCategoryName(pageNumber, name1);
             ViewBag.CategoryName = name1;
             return PartialView("_PartialView_MenuProduct");
-        }
+        }  */
         [HttpGet]
         public ActionResult Login()
         {
@@ -139,14 +146,15 @@ namespace SapoProject.Areas.Customer.Controllers
             return View(clientRegister);
         }
         [HttpGet]
-        public ActionResult MainSearch(String? search, int? page)
+        public ActionResult UpdateQuantityByAjax(String productId, String quantity)
         {
-            ViewBag.listPagedProduct = _customerRepository.MainSearch(search, page);
-            ViewBag.CategoryName = name;
-            return View("Index"); 
-
+            return PartialView("_PartialView_MenuProduct1");
+            //return View("");
         }
 
+
     }
+
+
 
 }

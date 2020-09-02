@@ -5,37 +5,67 @@
 	<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 		<div class="sb-sidenav-menu">
 			<div class="nav">
-				<div class="sb-sidenav-menu-heading">Core</div>
-				<div class="sb-sidenav-menu-heading">Interface</div>
+
 				<a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
 					<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-					Product
+					Sản Phẩm
 					<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 				</a>
 				<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 					<nav class="sb-sidenav-menu-nested nav">
-						<a class="nav-link" asp-area="Admin" asp-controller="Product" asp-action="GetListProductWithDetail">List Product</a>
-						<a class="nav-link" asp-area="Admin" asp-controller="Product" asp-action="Create">Create More Product</a>
+						<a class="nav-link" asp-area="Admin" asp-controller="Product" asp-action="GetListProductWithDetail">Danh Sách Sản Phẩm</a>
+						<a class="nav-link" asp-area="Admin" asp-controller="Product" asp-action="Create">Tạo Mới Sản Phẩm</a>
 					</nav>
 				</div>
 				<a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseLayoutsCategory" aria-expanded="false" aria-controls="collapseLayouts">
 					<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-					Category
+					Danh Mục Sản Phẩm
 					<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
 				</a>
 				<div class="collapse" id="collapseLayoutsCategory" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 					<nav class="sb-sidenav-menu-nested nav">
-						<a class="nav-link" asp-area="Admin" asp-controller="Category" asp-action="Create">Create More Category</a>
-						<a class="nav-link" asp-area="Admin" asp-controller="Category" asp-action="ListAllCategory">Category List</a>
+						<a class="nav-link" asp-area="Admin" asp-controller="Category" asp-action="ListAllCategory">Danh sách Danh Mục Sản Phẩm</a>
+						<a class="nav-link" asp-area="Admin" asp-controller="Category" asp-action="Create">Tạo Mới Danh Mục Sản Phẩm</a>
 					</nav>
 				</div>
-				
+				<a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseLayoutsAdvertisement" aria-expanded="false" aria-controls="collapseLayouts">
+					<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+					Quảng Cáo
+					<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+				</a>
+				<div class="collapse" id="collapseLayoutsAdvertisement" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+					<nav class="sb-sidenav-menu-nested nav">
+						<a class="nav-link" asp-area="Admin" asp-controller="Advertisement" asp-action="CreateAdvertisement">Tạo Mới Chiến Dịch Quảng Cáo</a>
+					</nav>
+				</div>
+				<a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseLayoutsCustomer" aria-expanded="false" aria-controls="collapseLayouts">
+					<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+					Khách Hàng
+					<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+				</a>
+				<div class="collapse" id="collapseLayoutsCustomer" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+					<nav class="sb-sidenav-menu-nested nav">
+						<a class="nav-link" asp-area="Admin" asp-controller="Client" asp-action="index">Danh Sách Khách Hàng</a>
+						<a class="nav-link" asp-area="Admin" asp-controller="Client" asp-action="Create">Tạo Mới Khách Hàng</a>
+					</nav>
+				</div>
+
+				<a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseLayoutsOrder" aria-expanded="false" aria-controls="collapseLayouts">
+					<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+					Đơn Hàng
+					<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+				</a>
+				<div class="collapse" id="collapseLayoutsOrder" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+					<nav class="sb-sidenav-menu-nested nav">
+						<a class="nav-link" asp-area="Admin" asp-controller="Product" asp-action="GetListProductWithDetail">Danh Sách Đơn Hàng</a>
+					</nav>
+				</div>
 			</div>
 		</div>
 		<div class="sb-sidenav-footer">
 			<div class="small">Logged in Sapo Project By </div>
 			<div style="font-size: 15px">Hoàng Sơn </div>
 		</div>
-	
+
 	</nav>
 </div>

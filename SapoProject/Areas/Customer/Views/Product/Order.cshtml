@@ -6,77 +6,116 @@
 }
 
 <h1>Order</h1>
-
-<table class="table">
-	<thead>
-		<tr>
-			<th>Image</th>
-			<th>Product Name</th>
-			<th>Price</th>
-			<th>Quantity</th>
-			<th>Total Price</th>
-		</tr>
-	</thead>
-	<tbody>
-		<h3><strong>@TempData["Message"]</strong></h3>
-		@foreach (var item in Model)
-		{
+<div class="list_product_order">
+	<table class="table">
+		<thead>
 			<tr>
-				<td>
-					<div>
-						<img src=@item.FilePath style="width:100px">
-					</div>
-				</td>
-				<td>
-					<h4 style="height:50px"><a asp-controller="Customer" asp-action="ProductDetail" asp-route-id="@item.Id">@item.ProductName</a></h4>
-				</td>
-				<td>
-					<p id="price_@item.Id"></p>@item.Price
-				</td>
-				<td>
-					<input type="number" data-val="true" class="product-quantity" target-price="@item.Price" id="quantity_@item.Id" name="quantity" min="1" value="@item.Quantity">
-
-				</td>
-				<td>
-					<p id="pricebyquantity_@item.Id"></p>@item.PriceByQuantity
-				</td>
+				<th>Image</th>
+				<th>Product Name</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Total Price</th>
 			</tr>
-		}
-	</tbody>
-</table>
-<div class="col">
-	<h3>General Infomation</h3>
-	<h5>Number of Product: @ViewBag.productCount</h5>
-	<h5>Total Price: @ViewBag.totalPrice</h5>
-	<form asp-action="ApprovalOrder" asp-controller="Product" method="post">
-		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-		<div class="form-group">
-			<button type="submit">Buy Goods!</button>
-		</div>
-	</form>
+		</thead>
+		<tbody>
+			<h3><strong>@TempData["Message"]</strong></h3>
+
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						<div>
+							<img src=@item.FilePath style="width:100px">
+						</div>
+					</td>
+					<td>
+						<h4 style="height:50px"><a asp-controller="Customer" asp-action="ProductDetail" asp-route-id="@item.Id">@item.ProductName</a></h4>
+					</td>
+					<td>
+						<p id="price_@item.Id">@item.Price</p>
+					</td>
+					<td>
+						<input type="number" index="@item.ProductId" data-val="true" class="product-quantity" target-price="@item.Price" id="quantity_@item.Id" name="quantity" min="1" value="@item.Quantity">
+					<td>
+
+						<p class="product-quantity-totalPrice">@item.PriceByQuantity</p>
+					</td>
+				</tr>
+			}
+
+		</tbody>
+	</table>
 </div>
-
+<div id="partialViewTotalInformationOrderAjax">
+	@Html.Partial("_PartialViewTotalInformationOrderAjax")
+</div>
+<form asp-action="ApprovalOrder" asp-controller="Product" method="post">
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+	<div class="form-group">
+		<button type="submit">Buy Goods!</button>
+	</div>
+</form>
 
 <script type="text/javascript">
-	console.log("dddddddddd");
-	$('.product-quantity').change(function () {
-		console.log("cccccccccc");
-		let price = $(this).attr('target-price');
-		console.log($(this).attr('target-price'));
-		console.log(price);
-		//console.log($(this).val());
-		//console.log(price * $(this).val());
-	});
+	
+		var id = $(this).attr('id');
+		console.log("id element " + id);
+		var index = $(".product-quantity").index($("#" + id));
+		console.log("index of element " + index);
+		var indexProduct = $(this).attr('index');
+		console.log("index product element " + indexProduct);
+		var list = document.getElementsByClassName("list_product_order")[0];
+		list.getElementsByClassName("product-quantity-totalPrice")[index].innerHTML = ($(this).attr('target-price') * $(this).val()).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+		document.getElementsByClassName("product-quantity-totalPrice").innerHTML = $('.total_price').val() + $(this).attr('target-price');
 </script>
+
+@* phần load lại trang khi thay đổi số tiền (demo) *@
 <script type="text/javascript">
-	console.log("eeeeeeeeeeeeeeeeee");
 	$('.product-quantity').change(function () {
-		console.log("cccccccccc");
+		var id = $(this).attr('id');
+		console.log("id element " + id);
+		var index = $(".product-quantity").index($("#" + id));
+		console.log("index of element " + index);
+		var indexProduct = $(this).attr('index');
+		console.log("index product element " + indexProduct);
+		var list = document.getElementsByClassName("list_product_order")[0];
+		list.getElementsByClassName("product-quantity-totalPrice")[index].innerHTML = ($(this).attr('target-price') * $(this).val()).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+		document.getElementsByClassName("product-quantity-totalPrice").innerHTML = $('.total_price').val() + $(this).attr('target-price');
+
+
+		//phần ajax
+		$.ajax({
+			type: "GET",
+			url: 'https://localhost:44310/Customer/Product/UpdateQuantityByAjax',
+			data: { productId: indexProduct, quantity: $(this).val() },
+
+			success: function (result) {
+				document.getElementById("partialViewTotalInformationOrderAjax").innerHTML = result;
+				//console.log('my message' + result);
+			},
+			error: function () {
+				alert("Error while inserting data");
+			}
+		});
+		return false;
+
 	});
 </script>
 
-<script>
-	$(document).ready(function () {
-		console.log("cccccccccccc");
-	});
-</script>
+
+@* js phần tăng giảm giá tiền khi thay đổi số lượng  *@
+@*<script type="text/javascript">
+		$('.product-quantity').change(function () {
+			var id = $(this).attr('id');
+			console.log(id);
+			var index = $(".product-quantity").index($("#" + id));
+			console.log(index);
+			var list = document.getElementsByClassName("list_product_order")[0];
+			list.getElementsByClassName("product-quantity-totalPrice")[index].innerHTML = ($(this).attr('target-price') * $(this).val()).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+			list.getElementsByClassName("product-quantity-totalPrice1")[index].innerHTML = $(this).attr('target-price') * $(this).val();
+			document.getElementsByClassName("product-quantity-totalPrice").innerHTML = $('.total_price').val() + $(this).attr('target-price');
+			console.log($('.total_price').val());
+		});
+	</script>*@
+
+
