@@ -26,37 +26,37 @@
 				   data-pagination-detail-h-align="right">
 				<thead>
 					<tr>
-						<th style="width:20%">Tên Sản Phẩm</th>
-						<th style="width:20%; width:initial">Ảnh Sản Phẩm</th>
-						<th style="width:5%; width:initial">Giá Bán</th>
-						<th style="width:5%; width:initial">Ngày Tạo</th>
-						<th style="width:5%; width:initial">Ngày Chỉnh Sửa</th>
-						<th style="width:20%; width:initial">Tùy Chọn</th>
+						<th style="width:15%; text-align:center">Tên Sản Phẩm</th>
+						<th style="width:10%; text-align:center">Ảnh Sản Phẩm</th>
+						<th style="width:5%; text-align:center">Giá Bán</th>
+						<th style="width:5%; text-align:center">Ngày Tạo</th>
+						<th style="width:12%; text-align:center">Ngày Chỉnh Sửa</th>
+						<th style="width:10%; text-align:center">Tùy Chọn</th>
 					</tr>
 				</thead>
 				<tbody>
 					@foreach (var item in Model)
 					{
 						<tr>
-							<td>
+							<td style="text-align: center">
 								<div style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical">
 									@Html.DisplayFor(modelItem => item.ProductName)
 								</div>
 							</td>
-							<td>
+							<td style="text-align: center">
 								<img src=@item.FilePath style="height:100px">
 							</td>
-							<td>
+							<td style="text-align: center">
 								@Html.DisplayFor(modelItem => item.Price)
 							</td>
 
-							<td>
+							<td style="text-align: center">
 								@Html.DisplayFor(modelItem => item.CreatedDate)
 							</td>
-							<td>
+							<td style="text-align: center">
 								@Html.DisplayFor(modelItem => item.FixedDate)
 							</td>
-							<td>
+							<td style="text-align: center">
 								<form>
 									<div class="col">
 										<button style="height:inherit; width:inherit; margin-top:15px" asp-action="ProductDetail" asp-route-id="@item.Id" class="btn btn-info">Chi Tiết</button>

@@ -121,19 +121,23 @@ namespace SapoProject.Areas.Customer.Repository.Repo
             {
                 if (!await _context.Client.AnyAsync(i => i.ClientAccount == clientRegister.userAccount))
                 {
-                    client.CustomerName = clientRegister.userName;
-                    client.PhoneNumber = clientRegister.phoneNumber;
-                    client.Address = clientRegister.address + "-" + clientRegister.district + "-" + clientRegister.city + "-" + clientRegister.country;
-                    client.Age = clientRegister.age;
-                    client.Sex = clientRegister.sex;
-                    client.Email = clientRegister.email;
-                    client.EmailReset = clientRegister.emailReset;
-                    client.ClientAccount = clientRegister.userAccount;
-                    client.ClientPassWord = clientRegister.userPassWord;
-                    client.Status = 1;
-                    await _context.Client.AddAsync(client);
-                    await _context.SaveChangesAsync();
-                    return 1;
+                    if (!await _context.Client.AnyAsync(i => i.PhoneNumber == clientRegister.phoneNumber))
+                    {
+                        client.CustomerName = clientRegister.userName;
+                        client.PhoneNumber = clientRegister.phoneNumber;
+                        client.Address = clientRegister.address + "-" + clientRegister.district + "-" + clientRegister.city + "-" + clientRegister.country;
+                        client.Age = clientRegister.age;
+                        client.Sex = clientRegister.sex;
+                        client.Email = clientRegister.email;
+                        client.EmailReset = clientRegister.emailReset;
+                        client.ClientAccount = clientRegister.userAccount;
+                        client.ClientPassWord = clientRegister.userPassWord;
+                        client.Status = 1;
+                        await _context.Client.AddAsync(client);
+                        await _context.SaveChangesAsync();
+                        return 1;
+                    }
+                    return 4;
                 }
                 return 2;
             }
@@ -228,7 +232,7 @@ namespace SapoProject.Areas.Customer.Repository.Repo
 
             if (!String.IsNullOrEmpty(search))
             {
-              return _context.Product.Where(s => s.ProductName.Contains(search)).ToList().ToPagedList(pageNumber, 9);
+                return _context.Product.Where(s => s.ProductName.Contains(search)).ToList().ToPagedList(pageNumber, 9);
             }
 
             return null;

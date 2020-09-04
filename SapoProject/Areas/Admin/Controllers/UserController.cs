@@ -33,7 +33,7 @@ namespace SapoProject.Areas.Admin.Controllers
                     HttpContext.Session.SetString("userAccount", userLogin.userAccount);
                     HttpContext.Session.SetInt32("status", _userRepository.GetUserStatusByUserAccount(userLogin.userAccount));
 
-                    return RedirectToAction(actionName: "GetListProductWithDetail", controllerName: "Product");
+                    return RedirectToAction(actionName: "Index", controllerName: "Product");
                 }
                 if (_userRepository.LoginUser(userLogin) == 0)
                 {

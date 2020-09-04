@@ -55,17 +55,17 @@ namespace SapoProject.Areas.Customer.Controllers
             }
 
         }
-           public JsonResult OnPostProduct()
-            {
-                return new JsonResult("Hello Response Back");
-            }    
-       /* [HttpGet]
-        public ActionResult OnPostProduct(int? pageNumber, String name1)
+        public JsonResult OnPostProduct()
         {
-            ViewBag.listPagedProduct = _customerRepository.GetListProductWithDetailByCategoryName(pageNumber, name1);
-            ViewBag.CategoryName = name1;
-            return PartialView("_PartialView_MenuProduct");
-        }  */
+            return new JsonResult("Hello Response Back");
+        }
+        /* [HttpGet]
+         public ActionResult OnPostProduct(int? pageNumber, String name1)
+         {
+             ViewBag.listPagedProduct = _customerRepository.GetListProductWithDetailByCategoryName(pageNumber, name1);
+             ViewBag.CategoryName = name1;
+             return PartialView("_PartialView_MenuProduct");
+         }  */
         [HttpGet]
         public ActionResult Login()
         {
@@ -130,7 +130,6 @@ namespace SapoProject.Areas.Customer.Controllers
                 HttpContext.Session.SetInt32("status", _customerRepository.GetUserStatusByUserAccount(clientRegister.userAccount));
                 HttpContext.Session.SetInt32("Id", _customerRepository.GetClientIdByClientAccout(clientRegister.userAccount));
 
-
                 return RedirectToAction(actionName: "Index", controllerName: "Customer");
             }
             if (await _customerRepository.CreateClient(clientRegister) == 2)
@@ -141,6 +140,11 @@ namespace SapoProject.Areas.Customer.Controllers
             if (await _customerRepository.CreateClient(clientRegister) == 3)
             {   //sai mk xác nhận
                 TempData["Message"] = "Please match 2 Password";
+                return View(clientRegister);
+            }
+            if (await _customerRepository.CreateClient(clientRegister) == 4)
+            {   //Sdt đã tồn tại
+                TempData["Message"] = "Phone Number Exsit";
                 return View(clientRegister);
             }
             return View(clientRegister);

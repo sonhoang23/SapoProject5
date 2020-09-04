@@ -1,7 +1,6 @@
 ﻿@model SapoProject.Areas.Admin.Models.DTO.AdvertisementCreate
 
 @{
-	ViewData["Title"] = "CreateAdvertisement";
 	Layout = "_Layout";
 }
 
@@ -16,36 +15,39 @@
 		<div class="row">
 			<div class="col">
 				<div class="form-group">
-					<label asp-for="AdvertisementName" class="control-label">Tên Quảng Cáo</label>
+					<label asp-for="AdvertisementName" class="control-label"></label>
 					<input asp-for="AdvertisementName" class="form-control" />
 					<span asp-validation-for="AdvertisementName" class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					<label asp-for="DateCreated" class="control-label">Ngày Bắt Đầu</label>
+					<label asp-for="DateCreated" class="control-label"></label>
 					<input asp-for="DateCreated" class="form-control" />
 					<span asp-validation-for="DateCreated" class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					<label asp-for="CompletedDate" class="control-label">Completed Date</label>
+					<label asp-for="CompletedDate" class="control-label"></label>
 					<input asp-for="CompletedDate" class="form-control" />
 					<span asp-validation-for="CompletedDate" class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					<label asp-for="AdvertisementDestination" class="control-label">Product Link</label>
+					<label asp-for="AdvertisementDestination" class="control-label"></label>
 					<input asp-for="AdvertisementDestination" class="form-control" />
 					<span asp-validation-for="AdvertisementDestination" class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					<label asp-for="Status" class="control-label">Advertisement Status</label>
-					<input asp-for="Status" class="form-control" />
+					<label asp-for="Status" class="control-label"></label>
+					<select asp-for="Status" class="form-control" placeholder="Nhấn Để Chọn">
+						<option value="0">CHO PHÉP Bắt Đầu Chiến Dịch Quảng Cáo</option>
+						<option value="1">KHÔNG CHO PHÉP Bắt Đầu Chiến Dịch Quảng Cáo</option>
+						
+					</select>
 					<span asp-validation-for="Status" class="text-danger"></span>
 				</div>
 			</div>
 			<div class="col">
 				<!--upload Image HTML-->
 				<div class="form-group">
-					<label asp-for="Photo" class="control-label myDIV">Input Image</label>
-					<div class="hide">click to Browse to chose your image from computer!</div>
+					<label asp-for="Photo" class="control-label myDIV"></label>
 					<div class="custom-file">
 						<input asp-for="Photo" class="form-control custom-file-input" />
 						<label class="custom-file-label">upload</label>
@@ -55,16 +57,14 @@
 		</div>
 		<div class="col">
 			<div class="form-group">
-				<label asp-for="AdvertisementShortDescription" class="control-label myDIV">Advertisement Short Description</label>
-				<div class="hide">Short description appear to list of Advertisement, which is about a brief of your Advertisement specific!</div>
-				<textarea class="ckeditor" asp-for="AdvertisementShortDescription">Short Description</textarea>
+				<label asp-for="AdvertisementShortDescription" class="control-label myDIV"></label>
+				<textarea class="ckeditor" asp-for="AdvertisementShortDescription"></textarea>
 				<span asp-validation-for="AdvertisementShortDescription" class="text-danger"></span>
 			</div>
 
 			<div class="form-group">
-				<label asp-for="AdvertisementLongDescription" class="control-label myDIV">Advertisement Long Description</label>
-				<div class="hide">Short description appear to list of Advertisement, which is about a brief of your Advertisement specific!</div>
-				<textarea class="ckeditor" asp-for="AdvertisementLongDescription">Long Description</textarea>
+				<label asp-for="AdvertisementLongDescription" class="control-label myDIV"></label>
+				<textarea class="ckeditor" asp-for="AdvertisementLongDescription"></textarea>
 				<span asp-validation-for="AdvertisementLongDescription" class="text-danger"></span>
 			</div>
 		</div>

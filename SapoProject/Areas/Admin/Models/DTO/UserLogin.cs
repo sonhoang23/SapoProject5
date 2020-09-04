@@ -14,7 +14,7 @@ namespace SapoProject.Areas.Admin.Models.DTO
         [Required(AllowEmptyStrings = false, ErrorMessage = "Mời Nhập Tên Tài Khoản!")]
         [StringLength(50, MinimumLength = 1)]
         public String userAccount { set; get; }
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Mời Nhập Mật Khẩu Tài Khoản!")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Mời Nhập Mật Khẩu!")]
         [StringLength(50, MinimumLength = 1)]
         [DisplayName("Mật Khẩu")]
         public String userPassWord { set; get; }

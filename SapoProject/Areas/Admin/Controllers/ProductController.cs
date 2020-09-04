@@ -37,7 +37,7 @@ namespace SapoProject.Areas.Admin.Controllers
                 {
                     return RedirectToAction(actionName: "NoFound", controllerName: "Share");
                 }
-                return RedirectToAction("GetListProductWithDetail");
+                return RedirectToAction("Index");
 
             }
             else
@@ -52,9 +52,9 @@ namespace SapoProject.Areas.Admin.Controllers
         public ActionResult GetListProductWithoutDetail()
         {
             return View(_productRepository.GetListProductWithoutDetail());
-        }        // GET: /admin/product/GetListProductWithDetail
+        }        // GET: /admin/product/Index
         [HttpGet]
-        public async Task<ActionResult> GetListProductWithDetail()
+        public async Task<ActionResult> Index()
         {
             ViewData["Title"] = "Danh Sách Các Sản Phẩm";
             return View(await _productRepository.GetListProductWithDetail());
@@ -84,7 +84,7 @@ namespace SapoProject.Areas.Admin.Controllers
                 try
                 {
                     await _productRepository.UpdateProduct(productEdit);
-                    return RedirectToAction(actionName: "GetListProductWithDetail", controllerName: "Product");
+                    return RedirectToAction(actionName: "Index", controllerName: "Product");
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -119,7 +119,7 @@ namespace SapoProject.Areas.Admin.Controllers
                 try
                 {
                     await _productRepository.DeleteProduct(id);
-                    return RedirectToAction(actionName: "GetListProductWithDetail", controllerName: "Product");
+                    return RedirectToAction(actionName: "Index", controllerName: "Product");
                 }
                 catch (DbUpdateConcurrencyException)
                 {

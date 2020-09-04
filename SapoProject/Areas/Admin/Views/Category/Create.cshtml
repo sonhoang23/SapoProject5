@@ -15,14 +15,14 @@
 					<div class="row">
 						<div class="col-xs-12 col-md-8">
 							<div class="form-group">
-								<label asp-for="CategoryName" class="control-label myDIV">Category Name</label>
-								<div class="hide">Input your category name</div>
+								<label asp-for="CategoryName" class="control-label myDIV"></label>
+								<div class="hide">Nhập Tên Danh Mục Bạn Muốn Tạo Mới</div>
 								<input asp-for="CategoryName" class="form-control" />
 								<span asp-validation-for="CategoryName" class="text-danger"></span>
 							</div>
 							<div class="form-group">
-								<label asp-for="ParentCategoryName" class="control-label">Parent Category</label>
-								<select asp-for="ParentCategoryName" class="form-control" placeholder="Click to select Parent Category">
+								<label asp-for="ParentCategoryName" class="control-label"></label>
+								<select asp-for="ParentCategoryName" class="form-control" placeholder="Nhấn Để Chọn Danh Mục Cha">
 										@foreach (var item in @ViewBag.ParentCategoryName)
 										{<option value="@item">@item</option>}
 								
@@ -34,8 +34,8 @@
 						<div class="col-xs-12 col-md-4">
 						
 							<div class="form-group">
-								<label asp-for="Photo" class="control-label myDIV">Input Image</label>
-								<div class="hide">click to Browse to chose your image from computer!</div>
+								<label asp-for="Photo" class="control-label myDIV">Nhấn Chọn Ảnh</label>
+								<div class="hide">Nhấn Để Chọn Ảnh Từ Máy Tính Của Bạn!</div>
 								<div class="custom-file">
 									<input asp-for="Photo" class="form-control custom-file-input" />
 									<label class="custom-file-label">upload</label>
@@ -46,7 +46,6 @@
 					</div>
 					<div class="form-group">
 						<label asp-for="ShortDescription" class="control-label myDIV"></label>
-						<div class="hide">Short description appear to list of category, which is about a brief of your category specific!</div>
 						<textarea class="ckeditor" asp-for="ShortDescription">Short Description</textarea>
 						<span asp-validation-for="ShortDescription" class="text-danger"></span>
 					</div>

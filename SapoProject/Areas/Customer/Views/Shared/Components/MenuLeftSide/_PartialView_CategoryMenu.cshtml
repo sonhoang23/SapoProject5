@@ -1,7 +1,7 @@
-@model IEnumerable<SapoProject.Model.Entities.Category>
+﻿@model IEnumerable<SapoProject.Model.Entities.Category>
 <div>
 	<a class="list-group-item active">
-		Category
+		Danh Mục Sản Phẩm
 	</a>
 	<ul class="list-group">
 		@foreach (var item in Model)
@@ -13,7 +13,7 @@
 							<img style="height:40px; overflow: hidden" src=@item.imageURL href="@item.">
 						</a>
 					</div>
-					<div class="col-md-8">
+					<div class="col-md-8" style="margin-top:10px">
 						<a asp-controller="Customer" asp-action="Index" asp-route-categoryName="@item.CategoryName">@item.CategoryName</a>
 					</div>
 				</div>

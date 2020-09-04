@@ -33,20 +33,20 @@
 											</h5>
 										</div>
 									</div>
-									<button type="button" style="width:150px" class="btn btn-info" data-toggle="collapse" data-target="#shortDescription">Brief of Product</button>
+									<button type="button" style="width:150px" class="btn btn-info" data-toggle="collapse" data-target="#shortDescription">Thông Tin Vắt Tắt</button>
 									<div id="shortDescription" style="margin-top:20px; margin-bottom:20px" class="collapse">
 										@Html.Raw(@Model.ShortDescription)
 									</div>
 									<div>
 										<div style="margin-top:20px; height:auto">
 											<div class="form-group">
-												<input class="form-control" style="width:150px" type="number" data-val="true" id="quantity" name="quantity" min="1" placeholder="Quantity" />
+												<input class="form-control" style="width:150px" type="number" data-val="true" id="quantity" name="quantity" min="1" placeholder="Số Lượng" />
 											</div>
 										</div>
 									</div>
 									<div class="row" style="margin-left:auto">
 										<div style="margin-top:20px">
-											<button type="submit" style="width:150px" class="btn btn-success" asp-action="AddToOrder" asp-controller="Product" asp-route-id="@Model.Id">Add to Order</button>
+											<button type="submit" style="width:150px" class="btn btn-success" asp-action="AddToOrder" asp-controller="Product" asp-route-id="@Model.Id">Thêm Vào Giỏ Hàng</button>
 										</div>
 									</div>
 									<div style="border-width: 1px !important" class="border border-warning">
@@ -66,8 +66,8 @@
 						</div>
 					</div>
 					<hr />
-					<h2>Click to see more about this product!</h2>
-					<button type="button" style="height: inherit; width:100%" class="btn btn-info" data-toggle="collapse" data-target="#longDescription">Brief of Product</button>
+					<h2>Nhấn Để Xem Chi Tiết Sản Phẩm</h2>
+					<button type="button" style="height: inherit; width:100%" class="btn btn-info" data-toggle="collapse" data-target="#longDescription">Thông Tin Chi Tiết</button>
 					<div id="longDescription" style="margin-top:20px; margin-bottom:20px" class="collapse">
 						@Html.Raw(@Model.EntireDescription)
 					</div>

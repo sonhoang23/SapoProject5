@@ -1,14 +1,14 @@
-@model IEnumerable<SapoProject.Model.Entities.Category>
+﻿@model IEnumerable<SapoProject.Model.Entities.Category>
 
 @{
 	Layout = "_Layout";
+	ViewData["Title"]= "Trang Danh Sách Danh Mục";
 }
 
-<h1>List Product</h1>
+<h1>@ViewData["Title"]</h1>
 
 <form>
-
-	<button style="height:auto; width:auto; margin-top:20px;margin-bottom:20px" asp-action="Create" class="btn btn-info">Create New Product</button>
+	<button style="height:auto; width:auto; margin-top:20px;margin-bottom:20px" asp-action="Create" class="btn btn-info">Tạo Mới Danh Mục Sản Phẩm</button>
 </form>
 
 
@@ -27,18 +27,11 @@
 				   data-pagination-detail-h-align="right">
 				<thead>
 					<tr>
-						<th>Category Name</th>
-						<th>Image</th>
-						<th>Description</th>
+						<th>Tên Danh Mục Sản Phẩm</th>
+						<th>Ảnh Danh Mục</th>
+						<th>Thông Tin Vắt Tắt</th>
 					</tr>
 				</thead>
-				<tfoot>
-					<tr>
-						<th>Product Name</th>
-						<th>Image</th>
-						<th>Description</th>
-					</tr>
-				</tfoot>
 				<tbody>
 					@foreach (var item in ViewBag.ListAllChildCategory)
 					{
@@ -48,16 +41,16 @@
 									@item.CategoryId
 									@item.CategoryName
 								</div>
-							</td>					
+							</td>
 							<td>
-								<img src=@item.imageURL style="width:100px">		
+								<img src=@item.imageURL style="width:100px">
 							</td>
 							<td>
 								<form>
 									<div class="col">
-									
-										<button style="height:inherit; width:inherit; margin-top:15px" asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-warning">Edit</button>
-									
+
+										<button style="height:inherit; width:inherit; margin-top:15px" asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-warning">Chỉnh Sửa</button>
+
 									</div>
 								</form>
 

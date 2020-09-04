@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SapoProject.Model.Entities.OrderClient>
+﻿@model SapoProject.Areas.Admin.Models.DTO.OrderClientFilter
 
 @{
 	ViewData["Title"] = "Index";
@@ -16,42 +16,76 @@
 		@ViewData["Title"]
 	</div>
 	<div class="card-body">
-
-		<div class="table-responsive w">
-
+		<div class="table table-hover">
+			<div id="toolbar">
+				<div>
+					<form asp-controller="OrderClient" asp-action="Index" method="get">
+						<p>
+							<select style="vertical-align: middle" asp-for="orderFilter" asp-items="Model.filter"></select>
+							Tìm Theo Mục: <input style="width:200px" type="text" asp-for="SearchString" />
+							<input type="submit" value="Lọc" style="font-size:inherit" />
+						</p>
+					</form>
+				</div>
+			</div>
 			<table class="table table-bordered table table-hover" id="dataTable" width="100%" cellspacing="0"
 				   data-show-toggle="true"
 				   data-show-refresh="true"
 				   data-pagination-detail-h-align="right">
 				<thead>
 					<tr>
+						@*<th>
+								@Html.DisplayNameFor(model => model.orderClientShows[0].OrderId)
+							</th>
+							<th>
+								@Html.DisplayNameFor(model => model.orderClientShows[0].ClientName)
+							</th>
+							<th>
+								@Html.DisplayNameFor(model => model.orderClientShows[0].PhoneNumer)
+							</th>
+							<th>
+								@Html.DisplayNameFor(model => model.orderClientShows[0].DateCreated)
+							</th>
+							<th>
+								@Html.DisplayNameFor(model => model.orderClientShows[0].DateCompleted)
+							</th>
+							<th>
+								@Html.DisplayNameFor(model => model.orderClientShows[0].Status)
+							</th>
+							<th>Option</th>*@
 						<th>
-							@Html.DisplayNameFor(model => model.OrderId)
+							Mã Đơn Hàng
 						</th>
 						<th>
-							@Html.DisplayNameFor(model => model.Status)
+							Tên Khách Hàng
 						</th>
 						<th>
-							@Html.DisplayNameFor(model => model.DateCreated)
+							Số Điện Thoại
 						</th>
 						<th>
-							@Html.DisplayNameFor(model => model.DateCompleted)
+							Ngày Tạo Đơn Hàng
 						</th>
 						<th>
-							@Html.DisplayNameFor(model => model.ClientId)
+							Ngày Kết Thúc Đơn Hàng
 						</th>
-						<th></th>
+						<th>
+							Tình Trạng
+						</th>
+						<th>Option</th>
 					</tr>
 				</thead>
 				<tbody>
-					@foreach (var item in Model)
+					@foreach (var item in Model.orderClientShows)
 					{
 						<tr>
 							<td>
 								@Html.DisplayFor(modelItem => item.OrderId)
 							</td>
 							<td>
-								@Html.DisplayFor(modelItem => item.Status)
+								@Html.DisplayFor(modelItem => item.ClientName)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.PhoneNumer)
 							</td>
 							<td>
 								@Html.DisplayFor(modelItem => item.DateCreated)
@@ -60,7 +94,7 @@
 								@Html.DisplayFor(modelItem => item.DateCompleted)
 							</td>
 							<td>
-								@Html.DisplayFor(modelItem => item.ClientId)
+								@Html.DisplayFor(modelItem => item.Status)
 							</td>
 							<td>
 								@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

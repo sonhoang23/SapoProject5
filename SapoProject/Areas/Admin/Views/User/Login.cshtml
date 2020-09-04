@@ -20,7 +20,7 @@
 			<main>
 				<div class="container">
 					<div class="row justify-content-center">
-						<div class="col-lg-5">
+						<div class="col-lg-6">
 							<div class="card shadow-lg border-0 rounded-lg mt-5">
 								<div class="card-header"><h3 class="text-center font-weight-light my-4">@ViewBag.Title</h3></div>
 								<div class="card-body">
@@ -28,15 +28,15 @@
 									<form asp-action="Login">
 										<div class="form-group">
 											<label asp-for="userAccount" class="control-label"></label>
-											<input type="text" asp-for="userAccount" class="form-control" placeholder="Nhập Tên Tài Khoản ..." />
+											<input type="text" asp-for="userAccount" class="form-control" placeholder="Nhập Tên Tài Khoản" />
 											<span asp-validation-for="userAccount" class="text-danger"></span>
 										</div>
 										<div class="form-group">
 											<label asp-for="userPassWord" class="control-label"></label>
-											<input type="password" asp-for="userPassWord" class="form-control" placeholder="Nhập Mật Khẩu ..." />
+											<input type="password" asp-for="userPassWord" class="form-control" placeholder="Nhập Mật Khẩu" />
 											<span asp-validation-for="userPassWord" class="text-danger"></span>
 										</div>
-										
+
 										<div class="form-group">
 											<input type="submit" value="Đăng Nhập" class="btn btn-primary" />
 										</div>

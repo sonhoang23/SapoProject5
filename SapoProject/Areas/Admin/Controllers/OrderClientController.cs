@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using SapoProject.Areas.Admin.Models.DTO;
 using SapoProject.Areas.Admin.Repository.Interface;
 using SapoProject.Model.Entities;
 namespace SapoProject.Areas.Admin.Controllers
@@ -16,10 +18,41 @@ namespace SapoProject.Areas.Admin.Controllers
             _orderClientRepository = orderClientRepository;
         }
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string orderFilter, string searchString)
         {
-           List<OrderClient> orders= _orderClientRepository.GetOrder();
-            return View();
+            List<OrderClient> orders = new List<OrderClient>();
+            if (searchString == null)
+            {
+                orders = _orderClientRepository.GetOrder();
+            }
+            else
+            {
+                orders = _orderClientRepository.GetOrderByFilterAndSearchString(orderFilter, searchString);
+            }
+            OrderClientFilter orderClientFilter = new OrderClientFilter();
+
+            List<OrderClientShow> orderClientShows = new List<OrderClientShow>();
+            for (int index = 0; index < orders.Count(); index++)
+            {
+                OrderClientShow orderClientShow = new OrderClientShow
+                {
+                    OrderId = orders[index].OrderId,
+                    ClientName = _orderClientRepository.GetClientNameById(orders[index].ClientId),
+                    PhoneNumer = _orderClientRepository.GetClientPhoneNumberById(orders[index].ClientId),
+                    DateCreated = orders[index].DateCreated,
+                    DateCompleted = orders[index].DateCompleted,
+                    Status = _orderClientRepository.SwitchStatus(orders[index].Status),
+                };
+                orderClientShows.Add(orderClientShow);
+            }
+            orderClientFilter.orderClientShows = orderClientShows;
+            orderClientFilter.filter = new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem { Selected = true, Text = "Client Name", Value = "ClientName"},
+                    new SelectListItem { Selected = false, Text = "Phone Numer", Value = "PhoneNumer"},
+                }, "Value", "Text");
+            // List<String> filer = orders.R
+            return View(orderClientFilter);
         }
 
         // GET: OrderClientController/Details/5
@@ -29,7 +62,7 @@ namespace SapoProject.Areas.Admin.Controllers
         }
 
         // GET: OrderClientController/Create
-        public ActionResult Create()
+        public ActionResult Search()
         {
             return View();
         }

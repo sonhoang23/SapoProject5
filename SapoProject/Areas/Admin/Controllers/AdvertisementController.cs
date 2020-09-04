@@ -23,25 +23,26 @@ namespace SapoProject.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateAdvertisementAsync(AdvertisementCreate advertisementCreate)
+        public async Task<IActionResult> CreateAdvertisement(AdvertisementCreate advertisementCreate)
         {
             if (ModelState.IsValid)
             {
                 if (_advertisementRepository.CheckCreateAndCompletedDate(advertisementCreate.DateCreated, advertisementCreate.CompletedDate) == true)
                 {
+                    ViewData["Title"] = "Tạo Quảng Cáo";
                     await _advertisementRepository.CreateAdvertisement(advertisementCreate);
-                    TempData["Message"] = "Create Advertisement Completely";
+                    TempData["Message"] = "Tạo Quảng Cáo Thành Công";
                     return RedirectToAction("CreateAdvertisement");
                 }
                 else
                 {
-                    TempData["Message"] = "Check Completed Date";
+                    TempData["Message"] = "Kiểm Tra Lại Ngày Hoàn Thành";
                     return View("CreateAdvertisement", advertisementCreate);
                 }
             }
             else
             {
-                TempData["Message"] = "aaaaaaaaaaaaa";
+                TempData["Message"] = "Mời Kiểm Tra Lại Thông Tin Nhập";
                 return View("CreateAdvertisement", advertisementCreate);
             }
         }
