@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SapoProject.Model.Data;
 
 namespace SapoProject.Migrations
 {
     [DbContext(typeof(SapoProjectDbContext))]
-    partial class SapoProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200904042956_update_test_authorization_User_with_Product_1")]
+    partial class update_test_authorization_User_with_Product_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using SapoProject.Areas.Admin.Models.DTO;
 using SapoProject.Areas.Admin.Repository.Interface;
 using System;
@@ -12,13 +13,16 @@ namespace SapoProject.Areas.Admin.Controllers
     public class AdvertisementController : BaseController
     {
         private readonly IAdvertisementRepository _advertisementRepository;
-        public AdvertisementController(IAdvertisementRepository advertisementRepository)
+        private readonly ILogger _logger;
+        public AdvertisementController(IAdvertisementRepository advertisementRepository, ILogger<HomeController> logger)
         {
+            _logger = logger;
             _advertisementRepository = advertisementRepository;
         }
         [HttpGet]
         public IActionResult CreateAdvertisement()
         {
+            _logger.LogInformation("Log message in the Index() method");
             return View();
         }
         [HttpPost]

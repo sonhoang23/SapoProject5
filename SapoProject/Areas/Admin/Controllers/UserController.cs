@@ -27,6 +27,25 @@ namespace SapoProject.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
+
+                //test authorr
+
+                //hết test author
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 if (_userRepository.LoginUser(userLogin) == 1)
                 {
 
@@ -68,7 +87,7 @@ namespace SapoProject.Areas.Admin.Controllers
         {
             if (await _userRepository.CreateUser(user) == 1)
             {   //chấp nhận register
-          
+
                 return RedirectToAction(actionName: "Login", controllerName: "User");
             }
             if (await _userRepository.CreateUser(user) == 2)

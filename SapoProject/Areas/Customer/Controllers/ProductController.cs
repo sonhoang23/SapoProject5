@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SapoProject.Areas.Customer.Models.DTO;
 using SapoProject.Areas.Customer.Repository.Interface;
@@ -8,11 +9,12 @@ using System.Collections.Generic;
 
 namespace SapoProject.Areas.Customer.Controllers
 {
-    public class ProductController : BaseController
+    public class ProductController : Controller
     {
         private readonly IProductCustomerRepository _productRepository;
-        public ProductController(IProductCustomerRepository productRepository)
-        {
+       
+
+        public ProductController(IProductCustomerRepository productRepository) { 
             _productRepository = productRepository;
         }
         [HttpGet]

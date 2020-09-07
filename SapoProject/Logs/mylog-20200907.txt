@@ -1,0 +1,486 @@
+2020-09-07T09:16:41.9161640+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-07T09:16:42.0202978+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-07T09:16:42.0204668+07:00  [INF] Content root path: "I:\Sapo\SapoEntry\sapo5\SapoProject\SapoProject" (b5d60022)
+2020-09-07T09:16:42.9427146+07:00 80000005-0003-fd00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: No authenticationScheme was specified, and there was no DefaultChallengeScheme found. The default schemes can be set using either AddAuthentication(string defaultScheme) or AddAuthentication(Action<AuthenticationOptions> configureOptions).
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.ChallengeAsync(HttpContext context, String scheme, AuthenticationProperties properties)
+   at Microsoft.AspNetCore.Mvc.ChallengeResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAlwaysRunResultFilters>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:16:43.1465490+07:00 80000005-0003-fd00-b63f-84710c7967bb [ERR] An exception was thrown attempting to display the error page. (33804fd3)
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.IsHtmlResponse(Boolean forceReCheck) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 109
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.WriteAsync(Byte[] buffer, Int32 offset, Int32 count, CancellationToken cancellationToken) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 90
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:16:43.1683263+07:00 80000005-0003-fd00-b63f-84710c7967bb [ERR] Connection ID ""18230571306091282436"", Request ID ""80000005-0003-fd00-b63f-84710c7967bb"": An unhandled exception was thrown by the application. (bf316047)
+System.InvalidOperationException: No authenticationScheme was specified, and there was no DefaultChallengeScheme found. The default schemes can be set using either AddAuthentication(string defaultScheme) or AddAuthentication(Action<AuthenticationOptions> configureOptions).
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.ChallengeAsync(HttpContext context, String scheme, AuthenticationProperties properties)
+   at Microsoft.AspNetCore.Mvc.ChallengeResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAlwaysRunResultFilters>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+2020-09-07T09:16:49.1204378+07:00 80000005-0000-ff00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: No authenticationScheme was specified, and there was no DefaultChallengeScheme found. The default schemes can be set using either AddAuthentication(string defaultScheme) or AddAuthentication(Action<AuthenticationOptions> configureOptions).
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.ChallengeAsync(HttpContext context, String scheme, AuthenticationProperties properties)
+   at Microsoft.AspNetCore.Mvc.ChallengeResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAlwaysRunResultFilters>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:16:49.1345406+07:00 80000005-0000-ff00-b63f-84710c7967bb [ERR] An exception was thrown attempting to display the error page. (33804fd3)
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.IsHtmlResponse(Boolean forceReCheck) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 109
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.WriteAsync(Byte[] buffer, Int32 offset, Int32 count, CancellationToken cancellationToken) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 90
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:16:49.1369000+07:00 80000005-0000-ff00-b63f-84710c7967bb [ERR] Connection ID ""18374686481282236420"", Request ID ""80000005-0000-ff00-b63f-84710c7967bb"": An unhandled exception was thrown by the application. (bf316047)
+System.InvalidOperationException: No authenticationScheme was specified, and there was no DefaultChallengeScheme found. The default schemes can be set using either AddAuthentication(string defaultScheme) or AddAuthentication(Action<AuthenticationOptions> configureOptions).
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.ChallengeAsync(HttpContext context, String scheme, AuthenticationProperties properties)
+   at Microsoft.AspNetCore.Mvc.ChallengeResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAlwaysRunResultFilters>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+2020-09-07T09:17:36.9972150+07:00 80000007-0000-ff00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: No authenticationScheme was specified, and there was no DefaultChallengeScheme found. The default schemes can be set using either AddAuthentication(string defaultScheme) or AddAuthentication(Action<AuthenticationOptions> configureOptions).
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.ChallengeAsync(HttpContext context, String scheme, AuthenticationProperties properties)
+   at Microsoft.AspNetCore.Mvc.ChallengeResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAlwaysRunResultFilters>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:17:37.0141043+07:00 80000007-0000-ff00-b63f-84710c7967bb [ERR] An exception was thrown attempting to display the error page. (33804fd3)
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.IsHtmlResponse(Boolean forceReCheck) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 109
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.WriteAsync(Byte[] buffer, Int32 offset, Int32 count, CancellationToken cancellationToken) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 90
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:17:37.0163945+07:00 80000007-0000-ff00-b63f-84710c7967bb [ERR] Connection ID ""18374686481282236422"", Request ID ""80000007-0000-ff00-b63f-84710c7967bb"": An unhandled exception was thrown by the application. (bf316047)
+System.InvalidOperationException: No authenticationScheme was specified, and there was no DefaultChallengeScheme found. The default schemes can be set using either AddAuthentication(string defaultScheme) or AddAuthentication(Action<AuthenticationOptions> configureOptions).
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.ChallengeAsync(HttpContext context, String scheme, AuthenticationProperties properties)
+   at Microsoft.AspNetCore.Mvc.ChallengeResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAlwaysRunResultFilters>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+2020-09-07T09:19:12.5936023+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-07T09:19:12.6070738+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-07T09:19:12.6072622+07:00  [INF] Content root path: "I:\Sapo\SapoEntry\sapo5\SapoProject\SapoProject" (b5d60022)
+2020-09-07T09:19:12.8852245+07:00 80000009-0000-ff00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: No authenticationScheme was specified, and there was no DefaultChallengeScheme found. The default schemes can be set using either AddAuthentication(string defaultScheme) or AddAuthentication(Action<AuthenticationOptions> configureOptions).
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.ChallengeAsync(HttpContext context, String scheme, AuthenticationProperties properties)
+   at Microsoft.AspNetCore.Mvc.ChallengeResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAlwaysRunResultFilters>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:19:12.9533065+07:00 80000009-0000-ff00-b63f-84710c7967bb [ERR] An exception was thrown attempting to display the error page. (33804fd3)
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.IsHtmlResponse(Boolean forceReCheck) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 109
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.WriteAsync(Byte[] buffer, Int32 offset, Int32 count, CancellationToken cancellationToken) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 90
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:19:12.9675868+07:00 80000009-0000-ff00-b63f-84710c7967bb [ERR] Connection ID ""18374686481282236424"", Request ID ""80000009-0000-ff00-b63f-84710c7967bb"": An unhandled exception was thrown by the application. (bf316047)
+System.InvalidOperationException: No authenticationScheme was specified, and there was no DefaultChallengeScheme found. The default schemes can be set using either AddAuthentication(string defaultScheme) or AddAuthentication(Action<AuthenticationOptions> configureOptions).
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.ChallengeAsync(HttpContext context, String scheme, AuthenticationProperties properties)
+   at Microsoft.AspNetCore.Mvc.ChallengeResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAlwaysRunResultFilters>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+2020-09-07T09:22:49.0074570+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-07T09:22:49.0203352+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-07T09:22:49.0204879+07:00  [INF] Content root path: "I:\Sapo\SapoEntry\sapo5\SapoProject\SapoProject" (b5d60022)
+2020-09-07T09:22:49.3101657+07:00 8000000f-0000-ff00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: No authenticationScheme was specified, and there was no DefaultChallengeScheme found. The default schemes can be set using either AddAuthentication(string defaultScheme) or AddAuthentication(Action<AuthenticationOptions> configureOptions).
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.ChallengeAsync(HttpContext context, String scheme, AuthenticationProperties properties)
+   at Microsoft.AspNetCore.Mvc.ChallengeResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAlwaysRunResultFilters>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:22:49.3790480+07:00 8000000f-0000-ff00-b63f-84710c7967bb [ERR] An exception was thrown attempting to display the error page. (33804fd3)
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.IsHtmlResponse(Boolean forceReCheck) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 109
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.WriteAsync(Byte[] buffer, Int32 offset, Int32 count, CancellationToken cancellationToken) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 90
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:22:49.3935533+07:00 8000000f-0000-ff00-b63f-84710c7967bb [ERR] Connection ID ""18374686481282236430"", Request ID ""8000000f-0000-ff00-b63f-84710c7967bb"": An unhandled exception was thrown by the application. (bf316047)
+System.InvalidOperationException: No authenticationScheme was specified, and there was no DefaultChallengeScheme found. The default schemes can be set using either AddAuthentication(string defaultScheme) or AddAuthentication(Action<AuthenticationOptions> configureOptions).
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.ChallengeAsync(HttpContext context, String scheme, AuthenticationProperties properties)
+   at Microsoft.AspNetCore.Mvc.ChallengeResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAlwaysRunResultFilters>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+2020-09-07T09:25:19.8693577+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-07T09:25:19.8858655+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-07T09:25:19.8860292+07:00  [INF] Content root path: "I:\Sapo\SapoEntry\sapo5\SapoProject\SapoProject" (b5d60022)
+2020-09-07T09:25:20.6843186+07:00 80000002-0000-fd00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Microsoft.AspNetCore.Identity.IdentityUser]' while attempting to activate 'SapoProject.Areas.Customer.Controllers.CustomerController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:25:20.8003397+07:00 80000002-0000-fd00-b63f-84710c7967bb [ERR] An exception was thrown attempting to display the error page. (33804fd3)
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.IsHtmlResponse(Boolean forceReCheck) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 109
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.WriteAsync(Byte[] buffer, Int32 offset, Int32 count, CancellationToken cancellationToken) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 90
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:25:20.8184355+07:00 80000002-0000-fd00-b63f-84710c7967bb [ERR] Connection ID ""18230571293206380545"", Request ID ""80000002-0000-fd00-b63f-84710c7967bb"": An unhandled exception was thrown by the application. (bf316047)
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Microsoft.AspNetCore.Identity.IdentityUser]' while attempting to activate 'SapoProject.Areas.Customer.Controllers.CustomerController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+2020-09-07T09:25:45.2396305+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-07T09:25:45.2514874+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-07T09:25:45.2516978+07:00  [INF] Content root path: "I:\Sapo\SapoEntry\sapo5\SapoProject\SapoProject" (b5d60022)
+2020-09-07T09:25:45.6647126+07:00 80000007-0001-fb00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Microsoft.AspNetCore.Identity.IdentityUser]' while attempting to activate 'SapoProject.Areas.Customer.Controllers.CustomerController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:25:45.7529416+07:00 80000007-0001-fb00-b63f-84710c7967bb [ERR] An exception was thrown attempting to display the error page. (33804fd3)
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.IsHtmlResponse(Boolean forceReCheck) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 109
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.WriteAsync(Byte[] buffer, Int32 offset, Int32 count, CancellationToken cancellationToken) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 90
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:25:45.7679473+07:00 80000007-0001-fb00-b63f-84710c7967bb [ERR] Connection ID ""18086456109425491974"", Request ID ""80000007-0001-fb00-b63f-84710c7967bb"": An unhandled exception was thrown by the application. (bf316047)
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Microsoft.AspNetCore.Identity.IdentityUser]' while attempting to activate 'SapoProject.Areas.Customer.Controllers.CustomerController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+2020-09-07T09:26:26.2737708+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-07T09:26:26.2895999+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-07T09:26:26.2898725+07:00  [INF] Content root path: "I:\Sapo\SapoEntry\sapo5\SapoProject\SapoProject" (b5d60022)
+2020-09-07T09:26:26.6952115+07:00 80000009-0001-fb00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Microsoft.AspNetCore.Identity.IdentityUser]' while attempting to activate 'SapoProject.Areas.Customer.Controllers.CustomerController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:26:26.7823091+07:00 80000009-0001-fb00-b63f-84710c7967bb [ERR] An exception was thrown attempting to display the error page. (33804fd3)
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.IsHtmlResponse(Boolean forceReCheck) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 109
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.WriteAsync(Byte[] buffer, Int32 offset, Int32 count, CancellationToken cancellationToken) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 90
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:26:26.7966748+07:00 80000009-0001-fb00-b63f-84710c7967bb [ERR] Connection ID ""18086456109425491976"", Request ID ""80000009-0001-fb00-b63f-84710c7967bb"": An unhandled exception was thrown by the application. (bf316047)
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Microsoft.AspNetCore.Identity.IdentityUser]' while attempting to activate 'SapoProject.Areas.Customer.Controllers.CustomerController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+2020-09-07T09:35:23.9560622+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-07T09:35:23.9699535+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-07T09:35:23.9701240+07:00  [INF] Content root path: "I:\Sapo\SapoEntry\sapo5\SapoProject\SapoProject" (b5d60022)
+2020-09-07T09:35:24.3832401+07:00 80000010-0001-fb00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Microsoft.AspNetCore.Identity.IdentityUser]' while attempting to activate 'SapoProject.Areas.Customer.Controllers.CustomerController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:35:24.4483963+07:00 80000010-0001-fb00-b63f-84710c7967bb [ERR] An exception was thrown attempting to display the error page. (33804fd3)
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.IsHtmlResponse(Boolean forceReCheck) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 109
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.WriteAsync(Byte[] buffer, Int32 offset, Int32 count, CancellationToken cancellationToken) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 90
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:35:24.4616866+07:00 80000010-0001-fb00-b63f-84710c7967bb [ERR] Connection ID ""18086456109425491983"", Request ID ""80000010-0001-fb00-b63f-84710c7967bb"": An unhandled exception was thrown by the application. (bf316047)
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Microsoft.AspNetCore.Identity.IdentityUser]' while attempting to activate 'SapoProject.Areas.Customer.Controllers.CustomerController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+2020-09-07T09:38:02.4181343+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-07T09:38:02.4356389+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-07T09:38:02.4358482+07:00  [INF] Content root path: "I:\Sapo\SapoEntry\sapo5\SapoProject\SapoProject" (b5d60022)
+2020-09-07T09:38:02.8399152+07:00 80000007-0002-fd00-b63f-84710c7967bb [ERR] An unhandled exception has occurred while executing the request. (48a46595)
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Microsoft.AspNetCore.Identity.IdentityUser]' while attempting to activate 'SapoProject.Areas.Customer.Controllers.CustomerController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:38:02.9069583+07:00 80000007-0002-fd00-b63f-84710c7967bb [ERR] An exception was thrown attempting to display the error page. (33804fd3)
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.IsHtmlResponse(Boolean forceReCheck) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 109
+   at Westwind.AspnetCore.LiveReload.ResponseStreamWrapper.WriteAsync(Byte[] buffer, Int32 offset, Int32 count, CancellationToken cancellationToken) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\ResponseStreamWrapper.cs:line 90
+   at Microsoft.Extensions.RazorViews.BaseView.ExecuteAsync(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-09-07T09:38:02.9254960+07:00 80000007-0002-fd00-b63f-84710c7967bb [ERR] Connection ID ""18230571301796315142"", Request ID ""80000007-0002-fd00-b63f-84710c7967bb"": An unhandled exception was thrown by the application. (bf316047)
+System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Identity.UserManager`1[Microsoft.AspNetCore.Identity.IdentityUser]' while attempting to activate 'SapoProject.Areas.Customer.Controllers.CustomerController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.HandleHtmlInjection(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 102
+   at Westwind.AspNetCore.LiveReload.LiveReloadMiddleware.InvokeAsync(HttpContext context) in C:\projects\Westwind.AspnetCore.LiveReload\Westwind.AspnetCore.LiveReload\LiveReloadMiddleware.cs:line 71
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.IIS.Core.IISHttpContextOfT`1.ProcessRequestAsync()
+2020-09-07T09:39:58.1750361+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-07T09:39:58.1917107+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-07T09:39:58.1919519+07:00  [INF] Content root path: "I:\Sapo\SapoEntry\sapo5\SapoProject\SapoProject" (b5d60022)
+2020-09-07T09:41:25.2663280+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2020-09-07T09:41:25.2780313+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2020-09-07T09:41:25.2781989+07:00  [INF] Content root path: "I:\Sapo\SapoEntry\sapo5\SapoProject\SapoProject" (b5d60022)

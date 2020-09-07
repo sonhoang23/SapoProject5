@@ -22,10 +22,9 @@ namespace SapoProject.Areas.Customer.ViewComponents
         {
 
             string MyView = "_PartialView_SlideProduct";
-            //string MyView = "_PartialView_Footer";
             List<AdvertisementSlideShow> advertisementSlideShows = _sharedRepository.GetAdvertisementSlideShow();
-              return View(MyView, advertisementSlideShows);
-            //return View(MyView);
+            return View(MyView, advertisementSlideShows);
+           // return View(null);
         }
 
     }

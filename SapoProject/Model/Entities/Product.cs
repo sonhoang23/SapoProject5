@@ -24,5 +24,6 @@ namespace SapoProject.Model.Entities
         public int CategoryId { get; set; }
         public Category Category { set; get; }
         public OrderDetail OrderDetail { set; get; }
+
     }
 }

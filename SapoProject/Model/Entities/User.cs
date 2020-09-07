@@ -17,7 +17,6 @@ namespace SapoProject.Model.Entities
         public String UserPassWord { set; get; }
         public int UserRole { set; get; }
         public int Status { set; get; }
- 
-
     }
 }
+

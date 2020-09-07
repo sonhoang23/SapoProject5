@@ -14,6 +14,7 @@ namespace SapoProject.Areas.Admin.Models.DTO
         [Required(AllowEmptyStrings = false, ErrorMessage = "Không Được Để Trống!")]
         public String userName { set; get; }
         [DisplayName("Số Điện Thoại")]
+        [DataType(DataType.PhoneNumber)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Không Được Để Trống!")]
         public String phoneNumber { set; get; }
         [DisplayName("Độ Tuổi")]
@@ -36,18 +37,23 @@ namespace SapoProject.Areas.Admin.Models.DTO
         public String country { set; get; }
 
         [DisplayName("Địa Chỉ Email")]
+        [DataType(DataType.EmailAddress)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Không Được Để Trống!")]
         public String email { set; get; }
         [DisplayName("Địa Chỉ Email Xác Nhận")]
+        [DataType(DataType.EmailAddress)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Không Được Để Trống!")]
         public String emailReset { set; get; }
         [DisplayName("Tên Tài Khoản")]
+        [DataType(DataType.EmailAddress)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Không Được Để Trống!")]
         public String userAccount { set; get; }
         [DisplayName("Mật Khẩu")]
+        [DataType(DataType.Password)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Không Được Để Trống!")]
         public String userPassWord { set; get; }
         [DisplayName("Nhập Lại Mật Khẩu")]
+        [DataType(DataType.Password)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Không Được Để Trống!")]
         public String userPassWordAgain { set; get; }
     }

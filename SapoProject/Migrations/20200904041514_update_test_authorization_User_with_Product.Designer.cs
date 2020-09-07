@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SapoProject.Model.Data;
 
 namespace SapoProject.Migrations
 {
     [DbContext(typeof(SapoProjectDbContext))]
-    partial class SapoProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200904041514_update_test_authorization_User_with_Product")]
+    partial class update_test_authorization_User_with_Product
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -263,9 +265,6 @@ namespace SapoProject.Migrations
                         .HasColumnType("varchar")
                         .HasMaxLength(50);
 
-                    b.Property<string>("OwnerID")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Price")
                         .IsRequired()
                         .HasColumnType("varchar")
@@ -280,9 +279,6 @@ namespace SapoProject.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StatusProduct")
                         .HasColumnType("int");
 
                     b.Property<int>("ViewCount")
@@ -323,6 +319,9 @@ namespace SapoProject.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<string>("OwnerID")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("varchar")
@@ -334,6 +333,9 @@ namespace SapoProject.Migrations
                         .HasMaxLength(10);
 
                     b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StatusProduct")
                         .HasColumnType("int");
 
                     b.Property<string>("UserAccount")

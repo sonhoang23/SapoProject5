@@ -1,9 +1,12 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using SapoProject.Areas.Admin.Models.DTO;
 
 using SapoProject.Areas.Admin.Repository.Interface;
+using SapoProject.Logs;
 using SapoProject.Model.Entities;
 
 namespace SapoProject.Areas.Admin.Controllers
@@ -11,8 +14,10 @@ namespace SapoProject.Areas.Admin.Controllers
     public class ProductController : BaseController
     {
         private readonly IProductRepository _productRepository;
-        public ProductController(IProductRepository productRepository)
+        private readonly ILogger _logger;
+        public ProductController(IProductRepository productRepository, ILogger<ProductController> logger)
         {
+            _logger = logger;
             _productRepository = productRepository;
         }
         // GET: Product/Create
@@ -24,6 +29,7 @@ namespace SapoProject.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = Role.Admin)]
         public async Task<IActionResult> Create(ProductCreate productCreate)
         {
 
@@ -64,6 +70,7 @@ namespace SapoProject.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult ProductDetail(int id)
         {
+            _logger.LogInformation(MyLogEvents.GetItem, "Getting item {Id}", id);
             return View(_productRepository.GetProductByID(id));
         }
         // GET: Product/Edit/5

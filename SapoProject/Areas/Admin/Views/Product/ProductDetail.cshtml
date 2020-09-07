@@ -14,7 +14,7 @@
 		<div class="col">
 			<div class="row">
 				<div class="col-md-6">
-					<img src="@Model.FilePath" />
+					<img style="height:400px" src="@Model.FilePath" />
 				</div>
 				<div class="col-md-6">
 					<div class="col">
@@ -37,30 +37,6 @@
 						<div id="shortDescription" style="margin-top:20px; margin-bottom:20px" class="collapse">
 							@Html.Raw(@Model.ShortDescription)
 						</div>
-
-						<div>
-							<div class="form-group" style="margin-top:20px; height:auto">
-								<input type="number" min="0" placeholder="Quantity" />
-							</div>
-						</div>
-						<div class="row" style="margin-left:auto">
-							<div class="form-group" style="margin-top:20px">
-								<button type="button" class="btn btn-success">Add to card</button>
-
-								<button type="button" class="btn btn-success">Buy Now</button>
-							</div>
-						</div>
-						<div style="border-width: 1px !important" class="border border-warning">
-							<h5>Do you need to be advised that you should to chose?</h5>
-							<h5>contact with us now or enter your phone number or email below!</h5>
-							<div class="row" style="margin-left: auto">
-								<div class="form-group" style="margin-top:20px">
-									<input style="width:300px;height:initial " type="text" min="0" placeholder="Phone Number or Email" />
-									<button type="button" class="btn btn-primary">Contact Me Now</button>
-								</div>
-							</div>
-						</div>
-
 					</div>
 
 				</div>

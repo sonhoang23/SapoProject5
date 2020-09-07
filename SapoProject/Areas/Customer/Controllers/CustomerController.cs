@@ -5,6 +5,11 @@ using SapoProject.Areas.Customer.Repository.Interface;
 using SapoProject.Areas.Customer.Models.DTO;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using SapoProject.Logs;
+using System.Net;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace SapoProject.Areas.Customer.Controllers
 {
@@ -12,37 +17,64 @@ namespace SapoProject.Areas.Customer.Controllers
     public class CustomerController : Controller
     {
         private readonly ICustomerRepository _customerRepository;
-        public CustomerController(ICustomerRepository customerRepository)
+        private readonly ILogger _logger;
+        //private readonly UserManager<IdentityUser> userManager;
+        //private readonly SignInManager<IdentityUser> signInManager;
+        public CustomerController(ICustomerRepository customerRepository, ILogger<CustomerController> logger) /*, UserManager<IdentityUser> userManager,*/
+        //    SignInManager<IdentityUser> signInManager)
         {
+            //this.userManager = userManager;
+            //this.signInManager = signInManager;
+        
+            _logger = logger;
             _customerRepository = customerRepository;
         }
 
         [HttpGet]
         public ActionResult Index(PagingSearch pagingSearch)
         {
-            ViewBag.searchName = pagingSearch.searchName;
-            ViewBag.categoryName = pagingSearch.categoryName;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    ViewBag.searchName = pagingSearch.searchName;
+                    ViewBag.categoryName = pagingSearch.categoryName;
 
-            if (pagingSearch.searchName != null)
-            {
-                return View("Index", _customerRepository.GetListProductWithDetailByMainSearch(pagingSearch.searchName, pagingSearch.pageNumber));
-            }
-            if (pagingSearch.categoryName != null)
-            {
-                // ViewBag.listPagedProduct = _customerRepository.GetListProductWithDetailByCategoryName(pageNumber, name);
-                ViewBag.CategoryName = pagingSearch.categoryName;
-                return View(_customerRepository.GetListProductWithDetailByCategoryName(pagingSearch.pageNumber, pagingSearch.categoryName));
+                    if (pagingSearch.searchName != null)
+                    {
+                        return View("Index", _customerRepository.GetListProductWithDetailByMainSearch(pagingSearch.searchName, pagingSearch.pageNumber));
+                    }
+                    if (pagingSearch.categoryName != null)
+                    {
+                        // ViewBag.listPagedProduct = _customerRepository.GetListProductWithDetailByCategoryName(pageNumber, name);
+                        ViewBag.CategoryName = pagingSearch.categoryName;
+                        return View(_customerRepository.GetListProductWithDetailByCategoryName(pagingSearch.pageNumber, pagingSearch.categoryName));
+                    }
+                    else
+                    {
+                        ViewBag.CategoryName = null;
+                        return View(_customerRepository.GetListProductWithDetail(pagingSearch.pageNumber));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(MyLogEvents.GetItemNotFound, ex, "TestExp({Id})", pagingSearch);
+                    return NotFound();
+                }
+
             }
             else
             {
-                ViewBag.CategoryName = null;
-                return View(_customerRepository.GetListProductWithDetail(pagingSearch.pageNumber));
+                _logger.LogInformation(MyLogEvents.GetItemNotFound, "BadRequest(Code: {badRequest}, {ModelState})", HttpStatusCode.NotFound, ModelState);
+             return RedirectToAction(actionName: "NoFound", controllerName: "Shared");
             }
 
         }
         [HttpGet]
+      
         public ActionResult ProductDetail(int id)
         {
+            _logger.LogInformation(MyLogEvents.GetItem, "In Client-Side Product Detail Getting item {Id}", id);
             _customerRepository.UpdateProductViewCount(id);
             Product product = _customerRepository.GetProductByID(id);
             if (product == null)
@@ -121,6 +153,10 @@ namespace SapoProject.Areas.Customer.Controllers
         [HttpPost]
         public async Task<ActionResult> Register(ClientRegister clientRegister)
         {
+           // var client = new IdentityUser(User = clientRegister.userName);
+
+
+
             if (await _customerRepository.CreateClient(clientRegister) == 1)
             {   //chấp nhận register
                 HttpContext.Session.SetString("clientAccount", clientRegister.userAccount);
