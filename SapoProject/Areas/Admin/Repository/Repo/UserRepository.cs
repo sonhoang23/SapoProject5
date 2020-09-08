@@ -10,7 +10,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Text;
 using Microsoft.Extensions.Options;
-using SapoProject.Areas.Admin.Repository.Authorization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;

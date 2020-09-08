@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SapoProject.Model.Configurations;
 using SapoProject.Model.Entities;
 
 namespace SapoProject.Model.Data
 {
-    public class SapoProjectDbContext : DbContext
+    public class SapoProjectDbContext : IdentityDbContext
     {
         public SapoProjectDbContext(DbContextOptions<SapoProjectDbContext> options) : base(options)
         {

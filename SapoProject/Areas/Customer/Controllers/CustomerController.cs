@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace SapoProject.Areas.Customer.Controllers
 {
-
+    [AllowAnonymous]
     public class CustomerController : Controller
     {
         private readonly ICustomerRepository _customerRepository;

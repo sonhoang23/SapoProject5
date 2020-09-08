@@ -24,8 +24,8 @@
 							<div class="card shadow-lg border-0 rounded-lg mt-5">
 								<div class="card-header"><h3 class="text-center font-weight-light my-4">Tạo Tài Khoản</h3></div>
 								<div class="card-body">
-									<form asp-action="Register">
-										<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+									<form asp-action="Register", method="post">
+										<div asp-validation-summary="All" class="text-danger"></div>
 										<div class="col">
 											<div class="form-group">
 												<label asp-for="userName" class="control-label"></label>

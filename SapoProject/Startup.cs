@@ -15,6 +15,7 @@ using Westwind.AspNetCore.LiveReload;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace SapoProject
 {
@@ -61,39 +62,48 @@ namespace SapoProject
             services.AddDbContext<SapoProjectDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("SapoProjectDbContext")));
             services.AddMemoryCache();
-            // -----------------------------Authorization----------------------------
+            /* -------------------------Authorization----------------------------*/
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<SapoProjectDbContext>();
+            services.Configure<IdentityOptions>(options =>
+             {
+                 // Password settings.
+                 options.Password.RequireDigit = true;
+                 options.Password.RequireLowercase = true;
+                 options.Password.RequireNonAlphanumeric = true;
+                 options.Password.RequireUppercase = true;
+                 options.Password.RequiredLength = 6;
+                 options.Password.RequiredUniqueChars = 1;
+
+                 // Lockout settings.
+                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                 options.Lockout.MaxFailedAccessAttempts = 5;
+                 options.Lockout.AllowedForNewUsers = true;
+
+                 // User settings.
+                 options.User.AllowedUserNameCharacters =
+             "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                 options.User.RequireUniqueEmail = false;
+             });
+            services.AddControllers(config =>
+            {
+                // using Microsoft.AspNetCore.Mvc.Authorization;
+                // using Microsoft.AspNetCore.Authorization;
+                var policy = new AuthorizationPolicyBuilder()
+                                 .RequireAuthenticatedUser()
+                                 .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/Admin/User/LogIn");
+            services.ConfigureApplicationCookie(options => options.AccessDeniedPath = "/Admin/User/LogIn");
+
             //services.AddIdentity<IdentityUser, IdentityRole>(
             //   options => options.SignIn.RequireConfirmedAccount = true)
             //   .AddRoles<IdentityRole>();
             //services.AddControllers(config =>
             //{
-            //    // using Microsoft.AspNetCore.Mvc.Authorization;
-            //    // using Microsoft.AspNetCore.Authorization;
-            //    var policy = new AuthorizationPolicyBuilder()
-            //                     .RequireAuthenticatedUser()
-            //                     .Build();
-            //    config.Filters.Add(new AuthorizeFilter(policy));
-            //});
-            //services.Configure<IdentityOptions>(options =>
-            //{
-            //    // Password settings.
-            //    options.Password.RequireDigit = true;
-            //    options.Password.RequireLowercase = true;
-            //    options.Password.RequireNonAlphanumeric = true;
-            //    options.Password.RequireUppercase = true;
-            //    options.Password.RequiredLength = 6;
-            //    options.Password.RequiredUniqueChars = 1;
 
-            //    // Lockout settings.
-            //    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-            //    options.Lockout.MaxFailedAccessAttempts = 5;
-            //    options.Lockout.AllowedForNewUsers = true;
-
-            //    // User settings.
-            //    options.User.AllowedUserNameCharacters =
-            //    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-            //    options.User.RequireUniqueEmail = false;
-            //});
 
             //services.ConfigureApplicationCookie(options =>
             //{
@@ -120,6 +130,7 @@ namespace SapoProject
             services.AddTransient<IAdvertisementRepository, AdvertisementRepository>();
             services.AddTransient<IClientRepository, ClientRepository>();
             services.AddTransient<IOrderClientRepository, OrderClientRepository>();
+            services.AddTransient<IAdministrationRepository, AdministrationRepository>();
 
 
         }
@@ -142,17 +153,17 @@ namespace SapoProject
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();
-            app.UseAuthorization();
-            app.UseRouting();
 
+            app.UseRouting();
+            app.UseAuthorization();
             app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{area=Customer}/{controller=Customer}/{action=index}/{id?}");
-                // pattern: "{area=Admin}/{controller=User}/{action=Login}/{id?}");
+                 // pattern: "{area=Customer}/{controller=Customer}/{action=index}/{id?}");
+                 pattern: "{area=Admin}/{controller=Product}/{action=Index}/{id?}");
             });
             loggerFactory.AddFile("Logs/mylog-{Date}.txt");
 

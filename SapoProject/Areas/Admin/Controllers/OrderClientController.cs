@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,7 +11,8 @@ using SapoProject.Areas.Admin.Repository.Interface;
 using SapoProject.Model.Entities;
 namespace SapoProject.Areas.Admin.Controllers
 {
-    public class OrderClientController : BaseController
+    [Authorize(Roles = "Administration")]
+    public class OrderClientController : Controller
     {
         private readonly IOrderClientRepository _orderClientRepository;
         public OrderClientController(IOrderClientRepository orderClientRepository)

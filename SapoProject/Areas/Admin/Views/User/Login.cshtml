@@ -36,7 +36,13 @@
 											<input type="password" asp-for="userPassWord" class="form-control" placeholder="Nhập Mật Khẩu" />
 											<span asp-validation-for="userPassWord" class="text-danger"></span>
 										</div>
-
+										<div class="form-group">
+											<div class="checkbox">
+												<label asp-for="rememberPassWord" class="control-label"></label>
+												<input type="checkbox" asp-for="rememberPassWord" />
+												<span asp-validation-for="rememberPassWord" class="text-danger"></span>
+											</div>
+										</div>
 										<div class="form-group">
 											<input type="submit" value="Đăng Nhập" class="btn btn-primary" />
 										</div>

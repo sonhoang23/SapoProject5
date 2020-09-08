@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SapoProject.Areas.Admin.Models.DTO;
@@ -10,7 +11,8 @@ using System.Threading.Tasks;
 
 namespace SapoProject.Areas.Admin.Controllers
 {
-    public class AdvertisementController : BaseController
+    [Authorize(Roles = "Editor Advertisement")]
+    public class AdvertisementController : Controller
     {
         private readonly IAdvertisementRepository _advertisementRepository;
         private readonly ILogger _logger;

@@ -9,7 +9,7 @@ using SapoProject.Model.Entities;
 
 namespace SapoProject.Areas.Admin.Controllers
 {
-    public class ClientController : BaseController
+    public class ClientController : Controller
     {
         private readonly IClientRepository _clientRepository;
         public ClientController(IClientRepository clientRepository)

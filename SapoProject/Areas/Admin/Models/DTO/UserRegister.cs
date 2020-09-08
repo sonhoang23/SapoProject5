@@ -45,7 +45,6 @@ namespace SapoProject.Areas.Admin.Models.DTO
         [Required(AllowEmptyStrings = false, ErrorMessage = "Không Được Để Trống!")]
         public String emailReset { set; get; }
         [DisplayName("Tên Tài Khoản")]
-        [DataType(DataType.EmailAddress)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Không Được Để Trống!")]
         public String userAccount { set; get; }
         [DisplayName("Mật Khẩu")]
@@ -55,6 +54,7 @@ namespace SapoProject.Areas.Admin.Models.DTO
         [DisplayName("Nhập Lại Mật Khẩu")]
         [DataType(DataType.Password)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Không Được Để Trống!")]
+        [Compare ("userPassWord", ErrorMessage = "Mật Khẩu Không Trùng Khớp!")]
         public String userPassWordAgain { set; get; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SapoProject.Areas.Customer.Models.DTO;
@@ -9,7 +10,8 @@ using System.Collections.Generic;
 
 namespace SapoProject.Areas.Customer.Controllers
 {
-    public class ProductController : Controller
+    [AllowAnonymous]
+    public class ProductController : BaseController
     {
         private readonly IProductCustomerRepository _productRepository;
        

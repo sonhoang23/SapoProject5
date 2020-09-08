@@ -11,7 +11,8 @@ using SapoProject.Model.Entities;
 
 namespace SapoProject.Areas.Admin.Controllers
 {
-    public class ProductController : BaseController
+    [Authorize]
+    public class ProductController : Controller
     {
         private readonly IProductRepository _productRepository;
         private readonly ILogger _logger;
@@ -22,6 +23,7 @@ namespace SapoProject.Areas.Admin.Controllers
         }
         // GET: Product/Create
         [HttpGet]
+ 
         public ActionResult Create()
         {
             ViewData["CategoryNameViewBag"] = _productRepository.GetCategoryName();

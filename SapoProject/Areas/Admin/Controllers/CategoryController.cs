@@ -7,10 +7,12 @@ using SapoProject.Areas.Admin.Repository.Interface;
 using SapoProject.Areas.Admin.Models.DTO;
 using Microsoft.EntityFrameworkCore;
 using SapoProject.Model.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SapoProject.Areas.Admin.Controllers
 {
-    public class CategoryController : BaseController
+    [Authorize(Roles = "Editor")]
+    public class CategoryController : Controller
     {
         private readonly ICategoryRepository _categoryRepository;
         public CategoryController(ICategoryRepository categoryRepository)
@@ -21,6 +23,7 @@ namespace SapoProject.Areas.Admin.Controllers
         {
             return View();
         }
+        [Authorize(Roles = "Administration")]
         [HttpGet]
         public ActionResult Create()
         {
